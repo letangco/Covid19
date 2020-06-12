@@ -8,9 +8,15 @@ class App extends Component {
   render(){
     return (
       <Router>
-          <Menu />
-          <Route path="/dashboard" exact component={Dashboard}/>
-          <Route path="/map" exact component={Map}/>
+          
+          <div className="container-fluid">
+            
+              <Menu />
+            
+            {/* <Route path="/dashboard" exact component={Dashboard}/>
+            <Route path="/" exact component={Map}/> */}
+          </div>
+          
       </Router>        
     );
   }

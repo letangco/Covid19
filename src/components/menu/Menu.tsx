@@ -1,12 +1,16 @@
 import React,{Component} from 'react';
-import './Dashboard.css';
+import './menu.css';
 import logo from '../image/covid19.png';
+import Dashboard from '../dashboard/dashboard';
+import Map from '../mapDistribute/map';
+import {BrowserRouter as Router, Route,NavLink} from 'react-router-dom';
 class Menu extends Component {
     
   render(){
     
     return (
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <Router>
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <nav className="navbar navbar-default">
                         <div className="navbar-header">
                                     <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar4">
@@ -15,19 +19,27 @@ class Menu extends Component {
                                     <span className="icon-bar"></span>
                                     <span className="icon-bar"></span>
                                     </button>
-                                    <a className="navbar-brand" href="https://daa.uit.edu.vn">
-                                    <img src={logo} alt="Dispute Bills"/>
-                                    </a>
+                                    {/* <a className="navbar-brand" href="/">
+                                        <img src={logo} alt="Dispute Bills"/>
+                                    </a> */}
+                                    <NavLink to="/dashboard" className="navbar-brand">
+                                        <img src={logo} alt="Dispute Bills"/>
+                                    </NavLink>
                                 </div>
                                 <div id="navbar4" className="navbar-collapse collapse">
                                     <ul className="nav navbar-nav">
-                                    <li className="active"><a href="a">DASHBOARD</a></li>
-                                    
-                                    <li>
-                                        {/* <Link to="../mapDistribute/map.tsx">MAP</Link> */}
-                                        <a href="/">MAP</a>
+                                    <li className="active">
+                                        <NavLink exact to = "/dashboard" className="my-link">
+                                            DASHBOARD
+                                        </NavLink>
                                     </li>
-                                    <li className="dropdown">
+                                    
+                                    <li className="active">
+                                        <NavLink exact to = "/map" className="my-link">
+                                            MAP
+                                        </NavLink>
+                                    </li>
+                                    <li className="dropdown active" >
                                         <a href="a" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CALCULATOR RATE <span className="caret"></span></a>
                                         <ul className="dropdown-menu" role="menu">
                                         <li><a href="a">Action</a></li>
@@ -39,9 +51,19 @@ class Menu extends Component {
                                         <li><a href="a">One more separated link</a></li>
                                         </ul>
                                     </li>
-                                    <li>
+                                    <li className="active">
                                         <a href="a">DIRECT</a>
                                         
+                                    </li>
+                                    <li className="active">
+                                        <NavLink exact to = "/wiki" className="my-link">
+                                            WIKI COVID 19
+                                        </NavLink>
+                                    </li>
+                                    <li className="active">
+                                        <NavLink exact to = "/news" className="my-link">
+                                            NEWS
+                                        </NavLink>
                                     </li>
                                     </ul>
                                     <form className="navbar-form navbar-right" action="/action_page.php">
@@ -57,6 +79,9 @@ class Menu extends Component {
                                 </div>
                             </nav>
                     </div>
+                    <Route path="/dashboard" exact component={Dashboard}/>
+                    <Route path="/map" exact component={Map}/>
+        </Router>
         
     );
   }
