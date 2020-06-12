@@ -2,6 +2,7 @@ import React, {Component }from 'react';
 import axios from 'axios';
 import CountUp from 'react-countup';
 import Moment from 'react-moment';
+import './QuickFact.css';
 interface Iprops{
 
 }
@@ -9,7 +10,10 @@ interface IState {
     timeUpdate: 'Sun Jun 07 2020',
     totalConfirmed:0,
     totalDeath: 0,
-    totalRecovered: 0
+    totalRecovered: 0,
+    totalNewCase: 0,
+    totalNewDeathCase: 0,
+    totalActiveCase: 0,
 }
 class QuickFact extends Component{
     
@@ -21,20 +25,30 @@ class QuickFact extends Component{
         timeUpdate: 'Sun Jun 07 2020',
         totalConfirmed:0,
         totalDeath: 0,
-        totalRecovered: 0
+        totalRecovered: 0,
+        totalNewCase: 0,
+        totalNewDeathCase: 0,
+        totalActiveCase: 0,
     }
     componentDidMount(){
-        var totalConfirmed,totalDeath, totalRecovered;
+        var totalConfirmed,totalDeath, totalRecovered, totalNewCase, totalNewDeathCase,totalActiveCase;
+        // Hiển thị số liệu quickFact
         axios.get('https://api.thevirustracker.com/free-api?global=stats')
         .then(res => {
             
             totalConfirmed = res.data.results[0].total_cases;
             totalDeath = res.data.results[0].total_deaths;
             totalRecovered = res.data.results[0].total_recovered;
+            totalNewCase = res.data.results[0].total_new_cases_today;
+            totalNewDeathCase = res.data.results[0].total_new_deaths_today;
+            totalActiveCase = res.data.results[0].total_active_cases;
             this.setState({
                 totalConfirmed: totalConfirmed,
                 totalDeath : totalDeath,
-                totalRecovered: totalRecovered
+                totalRecovered: totalRecovered,
+                totalNewCase: totalNewCase,
+                totalNewDeathCase: totalNewDeathCase,
+                totalActiveCase: totalActiveCase
             })
         }).catch(error => console.log(error));
         // Get TimeUpdates
@@ -50,7 +64,7 @@ class QuickFact extends Component{
     //     this.props.receiveData()
     // }
     render (){
-        var {totalConfirmed, totalDeath,totalRecovered, timeUpdate} = this.state;
+        var {totalConfirmed, totalDeath,totalRecovered, timeUpdate, totalNewCase, totalNewDeathCase,totalActiveCase} = this.state;
         
         return (
             <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -63,12 +77,19 @@ class QuickFact extends Component{
                           <div className="panel-body">
                             <div className="panel panel-primary confirmed">
                                 <div className="panel-heading">
-                                    <h3>Total Confirmed</h3>
+                                    <h3>Confirmed Case</h3>
                                 </div>
                                 <div className="panel-body">
+                                    <h5>Total Confirmed</h5>
                                     <h1>
                                         <span className="label label-primary">
                                             <CountUp start={0} end={totalConfirmed} duration={3} separator="," />
+                                        </span>
+                                    </h1>
+                                    <h5>New Confirmed today</h5>
+                                    <h1>
+                                        <span className="label label-primary">
+                                            <CountUp start={0} end={totalNewCase} duration={3} separator="," />
                                         </span>
                                     </h1>
                                 </div>
@@ -76,24 +97,39 @@ class QuickFact extends Component{
 
                             <div className="panel panel-danger death">
                                 <div className="panel-heading">
-                                    <h3>Total Death</h3>
+                                    <h3>Death Cases</h3>
                                 </div>
                                 <div className="panel-body">
+                                    <h5>Total Death</h5>
                                     <h1>
                                         <span className="label label-danger">
                                             <CountUp start={0} end={totalDeath} duration={3} separator="," />
                                         </span>
                                     </h1>
+                                    <h5>New Death today</h5>
+                                    <h1>
+                                        <span className="label label-danger">
+                                            <CountUp start={0} end={totalNewDeathCase} duration={3} separator="," />
+                                        </span>
+                                    </h1>
                                 </div>
                             </div>
+                            
                             <div className="panel panel-success recovered">
                                 <div className="panel-heading">
-                                    <h3>Total Death</h3>
+                                    <h3>Recovered Case</h3>
                                 </div>
                                 <div className="panel-body">
+                                    <h5>Total Recovered</h5>
                                     <h1>
                                         <span className="label label-success">
                                             <CountUp start={0} end={totalRecovered} duration={3} separator="," />
+                                        </span>
+                                    </h1>
+                                    <h5>Total Active Case</h5>
+                                    <h1>
+                                        <span className="label label-success">
+                                            <CountUp start={0} end={totalActiveCase} duration={3} separator="," />
                                         </span>
                                     </h1>
                                 </div>
