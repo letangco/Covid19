@@ -1,14 +1,11 @@
 import React,{Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './dashboard.css';
-import logo from './covid19.png';
-
+import './Dashboard.css';
+import logo from '../image/covid19.png';
 class Menu extends Component {
     
   render(){
     
     return (
-        <Route>
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <nav className="navbar navbar-default">
                         <div className="navbar-header">
@@ -27,8 +24,8 @@ class Menu extends Component {
                                     <li className="active"><a href="a">DASHBOARD</a></li>
                                     
                                     <li>
-                                        <Link to="../mapDistribute/map.tsx">MAP</Link>
-                                        {/* <a href="../mapDistribute/mapWorld.tsx">MAP</a> */}
+                                        {/* <Link to="../mapDistribute/map.tsx">MAP</Link> */}
+                                        <a href="/">MAP</a>
                                     </li>
                                     <li className="dropdown">
                                         <a href="a" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CALCULATOR RATE <span className="caret"></span></a>
@@ -60,7 +57,6 @@ class Menu extends Component {
                                 </div>
                             </nav>
                     </div>
-                    </Route>
         
     );
   }

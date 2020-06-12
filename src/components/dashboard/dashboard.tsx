@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import './dashboard.css';
+import './Dashboard.css';
 
 import State from './Stats';
 import QuickFact from './QuickFact';
-import Menu from './Menu';
+// import Menu from '../menu/Menu';
 
 interface IProps{
 
@@ -25,7 +25,7 @@ class Dashboard extends Component {
     return (
         <div className="container-fluid">
             <div className = "row"> 
-                <Menu />
+                {/* <Menu /> */}
             </div>
             {/* {Content} */}
             <div className="row">

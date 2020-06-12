@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import Menu from  '../dashboard/Menu';
 class Map extends Component{
     render (){
         return (
             <div className = "container-fluid">
-                <Menu/>
+                THis is map page
             </div>
         );
     }

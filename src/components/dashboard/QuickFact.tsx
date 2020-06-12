@@ -17,10 +17,6 @@ interface IState {
 }
 class QuickFact extends Component{
     
-    // constructor(props: IState)
-    // {
-    //     super(props);
-    // }
     state={
         timeUpdate: 'Sun Jun 07 2020',
         totalConfirmed:0,
@@ -33,6 +29,7 @@ class QuickFact extends Component{
     componentDidMount(){
         var totalConfirmed,totalDeath, totalRecovered, totalNewCase, totalNewDeathCase,totalActiveCase;
         // Hiển thị số liệu quickFact
+        
         axios.get('https://api.thevirustracker.com/free-api?global=stats')
         .then(res => {
             

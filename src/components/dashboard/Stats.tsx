@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import { Table } from 'antd';
-import './dashboard.css';
+import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
 
@@ -88,9 +88,9 @@ class Stats extends Component <{}, IState> {
         let Arr = [];
         var data:any = [];
         
+        // Bảng danh sách table 
         axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
         .then(res =>{
-            
             Arr = (Object.entries(res.data.countryitems[0]));
             for (let i =0 ; i<Arr.length;i++)
             {
@@ -126,34 +126,6 @@ class Stats extends Component <{}, IState> {
     filteredInfo = filteredInfo || {};
     // console.log(sortedInfo);
     // console.log(filteredInfo)
-    const columns = [
-      {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-        width: 150,
-      },
-      {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
-        width: 150,
-      },
-      {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
-      },
-    ];
-    const data1 = [];
-      for (let i = 0; i < 100; i++) {
-      data1.push({
-          key: i,
-          name: `Edward King ${i}`,
-          age: 32,
-          address: `London, Park Lane no. ${i}`,
-      });
-      }
       
       //Table mới
       // Dạng [{...},...]
@@ -243,7 +215,6 @@ class Stats extends Component <{}, IState> {
                           </div>
                     </div>
                    
-                    <Table  columns={columns} dataSource={data1} pagination={{ pageSize: 50 }} scroll={{ y: 400 }} />
                 </div>
         
     );
