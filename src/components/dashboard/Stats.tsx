@@ -9,18 +9,47 @@ interface IProps{
 }
 interface IState{
      
-    data :any [
-        
-    ]
+    data :any [],
+    filteredInfo : any ,
+    sortedInfo: any
 }
 
 class Stats extends Component <{}, IState> {
     constructor (props: IState){
         super (props);
         this.state={
-            data : []
+            data : [],
+            filteredInfo: null,
+            sortedInfo: null
         }
     }
+    handleChange = (pagination:any,filter:any, sort: any )=>{
+      this.setState({
+        filteredInfo: filter,
+        sortedInfo:sort
+      })
+    }
+    // Reset Button Filter.
+    clearFilter = ()=>{
+      this.setState({filteredInfo: null});
+    }
+    // Reset All button filter and sort
+    clearAll = ()=>{
+      this.setState ({
+        filteredInfo: null,
+        sortedInfo: null
+      })
+    }
+    //
+    SortConfirmed =()=>{
+      this.setState({
+        sortedInfo: {
+          order: 'descend',
+          columnkey: 'confirmed'
+        }
+      })
+    }
+
      Country(obj: unknown) {
         
         return obj;
@@ -58,6 +87,7 @@ class Stats extends Component <{}, IState> {
     componentDidMount(){
         let Arr = [];
         var data:any = [];
+        
         axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
         .then(res =>{
             
@@ -91,20 +121,28 @@ class Stats extends Component <{}, IState> {
      }
      
   render(){
+    let {sortedInfo, filteredInfo} = this.state;
+    sortedInfo = sortedInfo || {};
+    filteredInfo = filteredInfo || {};
+    // console.log(sortedInfo);
+    // console.log(filteredInfo)
     const columns = [
       {
         title: 'Name',
         dataIndex: 'name',
+        key: 'name',
         width: 150,
       },
       {
         title: 'Age',
         dataIndex: 'age',
+        key: 'age',
         width: 150,
       },
       {
         title: 'Address',
         dataIndex: 'address',
+        key: 'address',
       },
     ];
     const data1 = [];
@@ -123,23 +161,42 @@ class Stats extends Component <{}, IState> {
         {
           title: 'Country',
           dataIndex: 'country',
+          key: 'country',
           width: 150,
+          filters: [
+            { text: 'VN', value: 'VietNam' },
+            { text: 'B', value: 'A' },
+          ],
+          // sorter: (a:any, b:any) => a.country.length - b.country.length,
+          sortOrder: sortedInfo.columnKey === 'country' && sortedInfo.order,
+          ellipsis: true,
         },
         {
           title: 'Confirmed',
           dataIndex: 'confirmed',
+          key: 'confirmed',
           width: 150,
+          sorter:(a :any,b :any) => a.confirmed -b.confirmed,
+          sortOrder: sortedInfo.columnKey==='confirmed'&&sortedInfo.order,
+          ellipsis: true,
         },
         {
           title: 'Death',
           dataIndex: 'death',
+          key: 'death',
           width: 150,
-          
+          sorter: (a:any, b:any) => a.death - b.death,
+          sortOrder: sortedInfo.columnKey === 'death' && sortedInfo.order,
+          ellipsis: true
         },
         {
             title: 'Recovered',
             dataIndex: 'recovered',
+            key: 'recovered',
             width: 150,
+            sorter: (a:any, b:any) => a.recovered - b.recovered,
+            sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
+            ellipsis: true
           }
       ];
       var newColumns =[];
@@ -182,7 +239,7 @@ class Stats extends Component <{}, IState> {
                                         {this.renderTableData()}
                                     </tbody>
                                 </table> */}
-                                <Table columns={columns1}  dataSource={data2} pagination={{ pageSize: 50 }} scroll={{ y: 450 }} />
+                                <Table columns={columns1}  dataSource={data2} pagination={{ pageSize: 50 }} scroll={{ y: 450 }} onChange={this.handleChange} />
                           </div>
                     </div>
                    
