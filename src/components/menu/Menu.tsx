@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import './menu.css';
 import logo from '../image/covid19.png';
+import  Map from '../mapDistribute/map';
 import Dashboard from '../dashboard/dashboard';
-import Map from '../mapDistribute/map';
+
 import {BrowserRouter as Router, Route,NavLink} from 'react-router-dom';
 class Menu extends Component {
     
@@ -22,14 +23,14 @@ class Menu extends Component {
                                     {/* <a className="navbar-brand" href="/">
                                         <img src={logo} alt="Dispute Bills"/>
                                     </a> */}
-                                    <NavLink to="/dashboard" className="navbar-brand">
+                                    <NavLink to="/" className="navbar-brand">
                                         <img src={logo} alt="Dispute Bills"/>
                                     </NavLink>
                                 </div>
                                 <div id="navbar4" className="navbar-collapse collapse">
                                     <ul className="nav navbar-nav">
                                     <li className="active">
-                                        <NavLink exact to = "/dashboard" className="my-link">
+                                        <NavLink exact to = "/" className="my-link">
                                             DASHBOARD
                                         </NavLink>
                                     </li>
@@ -79,7 +80,7 @@ class Menu extends Component {
                                 </div>
                             </nav>
                     </div>
-                    <Route path="/dashboard" exact component={Dashboard}/>
+                    <Route path="/" exact component={Dashboard}/>
                     <Route path="/map" exact component={Map}/>
         </Router>
         

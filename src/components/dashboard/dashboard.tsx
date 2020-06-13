@@ -30,6 +30,7 @@ class Dashboard extends Component {
             {/* {Content} */}
             <div className="row">
                 {/* {QuickFact} */}
+                {/* <QuickFact onReceiveData={this.onSetColor} /> */}
                 <QuickFact />
                 <br/>
                 
@@ -42,5 +43,4 @@ class Dashboard extends Component {
     );
   }
 }
-
 export default Dashboard;

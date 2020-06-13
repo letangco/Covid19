@@ -104,21 +104,22 @@ class Stats extends Component <{}, IState> {
             })
         });
     }
-    renderTableData() {
-        return this.state.data.map((item, index) => {
-        //    const { title, total_cases, total_deaths, total_recovered} = item //destructuring ES6
-           return (
-              <tr key={index}>
-                <td>{item.title}</td>
-                <td>{item.total_cases}</td>
-                <td>{item.total_new_cases_today}</td>
-                <td>{item.total_deaths}</td>
-                <td>{item.total_new_deaths_today}</td>
-                <td>{item.total_recovered}</td>
-              </tr>
-           )
-        })
-     }
+    
+    // renderTableData() {
+    //     return this.state.data.map((item, index) => {
+    //     //    const { title, total_cases, total_deaths, total_recovered} = item //destructuring ES6
+    //        return (
+    //           <tr key={index}>
+    //             <td>{item.title}</td>
+    //             <td>{item.total_cases}</td>
+    //             <td>{item.total_new_cases_today}</td>
+    //             <td>{item.total_deaths}</td>
+    //             <td>{item.total_new_deaths_today}</td>
+    //             <td>{item.total_recovered}</td>
+    //           </tr>
+    //        )
+    //     })
+    //  }
      
   render(){
     let {sortedInfo, filteredInfo} = this.state;
@@ -126,7 +127,7 @@ class Stats extends Component <{}, IState> {
     filteredInfo = filteredInfo || {};
     // console.log(sortedInfo);
     // console.log(filteredInfo)
-      
+      // console.log(this.state.data);
       //Table mới
       // Dạng [{...},...]
       const columns1 = [
@@ -153,6 +154,15 @@ class Stats extends Component <{}, IState> {
           ellipsis: true,
         },
         {
+          title: 'New Confirmed',
+          dataIndex: 'newConfirmed',
+          key: 'newConfirmed',
+          width: 150,
+          sorter:(a :any,b :any) => a.newConfirmed -b.newConfirmed,
+          sortOrder: sortedInfo.columnKey==='newConfirmed'&&sortedInfo.order,
+          ellipsis: true,
+        },
+        {
           title: 'Death',
           dataIndex: 'death',
           key: 'death',
@@ -162,6 +172,15 @@ class Stats extends Component <{}, IState> {
           ellipsis: true
         },
         {
+          title: 'New Death',
+          dataIndex: 'newDeath',
+          key: 'newDeath',
+          width: 150,
+          sorter:(a :any,b :any) => a.newDeath -b.newDeath,
+          sortOrder: sortedInfo.columnKey==='newDeath'&&sortedInfo.order,
+          ellipsis: true,
+        },
+        {
             title: 'Recovered',
             dataIndex: 'recovered',
             key: 'recovered',
@@ -169,6 +188,15 @@ class Stats extends Component <{}, IState> {
             sorter: (a:any, b:any) => a.recovered - b.recovered,
             sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
             ellipsis: true
+          },
+          {
+            title: 'Serious Cases',
+            dataIndex: 'seriouscase',
+            key: 'seriouscase',
+            width: 150,
+            sorter:(a :any,b :any) => a.seriouscase -b.seriouscase,
+            sortOrder: sortedInfo.columnKey==='seriouscase'&&sortedInfo.order,
+            ellipsis: true,
           }
       ];
       var newColumns =[];
@@ -177,12 +205,15 @@ class Stats extends Component <{}, IState> {
         for (var i=0; i<newColumns.length;i++)
         {
             data2.push({
-                // truyền key vào để xác định vị trí cho arr
+                // truyền key vào để xác định vị trí cho arr sử dụng load ra cho table
                 key: i,
                 country: newColumns[i].title,
                 confirmed: newColumns[i].total_cases,
+                newConfirmed: newColumns[i].total_new_cases_today,
                 death:newColumns[i].total_deaths,
+                newDeath: newColumns[i].total_new_deaths_today,
                 recovered:newColumns[i].total_recovered,
+                seriouscase: newColumns[i].total_serious_cases
             });
         }
         

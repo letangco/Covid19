@@ -16,7 +16,6 @@ interface IState {
     totalActiveCase: 0,
 }
 class QuickFact extends Component{
-    
     state={
         timeUpdate: 'Sun Jun 07 2020',
         totalConfirmed:0,
@@ -60,11 +59,13 @@ class QuickFact extends Component{
     // componentDidMount(value){
     //     this.props.receiveData()
     // }
+    onReceiveData (value:any){
+        console.log(value)
+    }
     render (){
         var {totalConfirmed, totalDeath,totalRecovered, timeUpdate, totalNewCase, totalNewDeathCase,totalActiveCase} = this.state;
-        
         return (
-            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3" onClick = {() => this.onReceiveData(this.state)}>
                     <div className="panel panel-danger">
                           <div className="panel-heading">
                                 <h1 className="panel-title">QUICK FACT</h1>
