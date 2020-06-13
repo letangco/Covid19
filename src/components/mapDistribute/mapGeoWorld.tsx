@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Chart } from "react-google-charts";
-// sử dụng API "https://api.covid19api.com/all" để lấy dữ liệu toàn bộ các nước trên TG
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { VectorMap } from 'react-jvectormap';
+// API "https://api.covid19api.com/all" 
 interface Istate{
     dataGeoMap: any[],
-
 }
 class MapGeoChart extends Component <{},Istate>{
     
@@ -14,6 +15,7 @@ class MapGeoChart extends Component <{},Istate>{
         this.state={
             dataGeoMap: [],
         }
+        
     }
     // Feth and Save data into GeoMap
     componentDidMount(){
@@ -56,7 +58,6 @@ class MapGeoChart extends Component <{},Istate>{
     render ()
     {
         var dataGeoMap = this.state.dataGeoMap;
-        
 
         return (
             <div className = "container-fluid">
@@ -77,27 +78,77 @@ class MapGeoChart extends Component <{},Istate>{
                     // mapsApiKey="AIzaSyAAji08D-qvQDAreTvqrv7pz_UHOJFz2gA"
                     // rootProps={{ 'data-testid': '1' }}
                 /> */}
-                <Chart
-                    width={'500px'}
-                    height={'300px'}
-                    chartType="GeoChart"
-                    data={
-                    //     [
-                    //     ['Country', 'Popularity'],
-                    //     ['Germany', 200],
-                    //     ['United States', 300],
-                    //     ['Brazil', 400],
-                    //     ['Canada', 500],
-                    //     ['France', 600],
-                    //     ['RU', 700],
-                    // ]
-                    dataGeoMap
-                }
-                    // Note: you will need to get a mapsApiKey for your project.
-                    // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-                    mapsApiKey="YOUR_KEY_HERE"
-                    rootProps={{ 'data-testid': '1' }}
-                />
+                
+                <div className = "container-fluid" >
+                    
+                    <div className="row">
+                        <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            
+                            </div>
+                            <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10" style={{ height: 700}}>
+                                <VectorMap
+                                map='world_mill'
+                                backgroundColor="#0071A4"
+                                useRef ={"map"}
+                                containerStyle={{
+                                    width: '100%',
+                                    height: '100%'
+                                }}
+                                containerClassName="map"
+                                scale ={ ['#C8EEFF', '#0071A4']}
+                                hoverOpacity= {0.8}
+                                
+                                />
+                            </div>
+                            <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                
+                        </div>
+                    </div>
+                    
+                    <div className="row">
+                        
+                        <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            
+                        </div>
+                        
+                        <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            <Chart 
+                                width={'100%'}
+                                height={'100%'}
+                                chartType="GeoChart"
+                                data={
+                                //     [
+                                //     ['Country', 'Popularity'],
+                                //     ['Germany', 200],
+                                //     ['United States', 300],
+                                //     ['Brazil', 400],
+                                //     ['Canada', 500],
+                                //     ['France', 600],
+                                //     ['RU', 700],
+                                // ]
+                                dataGeoMap
+                            }
+                            options={{
+                                
+                                colorAxis: { colors: ['#99ff66','#ccff33', '#ffcc00', '#ff9900','#cc3300'] },
+                                backgroundColor: '#32414e',
+                                datalessRegionColor: '#ff3300',
+                                defaultColor: '#f5f5f5',
+                              }}
+                                // Note: you will need to get a mapsApiKey for your project.
+                                // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                                mapsApiKey="YOUR_KEY_HERE"
+                                rootProps={{ 'data-testid': '1' }}
+                            />
+                        </div>
+                        <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
                 
             </div>
         )

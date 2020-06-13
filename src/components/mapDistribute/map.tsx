@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Chart } from "react-google-charts";
 import MapGeoChart from './mapGeoWorld';
 // sử dụng API "https://api.covid19api.com/all" để lấy dữ liệu toàn bộ các nước trên TG
 interface Istate{
@@ -56,7 +55,7 @@ class Map extends Component <{},Istate>{
     }
     render ()
     {
-        var dataGeoMap = this.state.dataGeoMap;
+        // var dataGeoMap = this.state.dataGeoMap;
         
 
         return (
@@ -67,12 +66,7 @@ class Map extends Component <{},Istate>{
                     
                     <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         
-                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <MapGeoChart />
-                        </div>
-                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <MapGeoChart />
-                        </div>
                     </div>
                     
                 </div>
