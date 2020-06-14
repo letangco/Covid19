@@ -5,6 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { VectorMap } from 'react-jvectormap';
 // API "https://api.covid19api.com/all" 
 interface Istate{
+    isLoading: true,
     dataGeoMap: any[],
     dataConfirmed: {},
     dataDeath: {},
@@ -19,6 +20,7 @@ class MapGeoChart extends Component <{},Istate>{
     {
         super(props);
         this.state={
+            isLoading: true,
             dataGeoMap: [],
             dataConfirmed :{},
             dataDeath: {},
@@ -30,9 +32,9 @@ class MapGeoChart extends Component <{},Istate>{
         
     }
     // Feth and Save data into GeoMap
-    componentDidMount(){
-        axios.get("https://api.covid19api.com/summary")
-        .then(res =>{
+    async componentDidMount(){
+        await axios.get("https://api.covid19api.com/summary")
+        .then( res =>{
             // Mảng để lưu giá trị từng mảng để setState lại
             var dataGeoMap = [];
             // Mảng để lưu đầu đề để hiện trị trên MapChart
@@ -45,7 +47,7 @@ class MapGeoChart extends Component <{},Istate>{
             var A = res.data.Countries;
             // console.log(res.data.Countries);
             dataGeoMap.push(temp);
-
+            var isLoading: any = false;
             var TempConfirmed :any={},TempDeath:any={};
             var TempDeath:any ={};
             var TempRecovered:any = {};
@@ -86,17 +88,20 @@ class MapGeoChart extends Component <{},Istate>{
                 dataGeoMap.push(tempData);
                 tempData =[];
             }
-            // console.log(TempConfirmed)
             this.setState({
+                isLoading:isLoading,
                 dataGeoMap: dataGeoMap,
                 dataConfirmed: TempConfirmed,
                 dataDeath: TempDeath,
                 dataRecovered: TempRecovered,
                 dataNewConfirmed: TemNewConfirmed,
                 dataNewDeath: TemNewDeath,
-                dataNewRecovered: TemNewRecovered
+                dataNewRecovered: TemNewRecovered,
+                
             })
         })
+        
+            
     }
     
     render ()
@@ -152,9 +157,57 @@ class MapGeoChart extends Component <{},Istate>{
         var TempNewConfirmed:any = this.state.dataNewConfirmed;
         var TempNewDeath:any = this.state.dataNewDeath;
         var TemNewRecovered :any= this.state.dataNewRecovered;
+        var isLoading:any = this.state.isLoading;
         // console.log(TempConfirmed)
         var cdata :any = {"US": "35", "NO": "15", "SE": "17", "GB": "20", "ES": "10"};
         var dataGeoMap = this.state.dataGeoMap;
+        function LoadMap(value:any)
+        {
+            if(value===true)
+            {
+                console.log("Loading Map");
+            }
+            else{
+                return (
+                    <VectorMap
+                                    map='world_mill'
+                                    backgroundColor="#0071A4"
+                                    
+                                    useRef ={"map"}
+                                    containerStyle={{
+                                        width: '100%',
+                                        height: '100%'
+                                    }}
+                                    containerClassName="map"
+                                    scale ={ ['#99ff33','#669900','#ffcc00','#cc6600']}
+                                    hoverOpacity= {0.8}
+                                    regionStyle = {
+                                        {
+                                            hover: {
+                                            "fill-opacity": 0.8,
+                                            cursor: 'pointer'
+                                            },
+                                            selected: {
+                                               stroke: '#000',
+                                               "stroke-width": 1,
+                                               "stroke-opacity": 1
+                                            }
+                                         }
+                                    }
+                                    series= {
+                                        {
+                                            regions: [{
+                                                values: TempConfirmed,
+                                                scale: ['#ffcc00','#cc6600','#ff3300', '#ff0000'],
+                                                normalizeFunction: 'polynomial'
+                                              }]
+                                        }
+                                      }
+                                      onRegionTipShow = {onRegionLabelShow}
+                                />
+                )
+            }
+        }
         return (
             <div className = "container-fluid">
                 
@@ -165,42 +218,43 @@ class MapGeoChart extends Component <{},Istate>{
                             
                             </div>
                             <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10" style={{ height: 700}}>
-                                <VectorMap
-                                map='world_mill'
-                                backgroundColor="#0071A4"
-                                
-                                useRef ={"map"}
-                                containerStyle={{
-                                    width: '100%',
-                                    height: '100%'
-                                }}
-                                containerClassName="map"
-                                scale ={ ['#99ff33','#669900','#ffcc00','#cc6600']}
-                                hoverOpacity= {0.8}
-                                regionStyle = {
-                                    {
-                                        hover: {
-                                        "fill-opacity": 0.8,
-                                        cursor: 'pointer'
-                                        },
-                                        selected: {
-                                           stroke: '#000',
-                                           "stroke-width": 1,
-                                           "stroke-opacity": 1
-                                        }
-                                     }
-                                }
-                                series= {
-                                    {
-                                        regions: [{
-                                            values: TempConfirmed,
-                                            scale: ['#ffcc00','#cc6600','#ff3300', '#ff0000'],
-                                            normalizeFunction: 'polynomial'
-                                          }]
+                                {LoadMap(isLoading)}
+                                {/* <VectorMap
+                                    map='world_mill'
+                                    backgroundColor="#0071A4"
+                                    
+                                    useRef ={"map"}
+                                    containerStyle={{
+                                        width: '100%',
+                                        height: '100%'
+                                    }}
+                                    containerClassName="map"
+                                    scale ={ ['#99ff33','#669900','#ffcc00','#cc6600']}
+                                    hoverOpacity= {0.8}
+                                    regionStyle = {
+                                        {
+                                            hover: {
+                                            "fill-opacity": 0.8,
+                                            cursor: 'pointer'
+                                            },
+                                            selected: {
+                                               stroke: '#000',
+                                               "stroke-width": 1,
+                                               "stroke-opacity": 1
+                                            }
+                                         }
                                     }
-                                  }
-                                  onRegionTipShow = {onRegionLabelShow}
-                                />
+                                    series= {
+                                        {
+                                            regions: [{
+                                                values: TempConfirmed,
+                                                scale: ['#ffcc00','#cc6600','#ff3300', '#ff0000'],
+                                                normalizeFunction: 'polynomial'
+                                              }]
+                                        }
+                                      }
+                                      onRegionTipShow = {onRegionLabelShow}
+                                /> */}
                             </div>
                             
                             <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
