@@ -15,7 +15,6 @@ interface Istate{
     dataNewRecovered: {}
 }
 class MapGeoChart extends Component <{},Istate>{
-    
     constructor (props: Istate)
     {
         super(props);
@@ -31,6 +30,7 @@ class MapGeoChart extends Component <{},Istate>{
         }
         
     }
+    
     // Feth and Save data into GeoMap
     async componentDidMount(){
         await axios.get("https://api.covid19api.com/summary")
@@ -120,16 +120,11 @@ class MapGeoChart extends Component <{},Istate>{
             // console.log(x)
             return x;
         }
-        function getDataConfirmed(data:any)
-        {
-            data = TempConfirmed;
-            // console.log(data);
-            return data;
-        }
+        
         function getFlagImgSrc(code:any)
         {
             var code = code.toLowerCase();
-        return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+code+'.svg';
+            return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+code+'.svg';
         }   
         function onRegionLabelShow(event :any , label :any, code :any){
             // var cdata :any = {US: "35", NO: "15", "SE": "17", "GB": "20", "ES": "10"};
@@ -140,15 +135,14 @@ class MapGeoChart extends Component <{},Istate>{
             var newConfirmed:any = TempNewConfirmed;
             var newDeath:any = TempNewDeath;
             var newRecovered:any = TemNewRecovered;
-            // console.log(Confirmed)
-        //     label.html(label.html() +' (' + code.toString() + 
-        //    ') <br>Số Count: ' + Confirmed[code]);
-           label.html('<img src="'+getFlagImgSrc(code)+'" height="80" >'+'<br />'+ label.html() + 
+            // hiển thị ra Map khi hover
+           label.html('<img src="'+getFlagImgSrc(code)+'" width="120" >'+'<br />'+ label.html() + ' ('+chkValue(code)+')'+ 
            '<hr style="height: 1px"/><p style="color: red">Total Confirmed:'+  Confirmed[code]+'</p> ' 
             + '<p style="color: yellow">Total Death:'+  Death[code]+'</p>' + '<p style="color: #66ff66">Total Recovered:'+  Recovered[code]+'</p>'
            + '<p style="color:#ff6600">Total New Confirmed:'+  newConfirmed[code]+'</p>' + '<p style="color: #ff5050">Total New Death:'+  newDeath[code]+'</p>' 
            + '<p style="color:#3366ff">Total New Recovered:'+  newRecovered[code]+'</p>'
            );
+        
             
         }
         var TempConfirmed :any = this.state.dataConfirmed;
@@ -159,10 +153,11 @@ class MapGeoChart extends Component <{},Istate>{
         var TemNewRecovered :any= this.state.dataNewRecovered;
         var isLoading:any = this.state.isLoading;
         // console.log(TempConfirmed)
-        var cdata :any = {"US": "35", "NO": "15", "SE": "17", "GB": "20", "ES": "10"};
+        // var cdata :any = {"US": "35", "NO": "15", "SE": "17", "GB": "20", "ES": "10"};
         var dataGeoMap = this.state.dataGeoMap;
         function LoadMap(value:any)
         {
+            
             if(value===true)
             {
                 console.log("Loading Map");
@@ -172,14 +167,13 @@ class MapGeoChart extends Component <{},Istate>{
                     <VectorMap
                                     map='world_mill'
                                     backgroundColor="#0071A4"
-                                    
                                     useRef ={"map"}
                                     containerStyle={{
                                         width: '100%',
                                         height: '100%'
                                     }}
                                     containerClassName="map"
-                                    scale ={ ['#99ff33','#669900','#ffcc00','#cc6600']}
+                                    // scale ={ ['#99ff33','#669900','#ffcc00','#cc6600']}
                                     hoverOpacity= {0.8}
                                     regionStyle = {
                                         {
@@ -205,7 +199,7 @@ class MapGeoChart extends Component <{},Istate>{
                                       }
                                       onRegionTipShow = {onRegionLabelShow}
                                 />
-                )
+                );
             }
         }
         return (
@@ -215,7 +209,7 @@ class MapGeoChart extends Component <{},Istate>{
                     
                     <div className="row">
                         <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                            
+                        
                             </div>
                             <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10" style={{ height: 700}}>
                                 {LoadMap(isLoading)}

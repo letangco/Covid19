@@ -148,7 +148,7 @@ class Stats extends Component <{}, IState> {
           title: 'Confirmed',
           dataIndex: 'confirmed',
           key: 'confirmed',
-          width: 150,
+          width: 100,
           sorter:(a :any,b :any) => a.confirmed -b.confirmed,
           sortOrder: sortedInfo.columnKey==='confirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -157,7 +157,7 @@ class Stats extends Component <{}, IState> {
           title: 'New Confirmed',
           dataIndex: 'newConfirmed',
           key: 'newConfirmed',
-          width: 150,
+          width: 100,
           sorter:(a :any,b :any) => a.newConfirmed -b.newConfirmed,
           sortOrder: sortedInfo.columnKey==='newConfirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -166,7 +166,7 @@ class Stats extends Component <{}, IState> {
           title: 'Death',
           dataIndex: 'death',
           key: 'death',
-          width: 150,
+          width: 100,
           sorter: (a:any, b:any) => a.death - b.death,
           sortOrder: sortedInfo.columnKey === 'death' && sortedInfo.order,
           ellipsis: true
@@ -175,7 +175,7 @@ class Stats extends Component <{}, IState> {
           title: 'New Death',
           dataIndex: 'newDeath',
           key: 'newDeath',
-          width: 150,
+          width: 100,
           sorter:(a :any,b :any) => a.newDeath -b.newDeath,
           sortOrder: sortedInfo.columnKey==='newDeath'&&sortedInfo.order,
           ellipsis: true,
@@ -184,7 +184,7 @@ class Stats extends Component <{}, IState> {
             title: 'Recovered',
             dataIndex: 'recovered',
             key: 'recovered',
-            width: 150,
+            width: 100,
             sorter: (a:any, b:any) => a.recovered - b.recovered,
             sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
             ellipsis: true
@@ -193,7 +193,7 @@ class Stats extends Component <{}, IState> {
             title: 'Serious Cases',
             dataIndex: 'seriouscase',
             key: 'seriouscase',
-            width: 150,
+            width: 100,
             sorter:(a :any,b :any) => a.seriouscase -b.seriouscase,
             sortOrder: sortedInfo.columnKey==='seriouscase'&&sortedInfo.order,
             ellipsis: true,
@@ -218,9 +218,6 @@ class Stats extends Component <{}, IState> {
         }
         
     return (
-        
-                <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                    
                     <div className="panel panel-warning">
                           <div className="panel-heading">
                                 <h4>World COVID-19 Stats</h4>
@@ -245,8 +242,6 @@ class Stats extends Component <{}, IState> {
                                 <Table columns={columns1}  dataSource={data2} pagination={{ pageSize: 50 }} scroll={{ y: 450 }} onChange={this.handleChange} />
                           </div>
                     </div>
-                   
-                </div>
         
     );
   }

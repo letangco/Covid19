@@ -65,76 +65,114 @@ class QuickFact extends Component{
     render (){
         var {totalConfirmed, totalDeath,totalRecovered, timeUpdate, totalNewCase, totalNewDeathCase,totalActiveCase} = this.state;
         return (
-            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3" onClick = {() => this.onReceiveData(this.state)}>
+            
                     <div className="panel panel-danger">
                           <div className="panel-heading">
                                 <h1 className="panel-title">QUICK FACT</h1>
                                 {/* {Sử dụng Library React-Moment để chuyển ngày} */}
                                 <span className="label label-warning">Updated at: <Moment format="h:mm:ss dddd YYYY/MM/DD">{timeUpdate}</Moment></span>
                           </div>
-                          <div className="panel-body">
-                            <div className="panel panel-primary confirmed">
-                                <div className="panel-heading">
-                                    <h3>Confirmed Case</h3>
-                                </div>
-                                <div className="panel-body">
-                                    <h5>Total Confirmed</h5>
-                                    <h1>
-                                        <span className="label label-primary">
-                                            <CountUp start={0} end={totalConfirmed} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                    <h5>New Confirmed today</h5>
-                                    <h1>
-                                        <span className="label label-primary">
-                                            <CountUp start={0} end={totalNewCase} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                </div>
+                          
+                          <div className="row">
+                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                              <div className="panel-body">
+                            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div className="panel panel-primary confirmed">
+                                    <div className="panel-heading">
+                                        <h3>Confirmed Case</h3>
+                                    </div>
+                                    <div className="panel-body">
+                                            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                <h5>Total Confirmed</h5>
+                                                <h1>
+                                                    <span className="label label-primary">
+                                                        <CountUp start={0} end={totalConfirmed} duration={3} separator="," />
+                                                    </span>
+                                                </h1>
+                                            </div>
+                                            
+                                            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                <h5>New Confirmed today</h5>
+                                                <h1>
+                                                    <span className="label label-primary">
+                                                        <CountUp start={0} end={totalNewCase} duration={3} separator="," />
+                                                    </span>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
+                            
 
-                            <div className="panel panel-danger death">
-                                <div className="panel-heading">
-                                    <h3>Death Cases</h3>
-                                </div>
-                                <div className="panel-body">
-                                    <h5>Total Death</h5>
-                                    <h1>
-                                        <span className="label label-danger">
-                                            <CountUp start={0} end={totalDeath} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                    <h5>New Death today</h5>
-                                    <h1>
-                                        <span className="label label-danger">
-                                            <CountUp start={0} end={totalNewDeathCase} duration={3} separator="," />
-                                        </span>
-                                    </h1>
+                            
+                            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div className="panel panel-danger death">
+                                    <div className="panel-heading">
+                                        <h3>Death Cases</h3>
+                                    </div>
+                                    <div className="panel-body">
+                                        
+                                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <h5>Total Death</h5>
+                                        <h1>
+                                            <span className="label label-danger">
+                                                <CountUp start={0} end={totalDeath} duration={3} separator="," />
+                                            </span>
+                                        </h1>
+                                        </div>
+                                        
+                                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <h5>New Death today</h5>
+                                        <h1>
+                                            <span className="label label-danger">
+                                                <CountUp start={0} end={totalNewDeathCase} duration={3} separator="," />
+                                            </span>
+                                        </h1>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div className="panel panel-success recovered">
-                                <div className="panel-heading">
-                                    <h3>Recovered Case</h3>
-                                </div>
-                                <div className="panel-body">
-                                    <h5>Total Recovered</h5>
-                                    <h1>
-                                        <span className="label label-success">
-                                            <CountUp start={0} end={totalRecovered} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                    <h5>Total Active Case</h5>
-                                    <h1>
-                                        <span className="label label-success">
-                                            <CountUp start={0} end={totalActiveCase} duration={3} separator="," />
-                                        </span>
-                                    </h1>
+                            
+                            
+                            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div className="panel panel-success recovered">
+                                    <div className="panel-heading">
+                                        <h3>Recovered Case</h3>
+                                    </div>
+                                    <div className="panel-body">
+                                        
+                                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <h5>Total Recovered</h5>
+                                            <h1>
+                                                <span className="label label-success">
+                                                    <CountUp start={0} end={totalRecovered} duration={3} separator="," />
+                                                </span>
+                                            </h1>
+                                        
+                                        </div>
+                                        
+                                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <h5>Total Active Case</h5>
+                                            <h1>
+                                                <span className="label label-success">
+                                                    <CountUp start={0} end={totalActiveCase} duration={3} separator="," />
+                                                </span>
+                                            </h1>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
+                            
                           </div>
+                              </div>
+                              
+                              
+                          </div>
+                          
                     </div>
-                </div>
         );
     }
 }
