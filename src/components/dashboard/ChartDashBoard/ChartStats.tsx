@@ -72,7 +72,17 @@ class ChartStats extends Component <{}, Istate>{
                 },
                 title: {
                     text: 'Chart Covid 19 Stats',
-                    align: 'center'
+                    align: 'center',
+                },
+                fill: {
+                  type: "gradient",
+                  gradient: {
+                    shadeIntensity: 0.5,
+                    opacityFrom: 0.2,
+                    opacityTo: 0.3,
+                    stops: [0,1000000,2000000,3000000, 4000000, 6000000,8000000],
+                    
+                  }
                 },
                 xaxis: {
                   categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -90,7 +100,15 @@ class ChartStats extends Component <{}, Istate>{
                   tickAmount: 10,
                   min: 0,
                   max: 8500000
-                }
+                },
+                colors: ['red', '#ccff33', '#ff9900'],
+                legend:{
+                  fontSize: '14px',
+                },
+                theme: {
+                  mode: 'dark', 
+              }
+                
               },
             //   seriesMixedChart: [
             //     {
@@ -146,7 +164,7 @@ class ChartStats extends Component <{}, Istate>{
         var seriesMixedChart =  [
             {
                 name: "Total Confirmed",
-                data: this.state.Confirmed
+                data: this.state.Confirmed,
               },
               {
                 name: "Total Deaths",
@@ -162,7 +180,7 @@ class ChartStats extends Component <{}, Istate>{
                 <Chart
                     options={this.state.optionsMixedChart}
                     series={seriesMixedChart}
-                    type="line"
+                    type="area"
                     width="500"
                     height="400"
                 />

@@ -5,55 +5,48 @@ interface Iprops{
 
 }
 interface Istate{
-    data:any ,
-    optionsMixedChart:any 
+    data:any [],
+    isLoading: any
 }
 class PieChartStats extends Component <{}, Istate>{
     constructor(props :any){
         super(props);
         this.state={
-            data: {},
-            optionsMixedChart: {
-                series: [44, 55, 13, 43, 22],
-                chart: {
-                    width: 380,
-                    type: 'pie',
-                    toolbar: {
-                    show: false
-                  }
-                },
-                labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                      chart: {
-                        width: 200
-                      },
-                      legend: {
-                        position: 'bottom'
-                      }
-                    }
-                  }]
-              },
+            data: [],
+            isLoading: true,
             
         }
     }
     componentDidMount(){
         const fetchMyAPI = async () => {
             const initialDailyData:any = await fetchStatsData();
-            
-            console.log(initialDailyData)
-            
+            var tempArr:any = [];
+            tempArr.push(initialDailyData.total_cases);
+            tempArr.push(initialDailyData.total_recovered);
+            tempArr.push(initialDailyData.total_deaths);
+            this.setState({
+              data: tempArr,
+              isLoading: false
+            })
           };
-          fetchMyAPI();
           
+          fetchMyAPI();
     }
+    
     render (){
-        
+      // function Colors( value:any, seriesIndex:any, w:any ) {
+      //   if (value >8000000) {
+      //       return 'red'
+      //   }
+      //   // if(value >2000000 && value <5000000) {
+      //   //     return 'green'
+      //   // }
+      // }
         var options = {
-            series: [44, 55, 13, 43, 22],
+            series: this.state.data,
             chart: {
             width: 380,
+            
             toolbar: {
                 show: true,
                 offsetX: 0,
@@ -66,33 +59,108 @@ class PieChartStats extends Component <{}, Istate>{
                   zoomout: true,
                   pan: true,
                 }
+              },
+              plotOptions: {
+                pie: {
+                  customScale: 0.5,
+                }
               }
         },
-          labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+          labels: ['Total Confirmed', 'Total Recovered', 'Total Deaths'],
           responsive: [{
             breakpoint: 480,
             options: {
                 chart: {
                     width: 380,
-                    type: 'pie',
                     toolbar: {
-                    show: true
-                  }
+                    show: true,
+                  },
+                  animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 1500,
+                    animateGradually: {
+                        enabled: true,
+                        delay: 1500
+                    },
+                    dynamicAnimation: {
+                        enabled: true,
+                        speed: 1500
+                    }
+                }
                 },
-              legend: {
-                position: 'bottom'
-              }
             }
-          }]
+          }],
+          fill: {
+            colors: ['#e63900', '#33cc33', '#ff9900']
+          },
+          colors: ["#e63900","#33cc33","#ff9900"],
+          legend: {
+            show: true,
+            showForSingleSeries: false,
+            showForNullSeries: true,
+            showForZeroSeries: true,
+            position: 'bottom',
+            horizontalAlign: 'center', 
+            floating: false,
+            fontSize: '14px',
+            fontFamily: 'Helvetica, Arial',
+            fontWeight: 600,
+            formatter: undefined,
+            inverseOrder: false,
+            width: undefined,
+            height: undefined,
+            tooltipHoverFormatter: undefined,
+            offsetX: 0,
+            offsetY: 0,
+            labels: {
+                colors: undefined,
+                useSeriesColors: false
+            },
+            markers: {
+                width: 12,
+                height: 12,
+                strokeWidth: 0,
+                strokeColor: '#fff',
+                fillColors: undefined,
+                radius: 12,
+                customHTML: undefined,
+                onClick: undefined,
+                offsetX: 0,
+                offsetY: 0
+            },
+            itemMargin: {
+                horizontal: 5,
+                vertical: 0
+            },
+            onItemClick: {
+                toggleDataSeries: true
+            },
+            onItemHover: {
+                highlightDataSeries: true
+            },
+            
+        },theme: {
+          mode: 'dark', 
+          palette: 'palette1', 
+          monochrome: {
+              enabled: false,
+              color: '#255aee',
+              shadeTo: 'dark',
+              shadeIntensity: 0.25
+          },
+      }
           };
+          
         return (
             <div>
                 <Chart
                     options={options}
                     series={options.series}
-                    type="donut"
+                    type="pie"
                     width="500"
                     height="500"
+                    
                 />
             </div>
         );
