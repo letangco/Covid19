@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-import { Table } from 'antd';
+import { Table, Tag } from 'antd';
 import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
@@ -14,7 +14,7 @@ interface IState{
     sortedInfo: any
 }
 
-class Stats extends Component <{}, IState> {
+class USA extends Component <{}, IState> {
     constructor (props: IState){
         super (props);
         this.state={
@@ -139,17 +139,13 @@ class Stats extends Component <{}, IState> {
           
         },
         {
-          title: 'Country',
+         
+          
+            title: 'Name State',
           dataIndex: 'country',
           key: 'country',
           width: 150,
-          filters: [
-            { text: 'VN', value: 'VietNam' },
-            { text: 'B', value: 'A' },
-          ],
-          // sorter: (a:any, b:any) => a.country.length - b.country.length,
-          sortOrder: sortedInfo.columnKey === 'country' && sortedInfo.order,
-          ellipsis: true,
+          
           
         },
         {
@@ -218,7 +214,9 @@ class Stats extends Component <{}, IState> {
                 // truyền key vào để xác định vị trí cho arr sử dụng load ra cho table
                 key: i,
                 code: <img src={valueFlag} width="40"/>,
-                country: newColumns[i].title,
+                country: <div>
+                  <img src={valueFlag} width="40"/> {newColumns[i].title}
+                </div>,
                 confirmed: newColumns[i].total_cases,
                 newConfirmed: newColumns[i].total_new_cases_today,
                 death:newColumns[i].total_deaths,
@@ -231,7 +229,7 @@ class Stats extends Component <{}, IState> {
     return (
                     <div className="panel panel-warning">
                           <div className="panel-heading">
-                                <h4>World COVID-19 Stats</h4>
+                                <h4>USA</h4>
                           </div>
                           <div className="panel-body">
                                 
@@ -250,7 +248,15 @@ class Stats extends Component <{}, IState> {
                                         {this.renderTableData()}
                                     </tbody>
                                 </table> */}
-                                <Table columns={columns1}  dataSource={data2} pagination={{ pageSize: 50 }} scroll={{ y: 450 }} onChange={this.handleChange} />
+                                <Table columns={columns1}  dataSource={data2} 
+                                pagination={{ pageSize: 50 }} scroll={{ y: 450 }}
+                                 onChange={this.handleChange}
+                                //  expandable={{
+                                //   expandedRowRender: ()=> <p style={{ margin: 0 }}> <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/vn.svg" alt="aa"/></p>,
+                                //   rowExpandable: record => record.country !== 
+                                //   <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/vn.svg" alt="aa"/>,
+                                // }}
+                                 />
                           </div>
                     </div>
         
@@ -258,4 +264,4 @@ class Stats extends Component <{}, IState> {
   }
 }
 
-export default Stats;
+export default USA;

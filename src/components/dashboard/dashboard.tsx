@@ -5,6 +5,7 @@ import QuickFact from './QuickFact';
 import ChartStats from './ChartDashBoard/ChartStats';
 import PieChartStats from './ChartDashBoard/PieChartStats';
 import Stats from './Stats';
+import USA from './USA';
 // import Menu from '../menu/Menu';
 
 interface IProps{
@@ -48,6 +49,7 @@ class Dashboard extends Component {
                     </div>
                     <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                         <Stats />
+                        <USA />
                     </div>
                     
                 </div>
