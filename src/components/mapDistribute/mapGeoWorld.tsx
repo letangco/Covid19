@@ -48,7 +48,7 @@ class MapGeoChart extends Component <{},Istate>{
             // console.log(res.data.Countries);
             dataGeoMap.push(temp);
             var isLoading: any = false;
-            var TempConfirmed :any={},TempDeath:any={};
+            var TempConfirmed :any={};
             var TempDeath:any ={};
             var TempRecovered:any = {};
             var TemNewConfirmed:any ={};
@@ -123,8 +123,8 @@ class MapGeoChart extends Component <{},Istate>{
         
         function getFlagImgSrc(code:any)
         {
-            var code = code.toLowerCase();
-            return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+code+'.svg';
+            var code1:any = code.toLowerCase();
+            return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+code1+'.svg';
         }   
         function onRegionLabelShow(event :any , label :any, code :any){
             // var cdata :any = {US: "35", NO: "15", "SE": "17", "GB": "20", "ES": "10"};

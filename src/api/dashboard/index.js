@@ -26,3 +26,15 @@ export const fetchStatsData =async ()=>{
     return error;
   }
 }
+
+// API lấy số liệu của từng bang Hoa Kì
+export const fetchUSAData = async () =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.unitedstates;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}

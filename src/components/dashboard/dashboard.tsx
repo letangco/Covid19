@@ -6,7 +6,6 @@ import ChartStats from './ChartDashBoard/ChartStats';
 import PieChartStats from './ChartDashBoard/PieChartStats';
 import Stats from './Stats';
 import USA from './USA';
-// import Menu from '../menu/Menu';
 
 interface IProps{
 

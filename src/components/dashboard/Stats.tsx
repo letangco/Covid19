@@ -122,22 +122,14 @@ class Stats extends Component <{}, IState> {
     //  }
      
   render(){
-    let {sortedInfo, filteredInfo} = this.state;
+    let {sortedInfo} = this.state;
     sortedInfo = sortedInfo || {};
-    filteredInfo = filteredInfo || {};
     // console.log(sortedInfo);
     // console.log(filteredInfo)
       // console.log(this.state.data);
       //Table mới
       // Dạng [{...},...]
       const columns1 = [
-        {
-          title: '',
-          dataIndex: 'code',
-          key: 'code',
-          width: 60,
-          
-        },
         {
           title: 'Country',
           dataIndex: 'country',
@@ -217,8 +209,9 @@ class Stats extends Component <{}, IState> {
             data2.push({
                 // truyền key vào để xác định vị trí cho arr sử dụng load ra cho table
                 key: i,
-                code: <img src={valueFlag} width="40"/>,
-                country: newColumns[i].title,
+                country: <div>
+                          <img src={valueFlag} width="40" alt="Flag State"/> {newColumns[i].title}
+                      </div>,
                 confirmed: newColumns[i].total_cases,
                 newConfirmed: newColumns[i].total_new_cases_today,
                 death:newColumns[i].total_deaths,

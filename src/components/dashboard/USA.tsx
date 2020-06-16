@@ -1,17 +1,18 @@
 import React,{Component} from 'react';
-import axios from 'axios';
-import { Table, Tag } from 'antd';
+import Moment from 'react-moment';
+import { Table } from 'antd';
 import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
-
+import {fetchUSAData} from '../../api/dashboard/index';
 interface IProps{
 }
 interface IState{
      
     data :any [],
     filteredInfo : any ,
-    sortedInfo: any
+    sortedInfo: any,
+    dataTotal:any []
 }
 
 class USA extends Component <{}, IState> {
@@ -20,23 +21,20 @@ class USA extends Component <{}, IState> {
         this.state={
             data : [],
             filteredInfo: null,
-            sortedInfo: null
+            dataTotal: [],
+            sortedInfo: null,
+            
         }
     }
     handleChange = (pagination:any,filter:any, sort: any )=>{
       this.setState({
-        filteredInfo: filter,
         sortedInfo:sort
       })
     }
-    // Reset Button Filter.
-    clearFilter = ()=>{
-      this.setState({filteredInfo: null});
-    }
+    
     // Reset All button filter and sort
     clearAll = ()=>{
       this.setState ({
-        filteredInfo: null,
         sortedInfo: null
       })
     }
@@ -51,100 +49,32 @@ class USA extends Component <{}, IState> {
     }
 
      Country(obj: unknown) {
-        
         return obj;
       }
-    // componentDidMount(){
-    //     let Arr = [];
-        
-    //     axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
-    //     .then(res =>{
-    //         var country = [],confirmed = [], death = [], recovered = [];
-    //         Arr = (Object.entries(res.data.countryitems[0]));
-    //         for (let i =0 ; i<Arr.length;i++)
-    //         {
-    //             let temArr = Arr[i];
-                
-    //             // Thêm any trước khai báo một object để lấy tên trong json ***QUAN TRỌNG
-    //             let newtemArr: any = temArr[1];
-                
-    //             // console.log(newtemArr.title);
-    //             // console.log(newtemArr.total_cases)
-    //             country.push(newtemArr.title);
-    //             confirmed.push(newtemArr.total_cases);
-    //             death.push(newtemArr.total_deaths);
-    //             recovered.push(newtemArr.total_recovered);
-    //             this.setState({
-    //                 country: country,
-    //                 confirmed: confirmed,
-    //                 death: death,
-    //                 recovered: recovered
-    //             });
-    //         }
-            
-    //     });
-    // }
-    componentDidMount(){
-        let Arr = [];
-        var data:any = [];
-        
-        // Bảng danh sách table 
-        axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
-        .then(res =>{
-            Arr = (Object.entries(res.data.countryitems[0]));
-            for (let i =0 ; i<Arr.length;i++)
-            {
-                let temArr = Arr[i];
-                data.push(temArr[1]);
-                // Thêm any trước khai báo một object để lấy tên trong json ***QUAN TRỌNG
-            }
-            // console.log(data);
-            this.setState({
-                data: data
-            })
-        });
-    }
     
-    // renderTableData() {
-    //     return this.state.data.map((item, index) => {
-    //     //    const { title, total_cases, total_deaths, total_recovered} = item //destructuring ES6
-    //        return (
-    //           <tr key={index}>
-    //             <td>{item.title}</td>
-    //             <td>{item.total_cases}</td>
-    //             <td>{item.total_new_cases_today}</td>
-    //             <td>{item.total_deaths}</td>
-    //             <td>{item.total_new_deaths_today}</td>
-    //             <td>{item.total_recovered}</td>
-    //           </tr>
-    //        )
-    //     })
-    //  }
-     
+    componentDidMount(){
+      const fetchMyAPI = async () => {
+          const initialDailyData:any = await fetchUSAData();
+          this.setState({
+            data: initialDailyData.list,
+            dataTotal: initialDailyData.totals
+          })
+        };
+        fetchMyAPI();
+        
+  }
   render(){
-    let {sortedInfo, filteredInfo} = this.state;
+    let {sortedInfo} = this.state;
     sortedInfo = sortedInfo || {};
-    filteredInfo = filteredInfo || {};
-    // console.log(sortedInfo);
-    // console.log(filteredInfo)
-      // console.log(this.state.data);
-      //Table mới
       // Dạng [{...},...]
       const columns1 = [
-        {
-          title: '',
-          dataIndex: 'code',
-          key: 'code',
-          width: 60,
-          
-        },
         {
          
           
             title: 'Name State',
           dataIndex: 'country',
           key: 'country',
-          width: 150,
+          width: 120,
           
           
         },
@@ -194,68 +124,56 @@ class USA extends Component <{}, IState> {
             ellipsis: true
           },
           {
-            title: 'Serious Cases',
-            dataIndex: 'seriouscase',
-            key: 'seriouscase',
+            title: 'Last Updated',
+            dataIndex: 'updated',
+            key: 'updated',
             width: 100,
-            sorter:(a :any,b :any) => a.seriouscase -b.seriouscase,
-            sortOrder: sortedInfo.columnKey==='seriouscase'&&sortedInfo.order,
+            sorter:(a :any,b :any) => a.updated -b.updated,
+            sortOrder: sortedInfo.columnKey==='updated'&&sortedInfo.order,
             ellipsis: true,
           }
       ];
       var newColumns =[];
       newColumns= this.state.data;
+      console.log(this.state.dataTotal)
         const data2 = [];
-        for (var i=0; i<newColumns.length-1;i++)
+        // data2.push(
+        //   {key: 0},
+        //   {country: "TOTAL"},
+        //   {confirmed: newColumns[0].confirmed},
+        //   {newConfirmed: newColumns[0].daily_confirmed >=0? newColumns[0].daily_confirmed : "not update"},
+        //   {death:newColumns[0].deaths >=0 ? newColumns[0].deaths : "not update"},
+        //   {newDeath: newColumns[0].daily_deaths >=0 ?newColumns[0].daily_deaths: "not update"} ,
+        //   {recovered:newColumns[0].recovered >= 0 ? newColumns[0].recovered : "not update"},
+        //   {updated: <Moment fromNow>{newColumns[0].last_updated.toString()}</Moment>}
+        // );
+        for (var i=0; i<newColumns.length;i++)
         {
-            var flag :any= this.state.data[i].code.toString().toLowerCase();
-            var valueFlag:any = "https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/"+flag+".svg";
             data2.push({
                 // truyền key vào để xác định vị trí cho arr sử dụng load ra cho table
                 key: i,
-                code: <img src={valueFlag} width="40"/>,
                 country: <div>
-                  <img src={valueFlag} width="40"/> {newColumns[i].title}
+                  <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/us.svg" width="40" alt="Flag USA"/> {newColumns[i].state}
                 </div>,
-                confirmed: newColumns[i].total_cases,
-                newConfirmed: newColumns[i].total_new_cases_today,
-                death:newColumns[i].total_deaths,
-                newDeath: newColumns[i].total_new_deaths_today,
-                recovered:newColumns[i].total_recovered,
-                seriouscase: newColumns[i].total_serious_cases
+                confirmed: newColumns[i].confirmed,
+                newConfirmed: newColumns[i].daily_confirmed >=0? newColumns[i].daily_confirmed : "not update",
+                death:newColumns[i].deaths >=0 ? newColumns[i].deaths : "not update",
+                newDeath: newColumns[i].daily_deaths >=0 ?newColumns[i].daily_deaths: "not update" ,
+                recovered:newColumns[i].recovered >= 0 ? newColumns[i].recovered : "not update",
+                updated: <Moment fromNow>{newColumns[i].last_updated.toString()}</Moment>
             });
         }
         
     return (
                     <div className="panel panel-warning">
                           <div className="panel-heading">
-                                <h4>USA</h4>
+                                <h4>USA COVID-19 Stats</h4>
                           </div>
                           <div className="panel-body">
-                                
-                                {/* <table className="table table-striped table-bordered table-sm" id="myTable">
-                                    <thead>
-                                        <tr>
-                                            <th className="th-sm">Country</th>
-                                            <th className="th-sm">Confirmed</th>
-                                            <th className="th-sm">Confirmed Today</th>
-                                            <th className="th-sm">Deaths</th>
-                                            <th className="th-sm">Deaths Today</th>
-                                            <th className="th-sm">Recovered</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.renderTableData()}
-                                    </tbody>
-                                </table> */}
+                               
                                 <Table columns={columns1}  dataSource={data2} 
-                                pagination={{ pageSize: 50 }} scroll={{ y: 450 }}
+                                pagination={{pageSize:10}} scroll={{ y: 450 }}
                                  onChange={this.handleChange}
-                                //  expandable={{
-                                //   expandedRowRender: ()=> <p style={{ margin: 0 }}> <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/vn.svg" alt="aa"/></p>,
-                                //   rowExpandable: record => record.country !== 
-                                //   <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/vn.svg" alt="aa"/>,
-                                // }}
                                  />
                           </div>
                     </div>
