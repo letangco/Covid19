@@ -4,14 +4,14 @@ import './Dashboard.css';
 import QuickFact from './QuickFact';
 import ChartStats from './ChartDashBoard/ChartStats';
 import PieChartStats from './ChartDashBoard/PieChartStats';
-import Stats from './Stats';
-import USA from './USA';
-import Canada from './Canada';
-import China from './China';
-import Australia from './Australia';
-import Italy from './Italy';
-import Russia from './Russia';
-import Ireland from './Ireland';
+// import Stats from './Stats';
+// import USA from './USA';
+// import Canada from './Canada';
+// import China from './China';
+// import Australia from './Australia';
+// import Italy from './Italy';
+// import Russia from './Russia';
+// import Ireland from './Ireland';
 import OptionState from  './OptionState';
 interface IProps{
 
@@ -58,14 +58,6 @@ class Dashboard extends Component {
                             <OptionState />
                         </div>
                         
-                        <Stats />
-                        <USA />
-                        <Canada />
-                        <China />
-                        <Australia />
-                        <Italy />
-                        <Russia />
-                        <Ireland />
                     </div>
                     
                 </div>

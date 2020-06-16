@@ -2,3 +2,19 @@
     cursor: pointer;
     border: 1px solid blue;
 }
+.navbar-brand{
+    padding: 0px !important;
+}
+.optionUSA{
+    margin-left: 10px;
+}
+.col-xs-1{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.col-xs-3{
+    padding:0px !important;
+}
+.col-xs-8{
+    padding: 0px !important;
+}
