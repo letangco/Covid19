@@ -4,11 +4,9 @@ import { Table } from 'antd';
 import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
-
 interface IProps{
 }
 interface IState{
-     
     data :any [],
     filteredInfo : any ,
     sortedInfo: any
@@ -50,10 +48,9 @@ class Stats extends Component <{}, IState> {
       })
     }
 
-     Country(obj: unknown) {
-        
-        return obj;
-      }
+    //  Country(obj: unknown) {
+    //     return obj;
+    //   }
     // componentDidMount(){
     //     let Arr = [];
         
@@ -87,7 +84,6 @@ class Stats extends Component <{}, IState> {
     componentDidMount(){
         let Arr = [];
         var data:any = [];
-        
         // Bảng danh sách table 
         axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
         .then(res =>{
@@ -120,13 +116,10 @@ class Stats extends Component <{}, IState> {
     //        )
     //     })
     //  }
-     
+    
   render(){
     let {sortedInfo} = this.state;
     sortedInfo = sortedInfo || {};
-    // console.log(sortedInfo);
-    // console.log(filteredInfo)
-      // console.log(this.state.data);
       //Table mới
       // Dạng [{...},...]
       const columns1 = [
@@ -220,13 +213,12 @@ class Stats extends Component <{}, IState> {
                 seriouscase: newColumns[i].total_serious_cases
             });
         }
-        
     return (
                     <div className="panel panel-warning">
                           <div className="panel-heading">
                                 <h4>World COVID-19 Stats</h4>
                           </div>
-                          <div className="panel-body">
+                          <div className="panel-body divtableStats">
                                 
                                 {/* <table className="table table-striped table-bordered table-sm" id="myTable">
                                     <thead>
@@ -243,7 +235,7 @@ class Stats extends Component <{}, IState> {
                                         {this.renderTableData()}
                                     </tbody>
                                 </table> */}
-                                <Table columns={columns1}  dataSource={data2} pagination={{ pageSize: 50 }} scroll={{ y: 450 }} onChange={this.handleChange} />
+                                <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 50 }} scroll={{ y: 450 }} onChange={this.handleChange} />
                           </div>
                     </div>
         

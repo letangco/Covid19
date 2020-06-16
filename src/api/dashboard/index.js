@@ -31,7 +31,79 @@ export const fetchStatsData =async ()=>{
 export const fetchUSAData = async () =>{
   try{
     const{data} = await axios.get(`https://cov19.cc/report.json`);
-    return data.regions.unitedstates;
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+
+// API lấy số liệu của từng bang của Canada
+export const fetchCanadaData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+
+//API lấy số liệu của các tỉnh ở Trung Quốc
+export const fetchChinaData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+
+// API lấy số liệu của các tỉnh của Australia
+export const fetchAustraliaData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+
+// API lấy số liệu của các tỉnh của Italy
+export const fetchItalyData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+
+// API lấy số liệu của các tỉnh của Russia
+export const fetchRussiaData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+
+// API lấy số liệu của các tỉnh của Ireland
+export const fetchIrelandData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data;
   } 
   catch(error)
   {

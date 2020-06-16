@@ -4,11 +4,10 @@ import { Table } from 'antd';
 import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
-import {fetchUSAData} from '../../api/dashboard/index';
+import {fetchCanadaData} from '../../api/dashboard/index';
 interface IProps{
 }
 interface IState{
-     
     data :any [],
     filteredInfo : any ,
     sortedInfo: any,
@@ -16,7 +15,7 @@ interface IState{
     lastUpdatates: any
 }
 
-class USA extends Component <{}, IState> {
+class Canada extends Component <{}, IState> {
     constructor (props: IState){
         super (props);
         this.state={
@@ -55,10 +54,10 @@ class USA extends Component <{}, IState> {
     
     componentDidMount(){
       const fetchMyAPI = async () => {
-          const initialDailyData:any = await fetchUSAData();
+          const initialDailyData:any = await fetchCanadaData();
           this.setState({
-            data: initialDailyData.regions.unitedstates.list,
-            dataTotal: initialDailyData.regions.unitedstates.totals,
+            data: initialDailyData.regions.canada.list,
+            dataTotal: initialDailyData.regions.canada.totals,
             lastUpdatates: initialDailyData.last_updated
           })
         };
@@ -137,25 +136,26 @@ class USA extends Component <{}, IState> {
       ];
       var newColumns =[];
       newColumns= this.state.data;
-      var dataUS:any = this.state.dataTotal;
+      var dataCanada:any = this.state.dataTotal;
         const data2 = [];
         data2.push(
-          {key: 0,
-          country: <p className="label label-danger">TOTAL</p>,
-          confirmed: dataUS.confirmed,
-          newConfirmed: dataUS.daily_deaths,
-          death:dataUS.deaths,
-          newDeath: dataUS.daily_deaths ,
-          recovered:dataUS.recovered,
-          updated: <Moment fromNow>{this.state.lastUpdatates.toString()}</Moment>}
-        );
+            {key: 0,
+            country: <p className="label label-danger">TOTAL</p>,
+            confirmed: dataCanada.confirmed,
+            newConfirmed: dataCanada.daily_deaths,
+            death:dataCanada.deaths,
+            newDeath: dataCanada.daily_deaths ,
+            recovered:dataCanada.recovered,
+            updated: <Moment fromNow>{this.state.lastUpdatates.toString()}</Moment>}
+          );
         for (var i=0; i<newColumns.length;i++)
         {
             data2.push({
                 // truyền key vào để xác định vị trí cho arr sử dụng load ra cho table
                 key: i,
                 country: <div>
-                  <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/us.svg" width="40" alt="Flag USA"/> {newColumns[i].state}
+                  <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/ca.svg" width="40" alt="Flag USA"/>
+                  <span> {newColumns[i].state}</span>
                 </div>,
                 confirmed: newColumns[i].confirmed,
                 newConfirmed: newColumns[i].daily_confirmed >=0? newColumns[i].daily_confirmed : "not update",
@@ -165,15 +165,16 @@ class USA extends Component <{}, IState> {
                 updated: <Moment fromNow>{newColumns[i].last_updated.toString()}</Moment>
             });
         }
+        
     return (
                     <div className="panel panel-warning">
                           <div className="panel-heading">
-                                <h4>USA COVID-19 Stats</h4>
+                                <h4>Canada COVID-19 Stats</h4>
                           </div>
                           <div className="panel-body divtableStats">
                                
                                 <Table className="tableStats" columns={columns1}  dataSource={data2} 
-                                pagination={{pageSize:40}} scroll={{ y: 450 }}
+                                pagination={{pageSize:10}} scroll={{ y: 450 }}
                                  onChange={this.handleChange}
                                  />
                           </div>
@@ -183,4 +184,4 @@ class USA extends Component <{}, IState> {
   }
 }
 
-export default USA;
+export default Canada;
