@@ -12,6 +12,7 @@ import Australia from './Australia';
 import Italy from './Italy';
 import Russia from './Russia';
 import Ireland from './Ireland';
+import OptionState from  './OptionState';
 interface IProps{
 
 }
@@ -52,6 +53,11 @@ class Dashboard extends Component {
                         
                     </div>
                     <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        
+                        <div className="row">
+                            <OptionState />
+                        </div>
+                        
                         <Stats />
                         <USA />
                         <Canada />
