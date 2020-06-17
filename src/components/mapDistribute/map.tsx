@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import MapGeoChart from './mapGeoWorld';
-// import MapVietNam from './mapVietNam';
+import MapVietNam from './mapVietNam';
 // sử dụng API "https://api.covid19api.com/all" để lấy dữ liệu toàn bộ các nước trên TG
 interface Istate{
     dataGeoMap: any[],
@@ -74,7 +74,6 @@ class Map extends Component <{},Istate>{
                     
                     <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         {/* <MapVietNam/> */}
-                        aaaa
                     </div>
                 </div>
                 

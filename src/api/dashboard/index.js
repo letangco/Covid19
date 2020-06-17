@@ -110,3 +110,59 @@ export const fetchIrelandData = async() =>{
     return error;
   }
 }
+
+//API lấy summary các quốc gia châu Á
+export const fetchAsiaSummaryData = async() =>{
+  try{
+    const{data} = await axios.get(`https://disease.sh/v2/continents/Asia`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+//API lấy danh sách các quốc gia châu Á
+export const fetchAsiaData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.asia.list;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+// API lấy danh sách tổng quát của toàn bộ quốc gia trên thế giới
+export const SummaryStats = async() =>{
+  try{
+    const{data} = await axios.get(`https://api.covid19api.com/summary`);
+    return data.Countries;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+//API lấy summary các quốc gia châu Âu
+export const fetchEuropeSummaryData = async() =>{
+  try{
+    const{data} = await axios.get(`https://disease.sh/v2/continents/Europe`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+//API lấy danh sách các quốc gia châu Âu
+export const fetchEuropeData = async() =>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.asia.list;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}

@@ -78,7 +78,6 @@ class Stats extends Component <{}, IState> {
     //                 recovered: recovered
     //             });
     //         }
-            
     //     });
     // }
     componentDidMount(){
@@ -235,7 +234,7 @@ class Stats extends Component <{}, IState> {
                                         {this.renderTableData()}
                                     </tbody>
                                 </table> */}
-                                <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 50 }} scroll={{ y: 450 }} onChange={this.handleChange} />
+                                <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 100 }} scroll={{ y: 1000 }} onChange={this.handleChange} />
                           </div>
                     </div>
         
