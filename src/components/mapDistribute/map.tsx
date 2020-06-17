@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import MapGeoChart from './mapGeoWorld';
-import MapVietNam from './mapVietNam';
+// import MapVietNam from './mapVietNam';
 // sử dụng API "https://api.covid19api.com/all" để lấy dữ liệu toàn bộ các nước trên TG
 interface Istate{
     dataGeoMap: any[],

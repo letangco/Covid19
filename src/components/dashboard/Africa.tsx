@@ -3,7 +3,7 @@ import { Table } from 'antd';
 import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
-import {fetchEuropeData,SummaryStats,fetchEuropeSummaryData} from '../../api/dashboard/index';
+import {fetchAfricaData,SummaryStats,fetchAfricaSummaryData} from '../../api/dashboard/index';
 interface IProps{
 }
 interface IState{
@@ -55,7 +55,7 @@ class Europe extends Component <{}, IState> {
     }
     componentDidMount(){
         const fetchMyAPI = async () => {
-            const initialDailyData:any = await fetchEuropeData();
+            const initialDailyData:any = await fetchAfricaData();
             this.setState({
               data: initialDailyData,
             })
@@ -69,7 +69,7 @@ class Europe extends Component <{}, IState> {
           };
           fetchMyAPI_Summary();
           const fetchMyAPI_Summary_Total = async () => {
-            const initialDailyData:any = await fetchEuropeSummaryData();
+            const initialDailyData:any = await fetchAfricaSummaryData();
             this.setState({
                 dataTotal: initialDailyData,
             })
@@ -209,7 +209,7 @@ class Europe extends Component <{}, IState> {
     return (
                     <div className="panel panel-warning">
                           <div className="panel-heading">
-                                <h4>Europe COVID-19 Stats</h4>
+                                <h4>Africa COVID-19 Stats</h4>
                           </div>
                           <div className="panel-body divtableStats">
                                 <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 100 }} scroll={{ y: 1000 }} onChange={this.handleChange} />

@@ -159,7 +159,29 @@ export const fetchEuropeSummaryData = async() =>{
 export const fetchEuropeData = async() =>{
   try{
     const{data} = await axios.get(`https://cov19.cc/report.json`);
-    return data.regions.asia.list;
+    return data.regions.europe.list;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+// API lay danh sach cac quoc gia Chau Phi Africa
+export const fetchAfricaData = async()=>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.africa.list;
+  }
+  catch(error)
+  {
+    return error;
+  }
+}
+//API lấy summary các quốc gia châu Phi Africa
+export const fetchAfricaSummaryData = async() =>{
+  try{
+    const{data} = await axios.get(`https://disease.sh/v2/continents/Africa`);
+    return data;
   } 
   catch(error)
   {
