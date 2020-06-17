@@ -12,6 +12,9 @@ import Ireland from './Ireland';
 import Asia from './Asia';
 import Europe from './Europe';
 import Africa from './Africa';
+import Oceania from './Oceania';
+import NorthAmerica from './NorthAmerica';
+import SouthAmerica from './SouthAmerica';
 class OptionState extends Component {
     render (){
         return (
@@ -66,6 +69,43 @@ class OptionState extends Component {
                             </div>
                         </NavLink>
                     </div>
+                    <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1 optionUSA" onClick={()=>{console.log("Goi Oceania")}}>
+                        <NavLink exact to="/Oceania" className="navbar-brand">
+                            <div className="row">
+                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <img src="https://www.pngfind.com/pngs/m/618-6182293_file-locator-tool-icon-svg-world-bank-data.png" width="30px" alt="OptionStatsUS"/>
+                                </div>
+                                <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <h4><strong>Oceania</strong></h4>
+                                </div>
+                            </div>
+                        </NavLink>
+                    </div>
+                    <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1 optionUSA" onClick={()=>{console.log("Goi North America")}}>
+                        <NavLink exact to="/NorthAmerica" className="navbar-brand">
+                            <div className="row">
+                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <img src="https://www.pngfind.com/pngs/m/618-6182293_file-locator-tool-icon-svg-world-bank-data.png" width="30px" alt="OptionStatsUS"/>
+                                </div>
+                                <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <h4><strong>North America</strong></h4>
+                                </div>
+                            </div>
+                        </NavLink>
+                    </div>
+                    <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1 optionUSA" onClick={()=>{console.log("Goi South America")}}>
+                        <NavLink exact to="/SouthAmerica" className="navbar-brand">
+                            <div className="row">
+                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <img src="https://www.pngfind.com/pngs/m/618-6182293_file-locator-tool-icon-svg-world-bank-data.png" width="30px" alt="OptionStatsUS"/>
+                                </div>
+                                <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <h4><strong>South America</strong></h4>
+                                </div>
+                            </div>
+                        </NavLink>
+                    </div>
+                    
                 </div>
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -184,6 +224,9 @@ class OptionState extends Component {
                 <Route path="/Asia" exact component={Asia}/>
                 <Route path="/Europe" exact component ={Europe}/>
                 <Route path="/Africa" exact component={Africa}/>
+                <Route path="/Oceania" exact component={Oceania}/>
+                <Route path="/NorthAmerica" exact component={NorthAmerica}/>
+                <Route path="/SouthAmerica" exact component={SouthAmerica}/>
                         {/* <Stats />
                         <USA />
                         <Canada />

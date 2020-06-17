@@ -188,3 +188,69 @@ export const fetchAfricaSummaryData = async() =>{
     return error;
   }
 }
+// API lay danh sach cac quoc gia oceania
+export const fetchOceaniaData = async()=>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.oceania.list;
+  }
+  catch(error)
+  {
+    return error;
+  }
+}
+// API lay danh sach cac quoc gia North America
+export const fetchNorthAmericaData = async()=>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.northamerica.list;
+  }
+  catch(error)
+  {
+    return error;
+  }
+}
+//API lấy summary các quốc gia NorthAmerica
+export const fetchNorthAmericaSummaryData = async() =>{
+  try{
+    const{data} = await axios.get(`https://disease.sh/v2/continents/North%20America`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+// API lay danh sach cac quoc gia South America
+export const fetchSouthAmericaData = async()=>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.southamerica.list;
+  }
+  catch(error)
+  {
+    return error;
+  }
+}
+//API lấy summary các quốc gia SouthAmerica
+export const fetchSouthAmericaSummaryData = async() =>{
+  try{
+    const{data} = await axios.get(`https://disease.sh/v2/continents/South%20America`);
+    return data;
+  } 
+  catch(error)
+  {
+    return error;
+  }
+}
+// API lay danh sach cac quoc gia Ships
+export const fetchShipsData = async()=>{
+  try{
+    const{data} = await axios.get(`https://cov19.cc/report.json`);
+    return data.regions.ships.list;
+  }
+  catch(error)
+  {
+    return error;
+  }
+}
