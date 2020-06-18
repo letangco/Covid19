@@ -4,7 +4,7 @@ import TableThongKe from './TableThongKe';
 import QuickFact from './QuickFact';
 import ChartStats from './ChartDashBoard/ChartStats';
 import PieChartStats from './ChartDashBoard/PieChartStats';
-
+import MapVietNam from '../mapDistribute/mapVietNam';
 interface IProps{
 
 }
@@ -41,7 +41,9 @@ class Dashboard extends Component {
                         <div className="row  chartStats">
                             <PieChartStats />
                         </div>
-                        
+                        <div className="row  chartStats">
+                            <MapVietNam />
+                        </div>
                     </div>
                     <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                         
