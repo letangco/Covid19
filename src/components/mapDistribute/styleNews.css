@@ -1,0 +1,28 @@
+.MuiTreeItem-label{
+    font-size: 19px !important;
+    text-align: left !important;
+    font-weight: bolder !important;
+    color: royalblue !important;
+}
+.MuiTimelineItem-missingOppositeContent:before{
+    flex: none !important;
+    padding: 0px !important;
+    
+}
+.MuiTimelineContent-root{
+    font-weight: bold !important;
+    font-family: Tahoma !important;
+    color: tomato !important;
+}
+.MuiTimelineDot-outlinedGrey{
+    background-color: darkslateblue !important;
+}
+.panel-body {
+    display: block;
+    align-items: center; /* Vertically centers the content */
+    max-height: 670px;
+    overflow-y: scroll;
+}
+.panel{
+    margin-left: 15px;
+}

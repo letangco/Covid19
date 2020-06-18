@@ -10,16 +10,22 @@ import TreeView from "@material-ui/lab/TreeView";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { fetchNews } from "../../api/map/index";
+import SearchNews from './SearchNews';
+import './styleNews.css';
 
-interface IProps {}
+interface IProps {
+  // onSearch:any
+}
 interface IState {
-  data: any[];
+  data: any[],
+  keyword:any 
 }
 class News extends Component<{}, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
       data: [],
+      keyword:""
     };
   }
   componentDidMount() {
@@ -32,88 +38,126 @@ class News extends Component<{}, IState> {
     };
     fetchMyAPI();
   }
+  renderItem(data: any[]) {
+    return data.map((item: any, index: any) => {
+      // var source :any= item.sources[0].toString();
+      // return item.title.toString() + <br/>;
+      return (
+        <TimelineItem key={index}>
+          <TimelineSeparator>
+            <TimelineDot variant="outlined" />
+            <TimelineConnector/>
+          </TimelineSeparator >
+          <TimelineContent>{item.title}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
+        </TimelineItem>
+      );
+    });
+  }
+  rederFilterItem(data:any [], keyword:any)
+  {
+    return data.filter((item:any, index:any) =>{
+      if(keyword.toLowerCase()===item.title.toLowerCase().indexOf(keyword))
+        return (
+          <TimelineItem key={index}>
+            <TimelineSeparator>
+              <TimelineDot variant="outlined" />
+              <TimelineConnector/>
+            </TimelineSeparator >
+            <TimelineContent>{item.title}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
+          </TimelineItem>
+        )
+    })
+  }
   renderTimeLine(data: any[]) {
     return data.map((item: any, index: any) => {
-        
       var i: any = index.toString();
-
       return (
         <TreeView
-          //   className={classes.root}
+        key = {index}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           multiSelect
         >
-          <TreeItem nodeId={i + 1} label={item.title}>
-            {/* <TreeItem nodeId="2" label="Calendar" />
-            <TreeItem nodeId="3" label="Chrome" />
-            <TreeItem nodeId="4" label="Webstorm" /> */}
+          <TreeItem nodeId={i + 1} label={item.title} >
+            
             <Timeline align="left">
-                <TimelineItem>
+              {/* <TimelineItem>
                         <TimelineSeparator>
                         <TimelineDot />
                         <TimelineConnector />
                         </TimelineSeparator>
-                        <TimelineContent>{item.title}</TimelineContent>
-                    </TimelineItem>
+                        <TimelineContent>
+                          {this.renderItem(item.updates)}
+                        </TimelineContent>
+                    </TimelineItem> */}
+              {this.renderItem(item.updates)}
+              
             </Timeline>
           </TreeItem>
         </TreeView>
       );
     });
   }
+  // Nhận lại keyword tìm kiến từ Component SearchNews.tsx
+  onSearch = (keyword:any) =>{
+    this.setState({
+      keyword:keyword
+    })
+  }
+  
   render() {
+    var keyword:any = this.state.keyword;
+    // console.log(keyword)
+    var data:any = this.state.data;
+    // console.log(data);
+      if(keyword!=="")
+      {
+        return data.map((item: any, index: any) => {
+          var i: any = index.toString();
+          return (
+            <TreeView
+            key = {index}
+              defaultCollapseIcon={<ExpandMoreIcon />}
+              defaultExpandIcon={<ChevronRightIcon />}
+              multiSelect
+            >
+              <TreeItem nodeId={i + 1} label={item.title} >
+                
+                <Timeline align="left">
+                  {/* <TimelineItem>
+                            <TimelineSeparator>
+                            <TimelineDot />
+                            <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                              {this.renderItem(item.updates)}
+                            </TimelineContent>
+                        </TimelineItem> */}
+                  {this.rederFilterItem(item.updates,this.state.keyword)}
+                  
+                </Timeline>
+              </TreeItem>
+            </TreeView>
+          );
+        });
+        console.log("Dang Search")
+      }
+      else {
+        {this.renderTimeLine(this.state.data)}
+        console.log("Khong tim kiem");
+      }
+
     return (
       <div className="panel panel-info">
         <div className="panel-heading">
           <h3 className="panel-title">
-            <i className="fa fa-calendar" aria-hidden="true"></i>Event Timeline
+            <i className="fa fa-calendar" aria-hidden="true"></i> Event Timeline
             (GMT)
           </h3>
         </div>
         <div className="panel-body">
+          <SearchNews onSearch ={this.onSearch}/>
           {this.renderTimeLine(this.state.data)}
-          {/* <TreeView
-            //   className={classes.root}
-            defaultCollapseIcon={<ExpandMoreIcon />}
-            defaultExpandIcon={<ChevronRightIcon />}
-            multiSelect
-          >
-            <TreeItem nodeId="1" label="Applications">
-              <Timeline align="left">
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent>Eat</TimelineContent>
-                </TimelineItem>
-
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent>Code</TimelineContent>
-                </TimelineItem>
-
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                    <TimelineConnector />
-                  </TimelineSeparator>
-                  <TimelineContent>Sleep</TimelineContent>
-                </TimelineItem>
-
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot />
-                  </TimelineSeparator>
-                  <TimelineContent>Repeat</TimelineContent>
-                </TimelineItem>
-              </Timeline>
-            </TreeItem>
-          </TreeView> */}
         </div>
       </div>
     );
