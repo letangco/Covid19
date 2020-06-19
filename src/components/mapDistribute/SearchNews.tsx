@@ -33,6 +33,7 @@ class SearchNews extends Component<IProps, IState> {
     return (
       <div>
         <TextField
+        className="searchNews"
           id="outlined-basic"
           label="Search..."
           variant="outlined"
@@ -44,6 +45,7 @@ class SearchNews extends Component<IProps, IState> {
         //   onKeyUp={this.onSearch}
         />
         <Button
+        className="btnSearch"
           type="button"
           variant="contained"
           color="secondary"

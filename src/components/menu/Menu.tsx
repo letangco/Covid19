@@ -3,7 +3,7 @@ import './menu.css';
 import logo from '../image/covid19.png';
 import  Map from '../mapDistribute/map';
 import Dashboard from '../dashboard/dashboard';
-
+import CalculatorRate from '../CalculatorRate/calculatorRate';
 import {BrowserRouter as Router, Route,NavLink} from 'react-router-dom';
 class Menu extends Component {
     
@@ -41,7 +41,9 @@ class Menu extends Component {
                                         </NavLink>
                                     </li>
                                     <li className="dropdown active" >
-                                        <a href="a" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CALCULATOR RATE <span className="caret"></span></a>
+                                        <NavLink exact to ='/calculatorRate' className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            CALCULATOR RATE <span className="caret"></span>
+                                        </NavLink>
                                         <ul className="dropdown-menu" role="menu">
                                         <li><a href="a">Action</a></li>
                                         <li><a href="a">Another action</a></li>
@@ -82,6 +84,7 @@ class Menu extends Component {
                     </div>
                     <Route path="/" exact component={Dashboard}/>
                     <Route path="/map" exact component={Map}/>
+                    <Route path="/calculatorRate" exact component={CalculatorRate}/>
         </Router>
         
     );
