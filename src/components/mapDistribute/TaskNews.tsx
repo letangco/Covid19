@@ -29,7 +29,7 @@ class TaskNews extends Component<IProps, IState> {
   //   };
   //   fetchMyAPI();
   // }
-  renderItem(data: any[]) {
+  renderItem=(data: any[]) => {
     return data.map((item: any, index: any) => {
       
       return (
@@ -43,7 +43,7 @@ class TaskNews extends Component<IProps, IState> {
       );
     });
   }
-  renderTimeLine(data: any[]) {
+  renderTimeLine = (data: any[]) => {
     return data.map((item: any, index: any) => {
       var i: any = index.toString();
       return (
@@ -73,7 +73,7 @@ class TaskNews extends Component<IProps, IState> {
       );
     });
   }
-  renderFilterTimeLine(data: any[]) {
+  renderFilterTimeLine = (data: any[]) => {
     return data.map((item: any, index: any) => {
       var i: any = index.toString();
       return (

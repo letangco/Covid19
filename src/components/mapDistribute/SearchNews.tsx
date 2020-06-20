@@ -3,7 +3,7 @@ import { TextField, Button } from "@material-ui/core";
 import "./styleNews.css";
 
 interface IProps {
-    // Khai báo để truyền ra ngoài thằng component News
+    // Khai báo để truyền ra ngoài thằng cha component News
     onSearch: any
 }
 interface IState {
