@@ -4,6 +4,7 @@ import logo from '../image/covid19.png';
 import  Map from '../mapDistribute/map';
 import Dashboard from '../dashboard/dashboard';
 import CalculatorRate from '../CalculatorRate/calculatorRate';
+import Wiki from '../Wiki/wiki';
 import {BrowserRouter as Router, Route,NavLink} from 'react-router-dom';
 class Menu extends Component {
     
@@ -85,6 +86,7 @@ class Menu extends Component {
                     <Route path="/" exact component={Dashboard}/>
                     <Route path="/map" exact component={Map}/>
                     <Route path="/calculatorRate" exact component={CalculatorRate}/>
+                    <Route path="/wiki" exact component={Wiki} />
         </Router>
         
     );

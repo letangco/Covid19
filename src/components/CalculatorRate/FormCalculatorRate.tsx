@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./calculatorRate.css";
-interface iProps{
-  data:any;
-  isSubmit:any
+interface iProps {
+  data: any;
+  isSubmit: any;
 }
 interface IState {
   groupAge: any;
@@ -17,8 +17,8 @@ interface IState {
   Stroke: any;
   Heart: any;
   optionYesNo: any;
-  data:any,
-  isSubmit: any
+  data: any;
+  isSubmit: any;
 }
 class FormCalculatorRate extends Component<iProps, IState> {
   constructor(props: iProps) {
@@ -43,8 +43,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
       ],
       nameSex: ["Male", "Female"],
       optionYesNo: ["Yes", "No"],
-      data:[],
-      isSubmit: false
+      data: [],
+      isSubmit: false,
     };
   }
   onHandleSubmit = (event: any) => {
@@ -108,23 +108,34 @@ class FormCalculatorRate extends Component<iProps, IState> {
     });
   };
   // Bắt sự kiện khi Click thì gửi toàn bộ dữ liệu State về thằng cha calculatorRate
-  onClick=()=>{
-    this.setState({isSubmit:true})
-    var 
-    {groupAge,
-    groupSex,
-    Cardiovascular,
-    Diabetes,
-    Respiratory,
-    Hypertension,
-    Cancer,
-    Stroke,
-    Heart} = this.state;
-    var data= [];
-    data.push(groupAge, groupSex,Cardiovascular,Diabetes,Respiratory,Hypertension,Cancer,Stroke,Heart);
-      console.log(data)
+  onClick = () => {
+    this.setState({ isSubmit: true });
+    var {
+      groupAge,
+      groupSex,
+      Cardiovascular,
+      Diabetes,
+      Respiratory,
+      Hypertension,
+      Cancer,
+      Stroke,
+      Heart,
+    } = this.state;
+    var data = [];
+    data.push(
+      groupAge,
+      groupSex,
+      Cardiovascular,
+      Diabetes,
+      Respiratory,
+      Hypertension,
+      Cancer,
+      Stroke,
+      Heart
+    );
+    console.log(data);
     this.props.data(data);
-  }
+  };
   render() {
     var elmGroupAge: any = this.state.nameAge.map((item: any, index: any) => {
       var name: any = "groupAge";
@@ -321,6 +332,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
           <form onSubmit={this.onHandleSubmit} className="form-horizontal">
             <div className="form-group">
               <legend>COVID-19 Prognostic Tool</legend>
+
+              <span className="label label-danger">
+                Please answer all questions. The results will be computed once
+                all questions are answered.
+              </span>
             </div>
             <div className="form-group">
               <div className="row">
@@ -421,7 +437,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
 
                     <div className="row">
                       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <button type="submit" className="btn btn-primary" onClick={this.onClick}>
+                        <button
+                          type="submit"
+                          className="btn btn-primary"
+                          onClick={this.onClick}
+                        >
                           Submit
                         </button>
                       </div>
@@ -435,7 +455,6 @@ class FormCalculatorRate extends Component<iProps, IState> {
             </div>
           </form>
         </div>
-
       </div>
     );
   }
