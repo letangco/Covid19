@@ -74,6 +74,7 @@ class TaskNews extends Component<IProps, IState> {
     });
   }
   renderFilterTimeLine = (data: any[]) => {
+    var keyword :string = this.props.sendKeyWord.toLowerCase();
     return data.map((item: any, index: any) => {
       var i: any = index.toString();
       return (
@@ -85,8 +86,27 @@ class TaskNews extends Component<IProps, IState> {
         >
           <TreeItem nodeId={i + 1} label={item.title} >
             
-            <Timeline align="left" ref={index}>
-              {this.renderFilterItem(item.updates, this.props.sendKeyWord)}
+            <Timeline align="left">
+              {/* {this.renderFilterItem(item.updates, keyword)} */}
+              { 
+                item.updates.map((item:any, index:number) => {
+                    if(item.title.toLowerCase().indexOf(keyword) !== -1)
+                    {
+                        console.log(item.title, keyword);
+                      return  <TimelineItem key={index}>
+                          <TimelineSeparator>
+                            <TimelineDot variant="outlined" />
+                            <TimelineConnector />
+                          </TimelineSeparator >
+                          <TimelineContent>{JSON.stringify(item.title)}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
+                        </TimelineItem>;
+                    }
+                    else{
+                      return (<></>);
+                    }
+                  }
+                )
+              }
             </ Timeline>
           </TreeItem>
         </TreeView>

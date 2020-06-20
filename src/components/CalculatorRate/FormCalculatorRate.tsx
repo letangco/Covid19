@@ -129,11 +129,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
     var elmGroupAge: any = this.state.nameAge.map((item: any, index: any) => {
       var name: any = "groupAge";
       var lblTenGroup = [
-        "1 - 19",
-        "20 - 39",
-        "40 - 59",
-        "60 - 79",
-        "80 - 99",
+        "0 - 17",
+        "18 - 44",
+        "45 - 64",
+        "65 - 74",
+        "75 - 100",
         "100+",
       ];
       return (
