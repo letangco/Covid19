@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./calculatorRate.css";
 import FormCalculatorRate from "./FormCalculatorRate";
 import Results from "./Results";
 interface IState {

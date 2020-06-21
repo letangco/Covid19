@@ -99,7 +99,6 @@ class Stats extends Component <{}, IState> {
             })
         });
     }
-    
     // renderTableData() {
     //     return this.state.data.map((item, index) => {
     //     //    const { title, total_cases, total_deaths, total_recovered} = item //destructuring ES6

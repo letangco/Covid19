@@ -42,19 +42,19 @@ class SearchNews extends Component<IProps, IState> {
           name="keyword"
           value={keyword}
           onChange={this.onChange}
-        //   onKeyUp={this.onSearch}
+          onKeyUp={this.onSearch}
         />
-        <Button
+        {/* <Button
         className="btnSearch"
           type="button"
           variant="contained"
           color="secondary"
         //   href="#contained-buttons"
           size="large"
-          onClick={this.onSearch}
+          // onClick={this.onSearch}
         >
           Search
-        </Button>
+        </Button> */}
       </div>
     );
   }

@@ -152,8 +152,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
           <input
             className={
               this.state.groupAge === item
-                ? "list-group-item list-group-item-action active"
-                : "list-group-item list-group-item-action"
+                ? "list-group-item list-group-item-action itemNew active"
+                : "list-group-item list-group-item-action itemNew"
             }
             type="button"
             value={lblTenGroup[index]}
@@ -172,8 +172,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
           <input
             className={
               this.state.groupSex === item
-                ? "list-group-item list-group-item-action active"
-                : "list-group-item list-group-item-action"
+                ? "list-group-item list-group-item-action itemNew active"
+                : "list-group-item list-group-item-action itemNew"
             }
             type="button"
             value={lblTenSex[index]}
@@ -192,8 +192,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
             <input
               className={
                 this.state.Cardiovascular === item
-                  ? "list-group-item list-group-item-action active"
-                  : "list-group-item list-group-item-action"
+                  ? "list-group-item list-group-item-action itemNew active"
+                  : "list-group-item list-group-item-action itemNew"
               }
               type="button"
               value={lblnameCardiovascular[index]}
@@ -213,8 +213,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
             <input
               className={
                 this.state.Diabetes === item
-                  ? "list-group-item list-group-item-action active"
-                  : "list-group-item list-group-item-action"
+                  ? "list-group-item list-group-item-action itemNew active"
+                  : "list-group-item list-group-item-action itemNew"
               }
               type="button"
               value={lblDiabetes[index]}
@@ -234,8 +234,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
             <input
               className={
                 this.state.Respiratory === item
-                  ? "list-group-item list-group-item-action active"
-                  : "list-group-item list-group-item-action"
+                  ? "list-group-item list-group-item-action itemNew active"
+                  : "list-group-item list-group-item-action itemNew"
               }
               type="button"
               value={lblRespiratory[index]}
@@ -255,8 +255,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
             <input
               className={
                 this.state.Hypertension === item
-                  ? "list-group-item list-group-item-action active"
-                  : "list-group-item list-group-item-action"
+                  ? "list-group-item list-group-item-action itemNew active"
+                  : "list-group-item list-group-item-action itemNew"
               }
               type="button"
               value={lblHypertension[index]}
@@ -276,8 +276,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
             <input
               className={
                 this.state.Cancer === item
-                  ? "list-group-item list-group-item-action active"
-                  : "list-group-item list-group-item-action"
+                  ? "list-group-item list-group-item-action itemNew active"
+                  : "list-group-item list-group-item-action itemNew"
               }
               type="button"
               value={lblCancer[index]}
@@ -296,8 +296,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
           <input
             className={
               this.state.Stroke === item
-                ? "list-group-item list-group-item-action active"
-                : "list-group-item list-group-item-action"
+                ? "list-group-item list-group-item-action itemNew active"
+                : "list-group-item list-group-item-action itemNew"
             }
             type="button"
             value={lblStroke[index]}
@@ -315,8 +315,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
           <input
             className={
               this.state.Heart === item
-                ? "list-group-item list-group-item-action active"
-                : "list-group-item list-group-item-action"
+                ? "list-group-item list-group-item-action itemNew active"
+                : "list-group-item list-group-item-action itemNew"
             }
             type="button"
             value={lblHeart[index]}

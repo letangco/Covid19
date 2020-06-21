@@ -23,8 +23,7 @@ class Dashboard extends Component {
     
   render(){
     return (
-        <div className="container-fluid">
-            {/* {Content} */}
+        <div className="row">
             <div className="row">
                 
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">

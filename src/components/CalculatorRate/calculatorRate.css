@@ -1,6 +1,9 @@
 .list-group-item{
-    width: 100% !important;
+    width: 100% ;
 }
 .btn-primary{
-    width: 100% !important;
+    width: 100%;
+}
+.itemNew{
+    color: black !important;
 }
