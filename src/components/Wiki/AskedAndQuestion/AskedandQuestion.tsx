@@ -27,17 +27,17 @@ class AskandQuestion extends Component<{}, IState> {
   {
     {
       if (value === this.state.select)
-        return "list-group-item list-group-item-action itemNew active";
+        return "itemNew active";
         // console.log("col-xs-12 col-sm-12 col-md-12 col-lg-12 action")
       else
         // console.log("col-xs-12 col-sm-12 col-md-12 col-lg-12 ")
-        return "list-group-item list-group-item-action";
+        return "itemNew";
       
     }
   }
   render() {
     return (
-      <div>
+      <div className="AskQuestion">
         <header className="masthead">
           <div className="container">
             <div className="row h-100 align-items-center">
@@ -78,11 +78,10 @@ class AskandQuestion extends Component<{}, IState> {
 
         <div className="container">
           <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div className="list-group" id="list-tab" role="tablist">
+            <div className="list-group-new">
               <a
                 className={this.setClick("q1")}
                 id="q1"
-                data-toggle="list"
                 href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/coronavirus"
                 target="_blank"
                 aria-controls="home"
@@ -93,7 +92,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q2")}
                 id="q2"
-                data-toggle="list"
                 href="https://hub.jhu.edu/2020/03/20/sars-cov-2-survive-on-surfaces/"
                 target="_blank"
                 aria-controls="profile"
@@ -104,7 +102,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q3")}
                 id="q3"
-                data-toggle="list"
                 target="_blank"
                 href="https://hub.jhu.edu/2020/03/23/how-to-self-quarantine-self-isolate/"
                 aria-controls="messages"
@@ -115,7 +112,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q4")}
                 id="q4"
-                data-toggle="list"
                 target="_blank"
                 href="https://hub.jhu.edu/2020/03/26/covid-19-vaccine-development-ruth-karron/"
                 aria-controls="messages"
@@ -126,7 +122,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q5")}
                 id="q5"
-                data-toggle="list"
                 href="https://www.jhsph.edu/ivac/2020/03/20/covid-19-questions-answered-ivac-affiliated-experts-give-their-take-on-the-challenges-with-infection-control/"
                 role="tab"
                 target="_blank"
@@ -138,7 +133,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q6")}
                 id="q6"
-                data-toggle="list"
                 href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/coronavirus/2019-novel-coronavirus-myth-versus-fact"
                 role="tab"
                 aria-controls="settings"
@@ -150,7 +144,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q7")}
                 id="q7"
-                data-toggle="list"
                 href="https://hub.jhu.edu/2020/04/01/alice-bonner-coronavirus-nursing-homes/"
                 role="tab"
                 aria-controls="settings"
@@ -162,7 +155,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q8")}
                 id="q8"
-                data-toggle="list"
                 href="https://hub.jhu.edu/2020/04/02/sequencing-genome-sars-cov-2/"
                 role="tab"
                 aria-controls="settings"
@@ -174,7 +166,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q9")}
                 id="q9"
-                data-toggle="list"
                 href="https://hub.jhu.edu/2020/04/06/dani-fallin-mental-health-challenges-coronavirus/"
                 role="tab"
                 aria-controls="settings"
@@ -186,7 +177,6 @@ class AskandQuestion extends Component<{}, IState> {
               <a
                 className={this.setClick("q10")}
                 id="q10"
-                data-toggle="list"
                 href="https://hub.jhu.edu/2020/04/06/covid-nursing-cynda-rushton-qa/"
                 role="tab"
                 aria-controls="settings"

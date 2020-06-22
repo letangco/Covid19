@@ -10,7 +10,7 @@ import "./wikiContent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import understandingCovid19 from "../understandingCovid19/understandingCovid19";
 import AskandQuestion from "../AskedAndQuestion/AskedandQuestion";
-import UseMask from '../../image/UseMash.jpg';
+import UseMask from "../../image/UseMash.jpg";
 import {
   BrowserRouter as Router,
   Route,
@@ -28,7 +28,8 @@ import {
   faDizzy,
   faShieldVirus,
   faChevronCircleRight,
-  faLink
+  faLink,
+  faArrowCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import cold from "../../image/cold.png";
 import vomiting from "../../image/vomitting.png";
@@ -141,15 +142,18 @@ class ContentWiki extends Component {
                       />
                       <div className="card-body">
                         <NavLink exact to="/wiki/Covid19Pandemic">
-                          <h4 className="card-title">
-                            Understanding the COVID-19 Pandemic
+                          <h4 className="titleCardBox">
+                            Understanding the COVID-19 Pandemic{" "}
+                            <FontAwesomeIcon icon={faLink} />
                           </h4>
                         </NavLink>
-                        <p className="card-text">
-                          Johns Hopkins University is hosting a free, publicly
-                          available course entitled Understanding the COVID-19
-                          Pandemic: Insights from Johns Hopkins University
-                          Experts.
+                        <p className="card-text-CardBox">
+                          <i>
+                            Johns Hopkins University is hosting a free, publicly
+                            available course entitled Understanding the COVID-19
+                            Pandemic: Insights from Johns Hopkins University
+                            Experts.
+                          </i>
                         </p>
                       </div>
                     </div>
@@ -166,14 +170,19 @@ class ContentWiki extends Component {
                       <div className="card-body">
                         <NavLink exact to="/wiki/AskandQuestion">
                           <h4 className="card-title">
-                            Frequently Asked Question
+                            <p className="titleCardBox">
+                              Frequently Asked Question{" "}
+                              <FontAwesomeIcon icon={faLink} />
+                            </p>
                           </h4>
                         </NavLink>
-                        <p className="card-text">
-                          How do I self-quarantine? How long can COVID-19 live
-                          on surfaces? What will it take to develop a vaccine?
-                          Johns Hopkins experts answer your most frequently
-                          asked questions about coronavirus.
+                        <p className="card-text-CardBox">
+                          <i>
+                            How do I self-quarantine? How long can COVID-19 live
+                            on surfaces? What will it take to develop a vaccine?
+                            Johns Hopkins experts answer your most frequently
+                            asked questions about coronavirus.
+                          </i>
                         </p>
                       </div>
                     </div>
@@ -189,12 +198,19 @@ class ContentWiki extends Component {
                       />
                       <div className="card-body">
                         <a href="#">
-                          <h4 className="card-title">Protecting Your Health</h4>
+                          <h4 className="card-title">
+                            <p className="titleCardBox">
+                              Protecting Your Health{" "}
+                              <FontAwesomeIcon icon={faLink} />
+                            </p>
+                          </h4>
                         </a>
-                        <p className="card-text">
-                          Johns Hopkins experts offer best practices for
-                          protecting your health, the health of others, and
-                          preventing the spread of coronavirus.
+                        <p className="card-text-CardBox">
+                          <i>
+                            Johns Hopkins experts offer best practices for
+                            protecting your health, the health of others, and
+                            preventing the spread of coronavirus.
+                          </i>
                         </p>
                       </div>
                     </div>
@@ -210,13 +226,20 @@ class ContentWiki extends Component {
                       />
                       <div className="card-body">
                         <a href="#">
-                          <h4 className="card-title">Public Health on Call</h4>
+                          <h4 className="card-title">
+                            <p className="titleCardBox">
+                              Public Health on Call{" "}
+                              <FontAwesomeIcon icon={faLink} />
+                            </p>
+                          </h4>
                         </a>
-                        <p className="card-text">
-                          Experts from the Johns Hopkins Bloomberg School of
-                          Public Health answer questions and discuss the latest
-                          developments in the COVID-19 public health crisis. New
-                          episodes are posted daily.
+                        <p className="card-text-CardBox">
+                          <i>
+                            Experts from the Johns Hopkins Bloomberg School of
+                            Public Health answer questions and discuss the
+                            latest developments in the COVID-19 public health
+                            crisis. New episodes are posted daily.
+                          </i>
                         </p>
                       </div>
                     </div>
@@ -349,46 +372,43 @@ class ContentWiki extends Component {
                         mask
                       </p>
                     </h3>
-                    
+
                     <div className="row">
-                        
-                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <li className="contentInformationMask">
-                      1. Wear a mask if you are coughing or sneezing.
-                    </li>
-                    <li className="contentInformationMask">
-                      2. If you wear a mask, then you must know how to use it
-                      and dispose of it properly.
-                    </li>
-                    <li className="contentInformationMask">
-                      3. Before putting on a mask, clean your hands with
-                      alcohol-based hand rub or soap and water.
-                    </li>
-                    <li className="contentInformationMask">
-                      4. Cover your mouth and nose with the mask and make sure
-                      there are no gaps between your face and the mask.
-                    </li>
-                    <li className="contentInformationMask">
-                      5. Avoid touching the mask while using it.
-                    </li>
-                    <li className="contentInformationMask">
-                      6. Replace the mask with a new one as soon as it is damp
-                      and do not re-use single-use masks.
-                    </li>
-                    <li className="contentInformationMask">
-                      7. To remove the mask, remove it from behind (do not touch
-                      the front of the mask), discard it immediately in a closed
-                      bin, and then clean your hands with alcohol-based hand rub
-                      or soap and water.
-                    </li>
-                        </div>
-                        
-                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 imgContentInformation">
-                                <img src={UseMask} alt="Mask"/>
-                        </div>
-                        
+                          1. Wear a mask if you are coughing or sneezing.
+                        </li>
+                        <li className="contentInformationMask">
+                          2. If you wear a mask, then you must know how to use
+                          it and dispose of it properly.
+                        </li>
+                        <li className="contentInformationMask">
+                          3. Before putting on a mask, clean your hands with
+                          alcohol-based hand rub or soap and water.
+                        </li>
+                        <li className="contentInformationMask">
+                          4. Cover your mouth and nose with the mask and make
+                          sure there are no gaps between your face and the mask.
+                        </li>
+                        <li className="contentInformationMask">
+                          5. Avoid touching the mask while using it.
+                        </li>
+                        <li className="contentInformationMask">
+                          6. Replace the mask with a new one as soon as it is
+                          damp and do not re-use single-use masks.
+                        </li>
+                        <li className="contentInformationMask">
+                          7. To remove the mask, remove it from behind (do not
+                          touch the front of the mask), discard it immediately
+                          in a closed bin, and then clean your hands with
+                          alcohol-based hand rub or soap and water.
+                        </li>
+                      </div>
+
+                      <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 imgContentInformation">
+                        <img src={UseMask} alt="Mask" />
+                      </div>
                     </div>
-                    
                   </ul>
                 </div>
               </div>
@@ -562,13 +582,15 @@ class ContentWiki extends Component {
                             href="https://www.worldometers.info/coronavirus/coronavirus-age-sex-demographics/"
                             target="new_blank"
                           >
-                            Death Rate by Age and Sex of COVID-19 patients <FontAwesomeIcon icon={faLink} size="1x"/>
+                            Death Rate by Age and Sex of COVID-19 patients{" "}
+                            <FontAwesomeIcon icon={faLink} size="1x" />
                           </a>
                         </span>
                         <p>
                           <i className="subContentCard">
-                        The Report of the WHO-China Joint Mission published on Feb. 28 by WHO, which is based on 55,924 laboratory confirmed cases.
-
+                            The Report of the WHO-China Joint Mission published
+                            on Feb. 28 by WHO, which is based on 55,924
+                            laboratory confirmed cases.
                           </i>
                         </p>
                       </div>
@@ -583,7 +605,8 @@ class ContentWiki extends Component {
                             href="https://www.worldometers.info/coronavirus/coronavirus-age-sex-demographics/"
                             target="new_blank"
                           >
-                            See details
+                            See details{" "}
+                            <FontAwesomeIcon icon={faArrowCircleRight} />
                           </a>
                         </button>
                       </div>

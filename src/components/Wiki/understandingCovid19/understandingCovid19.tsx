@@ -10,7 +10,7 @@ import {faCopyright,faDraftingCompass} from '@fortawesome/free-solid-svg-icons';
 class understandingCovid19 extends Component {
   render() {
     return (
-      <div>
+      <div className="Pandemic">
         <header className="masthead">
           <div className="container">
             <div className="row h-100 align-items-center">

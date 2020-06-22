@@ -15,7 +15,18 @@ body{
     background-clip: padding-box;
     min-height:400px;
   }
-  
+  .titleCardBox{
+    color: darkslateblue;
+    font-size: 24px;
+    font-weight: bold;
+    /* padding: 10px 0 0 15px; */
+    padding: 2% 0 0 5%
+  }
+  .card-text-CardBox{
+    color: #4b5a81;
+    padding:0 5% 5% 2%;
+    min-height:7em ;
+  }
   .card span.card-title a{
     color: darkslateblue;
     font-size: 24px;
@@ -157,7 +168,7 @@ body{
 tbody tr td{
   color: dodgerblue;
 }
-.card-content{
+.card-content, .card-body{
   background-color: navajowhite;
 }
 .subContentCard{

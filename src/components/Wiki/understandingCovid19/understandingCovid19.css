@@ -21,9 +21,13 @@
    font-weight: 400;
    letter-spacing: 0.8px;
  }
+ .Pandemic{
+   background-color: ivory;
+ }
  .pt-30{
    padding-top: 30px;
    padding-bottom: 30px;
+   
  }
  .footer {
   min-height: 250px ;
