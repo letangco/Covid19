@@ -24,13 +24,10 @@ class Dashboard extends Component {
   render(){
     return (
         <div className="row">
-            <div className="row">
                 
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <QuickFact />
                 </div>
-            </div>
-            <div className="row stats">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                         
@@ -46,7 +43,7 @@ class Dashboard extends Component {
                     </div>
                     <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                         
-                        <div className="row">
+                        <div className="row TableThongKe">
                             <TableThongKe />
                         </div>
                         
@@ -57,7 +54,6 @@ class Dashboard extends Component {
                 
             </div>
             
-        </div>
         
         
     );

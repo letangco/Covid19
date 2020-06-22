@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Results.css";
 interface iState {}
 interface iProps {
   dataResult: any;
@@ -38,7 +39,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">{valueAge[0]}%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">{valueAge[0]}%</p>
+                  </div>
                 </div>
                 <div className="panel panel-success">
                   <div className="panel-heading">
@@ -53,7 +56,9 @@ class Results extends Component<iProps, iState> {
                       Journal of Epidemiology.
                     </p>
                   </div>
-                  <div className="panel-body">0.2%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">0.2%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -78,7 +83,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">{valueAge[1]}%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">{valueAge[1]}%</p>
+                  </div>
                 </div>
                 <div className="panel panel-success">
                   <div className="panel-heading">
@@ -93,7 +100,9 @@ class Results extends Component<iProps, iState> {
                       Journal of Epidemiology.
                     </p>
                   </div>
-                  <div className="panel-body">0.2%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">0.2%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -118,7 +127,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">{valueAge[2]}%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">{valueAge[2]}%</p>
+                  </div>
                 </div>
                 <div className="panel panel-success">
                   <div className="panel-heading">
@@ -133,7 +144,9 @@ class Results extends Component<iProps, iState> {
                       Journal of Epidemiology.
                     </p>
                   </div>
-                  <div className="panel-body">0.2%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">0.2%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,7 +171,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">{valueAge[3]}%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">{valueAge[3]}%</p>
+                  </div>
                 </div>
                 <div className="panel panel-success">
                   <div className="panel-heading">
@@ -173,7 +188,9 @@ class Results extends Component<iProps, iState> {
                       Journal of Epidemiology.
                     </p>
                   </div>
-                  <div className="panel-body">0.2%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">0.2%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -198,7 +215,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">{valueAge[4]}%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">{valueAge[4]}%</p>
+                  </div>
                 </div>
                 <div className="panel panel-success">
                   <div className="panel-heading">
@@ -213,7 +232,9 @@ class Results extends Component<iProps, iState> {
                       Journal of Epidemiology.
                     </p>
                   </div>
-                  <div className="panel-body">0.2%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">{valueAge[4]}%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -238,7 +259,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">{valueAge[5]}%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">{valueAge[5]}%</p>
+                  </div>
                 </div>
                 <div className="panel panel-success">
                   <div className="panel-heading">
@@ -283,7 +306,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">61.8%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">61.8%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -308,7 +333,9 @@ class Results extends Component<iProps, iState> {
                       by New York City Health as of May 13, 2020.
                     </p>
                   </div>
-                  <div className="panel-body">38.2%</div>
+                  <div className="panel-body">
+                    <p className="valueResult">38.2%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -317,7 +344,6 @@ class Results extends Component<iProps, iState> {
         }
       }
     }
-    function RenderResult() {}
     return (
       <div>
         <div className="container">

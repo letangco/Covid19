@@ -31,8 +31,9 @@ class Wiki extends Component {
           
           <Route path="/wiki/AskandQuestion" exact component={AskandQuestion} />
           
-          <Game />
+          {/* <Game /> */}
         </Switch>
+        <Game />
       </Router>
     );
   }

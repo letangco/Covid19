@@ -32,6 +32,7 @@ ChartStats{
 }
 .tableStats{
     background-color: #161e2c;
+    min-width: 100%;
 }
 
 .ant-table-body, .divtableStats {
@@ -43,4 +44,7 @@ ChartStats{
 }
 .ant-table-body:hover {
     color: red
+}
+.TableThongKe{
+    min-width: 70%;
 }
