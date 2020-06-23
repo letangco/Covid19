@@ -136,7 +136,7 @@ class ContentWiki extends Component {
                       <img
                         className="card-img-top"
                         src={corona}
-                        alt="Card image"
+                        alt="image"
                         width="540px"
                         height="345px"
                       />
