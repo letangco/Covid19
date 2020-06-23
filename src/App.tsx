@@ -5,9 +5,9 @@ import Menu from './components/menu/Menu';
 class App extends Component {
   render(){
     return (
-          <div className="container-fluid">
-              <Menu />
-          </div>
+              <div className="container-fluid">
+                <Menu />
+            </div>
     );
   }
 }

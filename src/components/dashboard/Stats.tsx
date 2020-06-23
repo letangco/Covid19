@@ -203,12 +203,12 @@ class Stats extends Component <{}, IState> {
                 country: <div>
                           <img src={valueFlag} width="40" alt="Flag State"/> {newColumns[i].title}
                       </div>,
-                confirmed: newColumns[i].total_cases,
-                newConfirmed: newColumns[i].total_new_cases_today,
-                death:newColumns[i].total_deaths,
-                newDeath: newColumns[i].total_new_deaths_today,
-                recovered:newColumns[i].total_recovered,
-                seriouscase: newColumns[i].total_serious_cases
+                confirmed: newColumns[i].total_cases.toLocaleString(),
+                newConfirmed: newColumns[i].total_new_cases_today.toLocaleString(),
+                death:newColumns[i].total_deaths.toLocaleString(),
+                newDeath: newColumns[i].total_new_deaths_today.toLocaleString(),
+                recovered:newColumns[i].total_recovered.toLocaleString(),
+                seriouscase: newColumns[i].total_serious_cases.toLocaleString()
             });
         }
     return (
