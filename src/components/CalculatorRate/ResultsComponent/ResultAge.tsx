@@ -5,7 +5,6 @@ interface IProps {
 interface IState {}
 class ResultAge extends Component<IProps, IState> {
   render() {
-    console.log(this.props.sendAge);
     var valueAge: any = [0.06, 3.9, 22.4, 24.9, 48.7, 0.04];
     var groupAge: any = this.props.sendAge;
     function RenderGroupAgeUS() {

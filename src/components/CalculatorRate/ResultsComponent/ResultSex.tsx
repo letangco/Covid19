@@ -4,8 +4,15 @@ interface IProps {
 }
 interface IState {}
 class ResultSex extends Component<IProps, IState> {
+  // componentDidMount()
+  // {
+  //   this.props.sendSex==="Male" ?this.props.receiverSex(0.618) :this.props.receiverSex(0.382);
+  // }
+  // componentWillReceiveProps()
+  // {
+  //   this.props.sendSex==="Male" ?this.props.receiverSex(0.618) :this.props.receiverSex(0.382);
+  // }
   render() {
-    console.log(this.props.sendSex);
     var sex: any = this.props.sendSex;
     function RenderSex() {
       switch (sex) {

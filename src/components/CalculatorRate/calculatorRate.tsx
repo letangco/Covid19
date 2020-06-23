@@ -21,7 +21,6 @@ class calculatorRate extends Component<{}, IState> {
     this.setState({isShow:value})
   }
   render() {
-    console.log(this.state.isShow)
     return (
       <div>
         <FormCalculatorRate data={this.onReceiveData} isSubmit={this.onReceiveIsSubmit}/>

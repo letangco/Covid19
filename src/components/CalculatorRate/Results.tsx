@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import "./Results.css";
 import ResultAge from "./ResultsComponent/ResultAge";
 import ResultSex from "./ResultsComponent/ResultSex";
+import ResultCardiovascular from './ResultsComponent/ResultCardiovascular';
+import ResultDiabetes from './ResultsComponent/ResultDiabetes';
+import ResultRespiratory from './ResultsComponent/ResultRespiratory';
+import Hypertension from './ResultsComponent/ResultHypertension';
+import ResultCancer from './ResultsComponent/ResultCancer';
+import ResultStroke from './ResultsComponent/ResultStroke';
+import ResultHeart from './ResultsComponent/ResultHeart';
+import ResultFinal from './ResultsComponent/ResultFinal';
 interface iState {
   data: any;
 }
@@ -12,7 +20,6 @@ class Results extends Component<iProps, iState> {
   // Được thực hiện trước khi Render
   componentWillMount() {
     this.setState({ data: this.props.dataResult });
-    console.log(this.props.dataResult[0]);
   }
   // Sau khi Render thì cập nhật lại State từ props nhận được
   componentWillReceiveProps() {
@@ -32,14 +39,22 @@ class Results extends Component<iProps, iState> {
     // var Cancer: string = data[6];
     // var Stroke: string = data[7];
     // var Heart: string = data[8];
-
     return (
       <div>
         <div className="container">
           {/* {RenderGroupAgeUS()} */}
+          <ResultFinal sendDataResult={this.state.data} />
           <ResultAge sendAge={this.state.data[0]} />
           {/* {RenderSex()} */}
-          <ResultSex sendSex={this.state.data[1]} />
+          <ResultSex sendSex={this.state.data[1]}/>
+          <ResultCardiovascular sendCardiovascular={this.state.data[2]} />
+          <ResultDiabetes sendDiabetes = {this.state.data[3] }/>
+          <ResultRespiratory sendRespiratory={this.state.data[4]}/>
+          <Hypertension sendHypertension ={this.state.data[5]}/>
+          <ResultCancer sendCancer={this.state.data[6]}/>
+          <ResultStroke sendStroke ={this.state.data[7]}/>
+          <ResultHeart sendHeart={this.state.data[8]}/>
+          
         </div>
       </div>
     );
