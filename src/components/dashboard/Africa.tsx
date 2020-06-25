@@ -199,12 +199,12 @@ class Europe extends Component <{}, IState> {
                 country: <div>
                     <img src={valueFlag} width="40" alt="Flag State"/>  {newColumns[i].Country}
                 </div>,
-                confirmed: newColumns[i].TotalConfirmed.toLocaleString(),
-                newConfirmed: newColumns[i].NewConfirmed >=0? newColumns[i].NewConfirmed.toLocaleString() : "not update",
-                death:newColumns[i].TotalDeaths >=0 ? newColumns[i].TotalDeaths.toLocaleString() : "not update",
-                newDeath: newColumns[i].NewDeaths >=0 ?newColumns[i].NewDeaths.toLocaleString(): "not update" ,
-                recovered:newColumns[i].TotalRecovered >= 0 ? newColumns[i].TotalRecovered.toLocaleString() : "not update",
-                newRecovered: newColumns[i].NewRecovered >= 0 ? newColumns[i].NewRecovered.toLocaleString() : "not update",
+                confirmed: newColumns[i].TotalConfirmed,
+                newConfirmed: newColumns[i].NewConfirmed >=0? newColumns[i].NewConfirmed : "not update",
+                death:newColumns[i].TotalDeaths >=0 ? newColumns[i].TotalDeaths : "not update",
+                newDeath: newColumns[i].NewDeaths >=0 ?newColumns[i].NewDeaths: "not update" ,
+                recovered:newColumns[i].TotalRecovered >= 0 ? newColumns[i].TotalRecovered : "not update",
+                newRecovered: newColumns[i].NewRecovered >= 0 ? newColumns[i].NewRecovered : "not update",
             });
         }
     return (
