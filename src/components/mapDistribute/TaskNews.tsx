@@ -66,7 +66,6 @@ class TaskNews extends Component<IProps, IState> {
                         </TimelineContent>
                     </TimelineItem> */}
                 {this.renderItem(item.updates)}
-              
             </Timeline>
           </TreeItem>
         </TreeView>

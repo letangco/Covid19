@@ -11,12 +11,6 @@ import {
 
 // import {BrowserRouter as Router} from 'react-router-dom';
 class Wiki extends Component {
-  newBlank() {
-    window.open(
-      "https://www.worldometers.info/coronavirus/coronavirus-age-sex-demographics/",
-      "_blank"
-    );
-  }
   render() {
     return (
       <Router>

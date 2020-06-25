@@ -7,11 +7,12 @@ import CalculatorRate from "../CalculatorRate/calculatorRate";
 import Wiki from "../Wiki/wiki";
 import understandingCovid19 from "../Wiki/understandingCovid19/understandingCovid19";
 import AskandQuestion from "../Wiki/AskedAndQuestion/AskedandQuestion";
+import Direction from "../Direction/Direction";
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
-  Switch,
+  Switch
 } from "react-router-dom";
 class Menu extends Component {
   render() {
@@ -84,7 +85,9 @@ class Menu extends Component {
                     </ul>
                   </li>
                   <li className="active">
-                    <a href="a">DIRECT</a>
+                    <NavLink exact to ="/direction" className = "my-link">
+                      DIRECTION
+                    </NavLink>
                   </li>
                   <li className="active">
                     <NavLink exact to="/wiki" className="my-link">
@@ -129,6 +132,7 @@ class Menu extends Component {
             component={understandingCovid19}
           />
           <Route path="/wiki/AskandQuestion" exact component={AskandQuestion} />
+          <Route path="/direction" exact component = {Direction} />
         </Switch>
       </Router>
     );
