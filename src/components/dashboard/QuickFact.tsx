@@ -65,7 +65,6 @@ class QuickFact extends Component{
     render (){
         var {totalConfirmed, totalDeath,totalRecovered, timeUpdate, totalNewCase, totalNewDeathCase,totalActiveCase} = this.state;
         return (
-            
                     <div className="panel panel-danger">
                           <div className="panel-heading">
                                 <h1 className="panel-title">QUICK FACT</h1>

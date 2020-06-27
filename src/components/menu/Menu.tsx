@@ -14,8 +14,37 @@ import {
   NavLink,
   Switch
 } from "react-router-dom";
-class Menu extends Component {
+interface IStates{
+  isOpen: boolean
+}
+class Menu extends Component <{}, IStates>{
+  constructor(props:any)
+  {
+    super (props);
+    this.state={
+      isOpen: false
+    }
+  }
   render() {
+  var isOpen :any = this.state.isOpen;
+   function showMenuToggle()
+  {
+    if ( isOpen === true)
+        {
+            return (
+                <div className="dropdown">
+                    <ul>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Guidelines</a></li>
+                        <li><a href="#">Exchange</a></li>
+                        <li><a href="#">Forum</a></li>
+                    </ul>
+                </div>
+            );
+        }
+        return null;
+  }
     return (
       <Router>
         <div className="row">
@@ -27,17 +56,17 @@ class Menu extends Component {
                   className="navbar-toggle collapsed"
                   data-toggle="collapse"
                   data-target="#navbar4"
+                  onClick={()=>{this.setState({isOpen:true})}}
                 >
-                  <span className="sr-only">Toggle navigation</span>
+                  {/* <span className="sr-only">Toggle navigation</span>
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span> */}
+                  {showMenuToggle()}
+
                 </button>
-                {/* <a className="navbar-brand" href="/">
-                                        <img src={logo} alt="Dispute Bills"/>
-                                    </a> */}
                 <NavLink to="/" className="navbar-brand">
-                  <img src={logo} alt="Dispute Bills" />
+                  <img src={logo} alt="DisputeBills" />
                 </NavLink>
               </div>
               <div id="navbar4" className="navbar-collapse collapse">

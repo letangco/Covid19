@@ -1,10 +1,41 @@
-.optionUSA:hover{
-    cursor: pointer;
-    border: 1px solid blue;
+.rowOption1, .rowOption2{
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    min-width: 100%;
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
-.navbar-brand{
-    padding: 0px !important;
+.rowOption1 .itemOption{
+    display: flex;
+    min-width: 13rem;
+    border: 1px solid crimson;
+    height: 47px;
+    background-color: whitesmoke;
+    margin-left: 5px;
+    align-items: center;
+    border-radius: 10px;
 }
-.optionUSA{
-    margin-left: 10px;
+.itemOption img{
+    border-radius:  50%;
+}
+.itemOption h4{
+    color:darkred ;
+}
+
+.rowOption2 .itemOption{
+    display: flex;
+    min-width: 13rem;
+    border: 1px solid crimson;
+    height: 47px;
+    background-color: whitesmoke;
+    margin-left: 5px;
+    align-items: center;
+    border-radius: 10px;
+}
+.rowOption2  .itemOption img{
+    border-radius:  50%;
+}
+.rowOption2  .itemOption h4{
+    color:darkred ;
 }
