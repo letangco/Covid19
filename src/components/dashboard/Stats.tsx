@@ -148,7 +148,7 @@ class Stats extends Component <{}, IState> {
           title: 'New Confirmed',
           dataIndex: 'newConfirmed',
           key: 'newConfirmed',
-          width: 100,
+          width: 110,
           sorter:(a :any,b :any) => a.newConfirmed -b.newConfirmed,
           sortOrder: sortedInfo.columnKey==='newConfirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -233,7 +233,7 @@ class Stats extends Component <{}, IState> {
                                         {this.renderTableData()}
                                     </tbody>
                                 </table> */}
-                                <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 100 }} scroll={{ y: 1000 }} onChange={this.handleChange} />
+                                <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 100 }} scroll={{y: 1500}} onChange={this.handleChange} />
                           </div>
                     </div>
         

@@ -8,6 +8,7 @@ import Wiki from "../Wiki/wiki";
 import understandingCovid19 from "../Wiki/understandingCovid19/understandingCovid19";
 import AskandQuestion from "../Wiki/AskedAndQuestion/AskedandQuestion";
 import Direction from "../Direction/Direction";
+import PageYoutubeNews from '../YoutubeNews/PageYoutubeNews';
 import {
   BrowserRouter as Router,
   Route,
@@ -124,7 +125,7 @@ class Menu extends Component <{}, IStates>{
                     </NavLink>
                   </li>
                   <li className="active">
-                    <NavLink exact to="/news" className="my-link">
+                    <NavLink exact to="/youtubeNews" className="my-link">
                       NEWS
                     </NavLink>
                   </li>
@@ -162,6 +163,7 @@ class Menu extends Component <{}, IStates>{
           />
           <Route path="/wiki/AskandQuestion" exact component={AskandQuestion} />
           <Route path="/direction" exact component = {Direction} />
+          <Route path="/youtubeNews" exact component={PageYoutubeNews} />
         </Switch>
       </Router>
     );

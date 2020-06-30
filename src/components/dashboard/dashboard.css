@@ -1,4 +1,4 @@
-/* @import '~antd/dist/antd.css'; */
+@import '~antd/dist/antd.css';
 .navbar-brand {
     padding: 0px;
   }
@@ -31,20 +31,22 @@ ChartStats{
     padding: 5px !important;
 }
 .tableStats{
-    background-color: #161e2c;
+    /* background-color: #161e2c; */
     min-width: 100%;
 }
 
 .ant-table-body, .divtableStats {
-    background-color: #161e2c !important;
+    /* background-color: #161e2c !important;
+    height: 2500px !important; */
+    min-height: 1500px !important;
 }
 .ant-table-cell{
-    color: blue;
+    /* color: blue; */
     background-color: #333333;
 }
 .ant-table-body:hover {
     color: red
 }
 .TableThongKe{
-    min-width: 70%;
+    min-width: 100%;
 }

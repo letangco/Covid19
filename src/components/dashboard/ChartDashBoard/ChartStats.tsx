@@ -99,7 +99,7 @@ class ChartStats extends Component <{}, Istate>{
                 yaxis: {
                   tickAmount: 10,
                   min: 0,
-                  max: 10000000
+                  max: 12000000
                 },
                 colors: ['red', '#ccff33', '#ff9900'],
                 legend:{
