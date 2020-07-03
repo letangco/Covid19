@@ -4,9 +4,9 @@ import OptionState from './OptionState';
 class TableThongKe extends Component {
     render (){
         return (
-            <div>
-                <OptionState />
-            </div>
+            <>
+            <OptionState />
+            </>
         );
     }
 }
