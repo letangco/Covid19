@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CountUp from 'react-countup';
-import Moment from 'react-moment';
+import { ReactSVG } from 'react-svg';
 import './QuickFact.css';
+import Live from '../image/Live-1.gif';
+import Patient from '../image/patient.png';
+import Virus from '../image/virus.png';
+import Recovered from '../image/recover.jpg';
 interface Iprops {
 
 }
 interface IState {
-    timeUpdate: 'Sun Jun 07 2020',
     totalConfirmed: 0,
     totalDeath: 0,
     totalRecovered: 0,
@@ -17,7 +20,6 @@ interface IState {
 }
 class QuickFact extends Component {
     state = {
-        timeUpdate: 'Sun Jun 07 2020',
         totalConfirmed: 0,
         totalDeath: 0,
         totalRecovered: 0,
@@ -47,14 +49,7 @@ class QuickFact extends Component {
                     totalActiveCase: totalActiveCase
                 })
             }).catch(error => console.log(error));
-        // Get TimeUpdates
-        axios.get('https://api.covid19api.com/total/dayone/country/south-africa')
-            .then(res => {
-                // console.log(res.data[res.data.length-1].Date);
-                this.setState({
-                    timeUpdate: res.data[res.data.length - 1].Date
-                })
-            })
+
     }
     // componentDidMount(value){
     //     this.props.receiveData()
@@ -63,105 +58,86 @@ class QuickFact extends Component {
         console.log(value)
     }
     render() {
-        var { totalConfirmed, totalDeath, totalRecovered, timeUpdate, totalNewCase, totalNewDeathCase, totalActiveCase } = this.state;
+        var { totalConfirmed, totalDeath, totalRecovered, totalNewCase, totalNewDeathCase, totalActiveCase } = this.state;
         return (
-            <div className="panel panel-danger">
-                <div className="panel-heading">
-                    <h1 className="panel-title">QUICK FACT</h1>
-                    {/* {Sử dụng Library React-Moment để chuyển ngày} */}
-                    <span className="label label-warning">Updated at: <Moment format="h:mm:ss dddd YYYY/MM/DD">{timeUpdate}</Moment></span>
+
+            <div className="container">
+                    <div className="row">
+                        <div className="title-quick-fact">
+                            <div>
+                                <span>Totals <img src={Live} alt="Live" width="40px" /></span>
+                                <p><i className="fa fa-bullhorn" > specific country data may be delayed</i></p>
+                                <div className="skills">
+                                    <hr className="hr-text" data-content="QUICK FACT COVID-19 Tracker" />
+                                </div>
+                                {/* <hr className="fade-2"></hr> */}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row card-quick-fact">
+                        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 card-item-quickFact">
+                            <div className="card_content_quickFact">
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 borderBot">
+                                    <p>
+                                        Confirmed Cases <img src={Patient} width="40px" alt="TotalConfirmed"/>
+                                </p>
+                                </div>
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <p>Total Confirmed</p>
+                                        <p className="value-totalConfirmed"><CountUp start={0} end={totalConfirmed} duration={3} separator="," /></p>
+                                        
+                                    </div>
+                                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <p>New Confirmed today</p>
+                                        <p className="value-newConfirmed"><CountUp start={0} end={totalNewCase} duration={3} separator="," /></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 card-item-quickFact">
+                            <div className="card_content_quickFact">
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 borderBot">
+                                    <p>
+                                        Death Cases <img src={Virus} alt="logoCorona" width="50px"/>
+                                </p>
+                                </div>
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <p>Total Death</p>
+                                        <p className="value-total-DeathsCase"><CountUp start={0} end={totalDeath} duration={3} separator="," /></p>
+                                    </div>
+                                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <p>New Death today</p>
+                                        <p className='value-total-new-DeathsCase'><CountUp start={0} end={totalNewDeathCase} duration={3} separator="," /></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 card-item-quickFact">
+                            <div className="card_content_quickFact">
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 borderBot">
+                                    <p>
+                                        Recovered Case <img src={Recovered} alt="Recovered" width="50px"/>
+                                </p>
+                                </div>
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <p>Total Recovered</p>
+                                        <p className="value-total-RecoveredCases"><CountUp start={0} end={totalRecovered} duration={3} separator="," /></p>
+                                    </div>
+                                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <p>Total Active Case</p>
+                                        <p className="value-total-active-cases"><CountUp start={0} end={totalActiveCase} duration={3} separator="," /></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div className="panel-body">
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div className="panel panel-primary confirmed">
-                            <div className="panel-heading">
-                                <h3>Confirmed Case</h3>
-                            </div>
-                            <div className="panel-body">
-                                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <h5>Total Confirmed</h5>
-                                    <h1>
-                                        <span className="label label-primary">
-                                            <CountUp start={0} end={totalConfirmed} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                </div>
-
-                                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <h5>New Confirmed today</h5>
-                                    <h1>
-                                        <span className="label label-primary">
-                                            <CountUp start={0} end={totalNewCase} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div className="panel panel-danger death">
-                            <div className="panel-heading">
-                                <h3>Death Cases</h3>
-                            </div>
-                            <div className="panel-body">
-
-                                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <h5>Total Death</h5>
-                                    <h1>
-                                        <span className="label label-danger">
-                                            <CountUp start={0} end={totalDeath} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                </div>
-
-                                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <h5>New Death today</h5>
-                                    <h1>
-                                        <span className="label label-danger">
-                                            <CountUp start={0} end={totalNewDeathCase} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div className="panel panel-success recovered">
-                            <div className="panel-heading">
-                                <h3>Recovered Case</h3>
-                            </div>
-                            <div className="panel-body">
-
-                                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <h5>Total Recovered</h5>
-                                    <h1>
-                                        <span className="label label-success">
-                                            <CountUp start={0} end={totalRecovered} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-
-                                </div>
-
-                                <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <h5>Total Active Case</h5>
-                                    <h1>
-                                        <span className="label label-success">
-                                            <CountUp start={0} end={totalActiveCase} duration={3} separator="," />
-                                        </span>
-                                    </h1>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         );
     }
 }

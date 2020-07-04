@@ -1,33 +1,33 @@
 
-.navbar-brand {
-    padding: 0px;
-  }
-.navbar-brand>img {
-    height: 100%;
-    padding: 5px;
-    width: auto;
-    margin: 0px 10px 0px 10px;
-}
-
-.navbar{
-    background-color:	rgb(32,32,32);
-    margin: 0px;
-    padding: 0px;
-}
-.navbar .navbar-header{
-    background-color: white;
-}
-body{
-    background-color: rgba(28, 30, 32, 0.658);
-}
 .active {
     background-color: snow !important;
     color: red !important;
     font-weight: bold;
 }
-.MenuToggle{
+/* .MenuToggle{
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: 1000;
+} */
+/* .navbar {
+    background-color: ivory !important;
+    min-height: 120px;
+} */
+#navbar4{
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ccd4d9;
+}
+
+.navbar-brand>img {
+    height: 120%;
+    width: auto;
+    margin: 0px 10px 0px 10px;
+}
+@media only screen and (max-width: 768px) {
+    .navbar-brand>img{
+        height: 103%;
+        width: auto;
+        margin: 0px 10px 0px 10px;
+    }
 }

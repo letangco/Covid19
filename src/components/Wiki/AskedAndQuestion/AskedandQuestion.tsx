@@ -27,7 +27,7 @@ class AskandQuestion extends Component<{}, IState> {
   {
     {
       if (value === this.state.select)
-        return "itemNew active";
+        return "itemNew activeNew";
         // console.log("col-xs-12 col-sm-12 col-md-12 col-lg-12 action")
       else
         // console.log("col-xs-12 col-sm-12 col-md-12 col-lg-12 ")

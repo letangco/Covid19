@@ -1,52 +1,14 @@
 @import '~antd/dist/antd.css';
+.background-dashboard{
+    background-color: #f1f5f8;
+}
 .navbar-brand {
     padding: 0px;
   }
-.navbar-brand>img {
-    height: 100%;
-    padding: 5px;
-    width: auto;
-    margin: 0px 10px 0px 10px;
-}
-
-.navbar{
-    background-color:	rgb(32,32,32);
-    margin: 0px;
-    padding: 0px;
-}
-.navbar .navbar-header{
-    background-color: white;
-}
-body{
-    background-color: rgba(28, 30, 32, 0.658);
-}
 ChartStats{
     padding: 0px;
     margin:  0px;
 }
 .stats{
     padding: 0px;
-}
-.chartStats{
-    padding: 5px !important;
-}
-.tableStats{
-    /* background-color: #161e2c; */
-    min-width: 100%;
-}
-
-.ant-table-body, .divtableStats {
-    /* background-color: #161e2c !important;
-    height: 2500px !important; */
-    min-height: 1500px !important;
-}
-.ant-table-cell{
-    /* color: blue; */
-    background-color: #333333;
-}
-.ant-table-body:hover {
-    color: red
-}
-.TableThongKe{
-    min-width: 100%;
 }

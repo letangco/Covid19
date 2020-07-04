@@ -86,7 +86,6 @@ class understandingCovid19 extends Component {
               </ul>
             </div>
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                {/* <video src=""></video> */}
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/BtulL3oArQw"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
             </div>
@@ -112,7 +111,7 @@ class understandingCovid19 extends Component {
                     </p>
                     </div>
                 </div>
-                <span className="border"></span>
+                <span className="borderDiv"></span>
                 <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 flexJohnsHopkins">
                   <div className="johnsHopkins">
                   <img src={JonHokin} alt="jonhokin" width="60%"/>

@@ -29,7 +29,7 @@ import {
   faShieldVirus,
   faChevronCircleRight,
   faLink,
-  faArrowCircleRight,
+  faArrowCircleRight
 } from "@fortawesome/free-solid-svg-icons";
 import cold from "../../image/cold.png";
 import vomiting from "../../image/vomitting.png";
@@ -48,11 +48,10 @@ class ContentWiki extends Component {
         <Switch>
           <Route
             path="/wiki/Covid19Pandemic"
-            exact
             component={understandingCovid19}
           />
           <Route path="/wiki/AskandQuestion" exact component={AskandQuestion} />
-          <div className="container-fluid">
+          <div className="container-fluid wikiContent">
             <div className="container">
               <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 divTitle">
@@ -74,7 +73,7 @@ class ContentWiki extends Component {
                       <h3>COVID-19 Basics</h3>
                     </div>
                   </div>
-                  <span className="borderTitle"></span>
+                  <span className="borderTitleContentWiki"></span>
                   <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 lblLearnMore">
                     <div>
                       <FontAwesomeIcon

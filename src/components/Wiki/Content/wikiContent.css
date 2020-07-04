@@ -1,4 +1,4 @@
-body{
+.wikiContent{
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-weight: 400;
   background-color: #4b5a81;
@@ -117,10 +117,10 @@ body{
   .lblLearnMore h4 {
     color: aliceblue;
   }
-  .borderTitle{
+  .borderTitleContentWiki{
     position: absolute;
     height: 95px;
-    margin-left: -2%;
+    margin-left: -66%;
     border: 3px solid aqua;
   }
 .information h1{

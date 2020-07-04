@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./menu.css";
-import logo from "../image/covid19.png";
+// import logo from "../image/covid19.png";
+import { faChartLine, faGlobeAmericas, faVial, faRoute, faBookMedical, faVideo, faRocket } from '@fortawesome/free-solid-svg-icons'
+import Logo2 from '../image/LogoCoronaVirus.jpg';
 import Map from "../mapDistribute/map";
 import Dashboard from "../dashboard/dashboard";
 import CalculatorRate from "../CalculatorRate/calculatorRate";
@@ -9,148 +11,123 @@ import understandingCovid19 from "../Wiki/understandingCovid19/understandingCovi
 import AskandQuestion from "../Wiki/AskedAndQuestion/AskedandQuestion";
 import Direction from "../Direction/Direction";
 import PageYoutubeNews from '../YoutubeNews/PageYoutubeNews';
+import TimeUpdate from './TimeUpdates';
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
   Switch
 } from "react-router-dom";
-interface IStates{
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+interface IStates {
   isOpen: boolean
 }
-class Menu extends Component <{}, IStates>{
-  constructor(props:any)
-  {
-    super (props);
-    this.state={
+class Menu extends Component<{}, IStates>{
+  constructor(props: any) {
+    super(props);
+    this.state = {
       isOpen: false
     }
   }
   render() {
-  var isOpen :any = this.state.isOpen;
-   function showMenuToggle()
-  {
-    if ( isOpen === true)
-        {
-            return (
-                <div className="dropdown">
-                    <ul>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Guidelines</a></li>
-                        <li><a href="#">Exchange</a></li>
-                        <li><a href="#">Forum</a></li>
-                    </ul>
-                </div>
-            );
-        }
-        return null;
-  }
+    var isOpen: any = this.state.isOpen;
+    function showMenuToggle() {
+      if (isOpen === true) {
+        return (
+          <div className="dropdown">
+            <ul>
+              <li><a href="#">News</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Guidelines</a></li>
+              <li><a href="#">Exchange</a></li>
+              <li><a href="#">Forum</a></li>
+            </ul>
+          </div>
+        );
+      }
+      return null;
+    }
     return (
       <Router>
-        <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <nav className="navbar navbar-default">
-              <div className="navbar-header">
-                <button
-                  type="button"
-                  className="navbar-toggle collapsed"
-                  data-toggle="collapse"
-                  data-target="#navbar4"
-                  onClick={()=>{this.setState({isOpen:true})}}
-                >
-                  {/* <span className="sr-only">Toggle navigation</span>
+        <nav className="navbar-expand-sm bg-light navbar-light justify-content-between">
+          <div className="navbar-header">
+            <button
+              type="button"
+              className="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#navbar4"
+              onClick={() => { this.setState({ isOpen: true }) }}
+            >
+              {/* <span className="sr-only">Toggle navigation</span>
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span> */}
-                  {showMenuToggle()}
+              {showMenuToggle()}
 
-                </button>
-                <NavLink to="/" className="navbar-brand">
-                  <img src={logo} alt="DisputeBills" />
-                </NavLink>
-              </div>
-              <div id="navbar4" className="navbar-collapse collapse">
-                <ul className="nav navbar-nav">
-                  <li className="active">
-                    <NavLink exact to="/" className="my-link">
-                      DASHBOARD
-                    </NavLink>
-                  </li>
-
-                  <li className="active">
-                    <NavLink exact to="/map" className="my-link">
-                      MAP
-                    </NavLink>
-                  </li>
-                  <li className="dropdown active">
-                    <NavLink
-                      exact
-                      to="/calculatorRate"
-                      className="dropdown-toggle"
-                      data-toggle="dropdown"
-                      role="button"
-                      aria-expanded="false"
-                    >
-                      CALCULATOR RATE <span className="caret"></span>
-                    </NavLink>
-                    <ul className="dropdown-menu" role="menu">
-                      <li>
-                        <a href="a">Action</a>
-                      </li>
-                      <li>
-                        <a href="a">Another action</a>
-                      </li>
-                      <li>
-                        <a href="a">Something else here</a>
-                      </li>
-                      <li className="divider"></li>
-                      <li className="dropdown-header">Nav header</li>
-                      <li>
-                        <a href="a">Separated link</a>
-                      </li>
-                      <li>
-                        <a href="a">One more separated link</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="active">
-                    <NavLink exact to ="/direction" className = "my-link">
-                      DIRECTION
-                    </NavLink>
-                  </li>
-                  <li className="active">
-                    <NavLink exact to="/wiki" className="my-link">
-                      WIKI COVID 19
-                    </NavLink>
-                  </li>
-                  <li className="active">
-                    <NavLink exact to="/youtubeNews" className="my-link">
-                      NEWS
-                    </NavLink>
-                  </li>
-                </ul>
-                <form
-                  className="navbar-form navbar-right"
-                  action="/action_page.php"
-                >
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Search"
-                    />
-                    <div className="input-group-btn">
-                      <button className="btn btn-primary" type="submit">
-                        <i className="glyphicon glyphicon-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </nav>
+            </button>
+            <NavLink to="/" className="navbar-brand">
+              <img src={Logo2} alt="DisputeBills" />
+            </NavLink>
           </div>
-        </div>
+          <div id="navbar4" className="navbar-collapse collapse">
+            <ul className="nav navbar-nav">
+              <li className="active">
+                <NavLink exact to="/" className="my-link">
+                  <FontAwesomeIcon icon={faChartLine} size="2x" /> DASHBOARD
+                    </NavLink>
+              </li>
+
+              <li className="active">
+                <NavLink exact to="/map" className="my-link">
+                  <FontAwesomeIcon icon={faGlobeAmericas} size="2x" /> MAP
+                </NavLink>
+              </li>
+              <li className="active">
+                <NavLink
+                  exact
+                  to="/calculatorRate"
+                  className="my-link"
+                >
+                  <FontAwesomeIcon icon={faVial} size="2x" /> CALCULATOR RATE
+                </NavLink>
+              </li>
+              <li className="active">
+                <NavLink exact to="/direction" className="my-link">
+                  <FontAwesomeIcon icon={faRoute} size="2x" /> DIRECTION
+                    </NavLink>
+              </li>
+              <li className="active">
+                <NavLink exact to="/wiki" className="my-link">
+                  <FontAwesomeIcon icon={faBookMedical} size="2x" /> WIKI COVID 19
+                    </NavLink>
+              </li>
+              <li className="active">
+                <NavLink exact to="/youtubeNews" className="my-link">
+                  <FontAwesomeIcon icon={faVideo} size='2x' />  NEWS
+                    </NavLink>
+              </li>
+              <li className="active">
+                <NavLink exact to="/Source" className="my-link">
+                  {/* <i class="fa fa-font-awesome" aria-hidden="true"></i> */}
+                  <FontAwesomeIcon icon={faRocket} size='2x' />  SOURCE
+                    </NavLink>
+              </li>
+              <ul className="navbar-nav ml-auto">
+                <li className="flex">
+                  <div>
+                    <TimeUpdate />
+                  </div>
+                </li>
+              </ul>
+            </ul>
+
+          </div>
+
+
+
+        </nav>
+
+
         <Switch>
           <Route path="/" exact component={Dashboard} />
           <Route path="/map" exact component={Map} />
@@ -162,7 +139,7 @@ class Menu extends Component <{}, IStates>{
             component={understandingCovid19}
           />
           <Route path="/wiki/AskandQuestion" exact component={AskandQuestion} />
-          <Route path="/direction" exact component = {Direction} />
+          <Route path="/direction" exact component={Direction} />
           <Route path="/youtubeNews" exact component={PageYoutubeNews} />
         </Switch>
       </Router>

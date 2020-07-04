@@ -22,24 +22,23 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container-fluid background-dashboard">
                 <QuickFact />
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-                <div className="row">
-                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <div className="row  chartStats">
-                            <ChartStats />
+                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <ChartStats />
+                            </div>
+                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <PieChartStats />
+                            </div>
+                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <MapVietNam />
+                            </div>
                         </div>
-                        <div className="row  chartStats">
-                            <PieChartStats />
-                        </div>
-                        <div className="row  chartStats">
-                            <MapVietNam />
-                        </div>
-                    </div>
-                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-
-                        <div className="row TableThongKe">
+                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8">
                             <TableThongKe />
                         </div>
                     </div>

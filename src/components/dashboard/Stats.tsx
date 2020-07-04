@@ -237,7 +237,7 @@ class Stats extends Component<{}, IState> {
           dataSource={data2}
           loading={this.state.loading}
           // pagination={{ pageSize: 50 }}
-          y-scroll={{ y: 500 }}
+          // y-scroll={{ y: 500 }}
           onChange={this.handleChange}
         />
 

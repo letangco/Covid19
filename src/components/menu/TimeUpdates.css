@@ -1,0 +1,22 @@
+.ml-auto, .mx-auto {
+    margin-left: auto!important;
+    list-style: none;
+}
+.flex{
+    display: inline-flex;
+}
+.ml-auto{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1.3em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 5.5em;
+}
+.flex div {
+    font-size: large;
+}
+.updateAt p{
+    font-size: 15px !important;
+}

@@ -1,9 +1,173 @@
-.panel-body {
-    padding: 5px;
-    text-align: center;
+.title-quick-fact {
+  margin: 5px 50px 10px 50px;
+  text-align: center;
 }
-.panel-heading{
-    text-align: center;
-    padding-bottom: 0px;
-    height: auto;
+.title-quick-fact span {
+  font-family: "Lato", Arial, Helvetica;
+  font-size: 3em;
+  box-sizing: border-box;
+  width: auto;
+  line-height: 5px;
+  margin-left: 55px;
 }
+.title-quick-fact span img {
+  margin-left: -55px;
+  width: 4em;
+}
+.title-quick-fact div p {
+  margin-top: -15px;
+}
+.title-quick-fact div p i {
+  color: rgb(155, 44, 66);
+}
+*:before,
+*:after {
+  content: "";
+}
+hr {
+  border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+}
+.fade-2 {
+  border-width: 0 0 1px;
+  color: skyblue;
+  border-image: linear-gradient(
+      90deg,
+      rgba(skyblue, 0),
+      rgba(skyblue, 1) 50%,
+      rgba(skyblue, 0) 100%
+    )
+    0 0 100%;
+  border-style: solid;
+}
+.skills {
+  padding: 0px;
+  margin-top: 0px;
+}
+.hr-text {
+  font-size: 2em;
+  font-weight: bold;
+  position: relative;
+  border: 0;
+  height: 1.5em;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+}
+.hr-text:before {
+  content: "";
+  background: linear-gradient(to right, transparent, #4a00e0, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+.hr-text:after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: black;
+
+  padding: 0 0.5em;
+  line-height: 1.5em;
+  color: #13015c;
+  background-color: #f1f5f8;
+}
+/* .card-item-quickFact {
+  border-radius: 1em;
+} */
+.card-item-quickFact:nth-child(1),
+.card-item-quickFact:nth-child(3) {
+  margin: 0px;
+  padding: 0px 21px 30px 21px;
+}
+.card-item-quickFact:nth-child(2) {
+  margin: 0px;
+  padding: 0px 20px 30px 20px;
+}
+.card-item-quickFact div {
+  text-align: center;
+  background-color: rgb(233, 224, 251);
+  margin: 0px;
+  padding: 0px;
+}
+.card_content_quickFact .borderBot {
+  border-bottom: 1px solid tomato;
+}
+.card_content_quickFact > div:nth-child(1) p {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  font-family: Arial, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+.value-newConfirmed {
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-size: 55px;
+  font-weight: bold;
+  color: #fb3958;
+  margin: 0px;
+}
+.value-totalConfirmed {
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-size: 55px;
+  font-weight: bold;
+  color: red;
+  margin: 0px;
+}
+.value-total-DeathsCase {
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-size: 55px;
+  font-weight: bold;
+  color: orange;
+  margin: 0px;
+}
+.value-total-new-DeathsCase {
+  color: rgb(250, 187, 0);
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-size: 55px;
+  font-weight: bold;
+  margin: 0px;
+}
+.value-total-RecoveredCases {
+  color: rgb(6, 192, 15);
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-size: 55px;
+  font-weight: bold;
+  margin: 0px;
+}
+.value-total-active-cases {
+  color: rgb(99, 238, 146);
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-size: 55px;
+  font-weight: bold;
+  margin: 0px;
+}
+@media only screen and (max-width: 441px) {
+  .hr-text {
+    font-size: 0.8em;
+    font-weight: bold;
+    position: relative;
+    border: 0;
+    height: 1.5em;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  }
+}
+@media only screen and (max-width: 985px) {
+  .card-item-quickFact:nth-child(1),
+  .card-item-quickFact:nth-child(3),
+  .card-item-quickFact:nth-child(2) {
+    margin: 0px;
+    padding: 0px 30px 0px 30px;
+    padding-bottom: 15px;
+  }
+}
+
+
