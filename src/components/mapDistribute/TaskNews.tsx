@@ -13,10 +13,10 @@ import './styleNews.css';
 // Khai bao de nhan thuoc tinh props tu News
 type IProps = {
   sendData: any[];
-  sendKeyWord:"511"
+  sendKeyWord: "511"
 };
 interface IState {
-  
+
 }
 class TaskNews extends Component<IProps, IState> {
   // componentDidMount() {
@@ -29,14 +29,14 @@ class TaskNews extends Component<IProps, IState> {
   //   };
   //   fetchMyAPI();
   // }
-  renderItem=(data: any[]) => {
+  renderItem = (data: any[]) => {
     return data.map((item: any, index: any) => {
-      
+
       return (
         <TimelineItem key={index}>
           <TimelineSeparator>
             <TimelineDot variant="outlined" />
-            <TimelineConnector/>
+            <TimelineConnector />
           </TimelineSeparator >
           <TimelineContent>{item.title}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
         </TimelineItem>
@@ -48,13 +48,13 @@ class TaskNews extends Component<IProps, IState> {
       var i: any = index.toString();
       return (
         <TreeView
-        key = {index}
+          key={index}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           multiSelect
         >
           <TreeItem nodeId={i + 1} label={item.title} >
-            
+
             <Timeline align="left">
               {/* <TimelineItem>
                         <TimelineSeparator>
@@ -65,7 +65,7 @@ class TaskNews extends Component<IProps, IState> {
                           {this.renderItem(item.updates)}
                         </TimelineContent>
                     </TimelineItem> */}
-                {this.renderItem(item.updates)}
+              {this.renderItem(item.updates)}
             </Timeline>
           </TreeItem>
         </TreeView>
@@ -73,68 +73,65 @@ class TaskNews extends Component<IProps, IState> {
     });
   }
   renderFilterTimeLine = (data: any[]) => {
-    var keyword :string = this.props.sendKeyWord.toLowerCase();
+    var keyword: string = this.props.sendKeyWord.toLowerCase();
     return data.map((item: any, index: any) => {
       var i: any = index.toString();
       return (
         <TreeView
-        key = {index}
+          key={index}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           multiSelect
         >
           <TreeItem nodeId={i + 1} label={item.title} >
-            
+
             <Timeline align="left">
               {/* {this.renderFilterItem(item.updates, keyword)} */}
-              { 
-                item.updates.map((item:any, index:number) => {
-                    if(item.title.toLowerCase().indexOf(keyword) !== -1)
-                    {
-                        console.log(item.title, keyword);
-                      return  <TimelineItem key={index}>
-                          <TimelineSeparator>
-                            <TimelineDot variant="outlined" />
-                            <TimelineConnector />
-                          </TimelineSeparator >
-                          <TimelineContent>{JSON.stringify(item.title)}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
-                        </TimelineItem>;
-                    }
-                    else{
-                      return (<></>);
-                    }
+              {
+                item.updates.map((item: any, index: number) => {
+                  if (item.title.toLowerCase().indexOf(keyword) !== -1) {
+                    console.log(item.title, keyword);
+                    return <TimelineItem key={index}>
+                      <TimelineSeparator>
+                        <TimelineDot variant="outlined" />
+                        <TimelineConnector />
+                      </TimelineSeparator >
+                      <TimelineContent>{JSON.stringify(item.title)}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
+                    </TimelineItem>;
                   }
+                  else {
+                    return (<></>);
+                  }
+                }
                 )
               }
             </ Timeline>
           </TreeItem>
         </TreeView>
       );
-      
+
     });
   }
-  renderFilterItem = (data:any [], keyword:any) =>
-  {
-    return data.filter((item:any, index:any) => {
-      if(item.title.toLowerCase().indexOf(keyword.toLowerCase())!==-1)
-        {
-          console.log(item.title)
-          return (
-              <TimelineItem key={index}>
-                <TimelineSeparator>
-                  <TimelineDot variant="outlined" />
-                  <TimelineConnector />
-                </TimelineSeparator >
-                <TimelineContent>{JSON.stringify(item.title)}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
-              </TimelineItem>
-          )
-        }
-        return 0;
+  renderFilterItem = (data: any[], keyword: any) => {
+    return data.filter((item: any, index: any) => {
+      if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
+        console.log(item.title)
+        return (
+          <TimelineItem key={index}>
+            <TimelineSeparator>
+              <TimelineDot variant="outlined" />
+              <TimelineConnector />
+            </TimelineSeparator >
+            <TimelineContent>{JSON.stringify(item.title)}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
+          </TimelineItem>
+        )
+      }
+      return 0;
     })
   }
   render() {
-    var keyword : any =this.props.sendKeyWord;
-    var data: any =this.props.sendData;
+    var keyword: any = this.props.sendKeyWord;
+    var data: any = this.props.sendData;
     // if (keyword)
     // {
     //   this.renderTimeLine(data);
@@ -143,18 +140,9 @@ class TaskNews extends Component<IProps, IState> {
     //   this.renderFilterItem(data, keyword);
     // }
     return (
-      <div className="panel panel-info">
-        <div className="panel-heading">
-          <h3 className="panel-title">
-            <i className="fa fa-calendar" aria-hidden="true"></i> Event Timeline
-            (GMT)
-          </h3>
-        </div>
-        <div className="panel-body">
-          {/* {this.renderTimeLine(this.props.sendData)} */}
-          {(keyword==="") ? this.renderTimeLine(data): this.renderFilterTimeLine(data)}
-        </div>
-      </div>
+      <>
+        {(keyword === "") ? this.renderTimeLine(data) : this.renderFilterTimeLine(data)}
+      </>
     );
   }
 }

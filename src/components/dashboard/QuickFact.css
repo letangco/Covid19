@@ -24,25 +24,6 @@
 *:after {
   content: "";
 }
-hr {
-  border: 0;
-  margin: 1.35em auto;
-  max-width: 100%;
-  background-position: 50%;
-  box-sizing: border-box;
-}
-.fade-2 {
-  border-width: 0 0 1px;
-  color: skyblue;
-  border-image: linear-gradient(
-      90deg,
-      rgba(skyblue, 0),
-      rgba(skyblue, 1) 50%,
-      rgba(skyblue, 0) 100%
-    )
-    0 0 100%;
-  border-style: solid;
-}
 .skills {
   padding: 0px;
   margin-top: 0px;
@@ -77,13 +58,21 @@ hr {
   color: #13015c;
   background-color: #f1f5f8;
 }
-/* .card-item-quickFact {
-  border-radius: 1em;
-} */
+.card-content-quickFact{
+  border-radius: 20px;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12) !important;
+  height: 350px;
+}
 .card-item-quickFact:nth-child(1),
 .card-item-quickFact:nth-child(3) {
   margin: 0px;
-  padding: 0px 21px 30px 21px;
+  padding: 0px 20px 30px 20px;
 }
 .card-item-quickFact:nth-child(2) {
   margin: 0px;
@@ -91,20 +80,9 @@ hr {
 }
 .card-item-quickFact div {
   text-align: center;
-  background-color: rgb(233, 224, 251);
+  background-color: rgb(212, 211, 212);
   margin: 0px;
   padding: 0px;
-}
-.card_content_quickFact .borderBot {
-  border-bottom: 1px solid tomato;
-}
-.card_content_quickFact > div:nth-child(1) p {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  margin-bottom: 0px;
-  font-family: Arial, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
 }
 .value-newConfirmed {
   font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
@@ -113,12 +91,24 @@ hr {
   color: #fb3958;
   margin: 0px;
 }
+.card-content-quickFact .shadow-number-value{
+/* background: #2ec194; */
+  border-radius: 5px;
+  width: auto;
+  box-shadow: -15px -15px 15px rgba(255,255,255,0.363),
+              -15px 15px 15px rgba(0 ,0,0,0.05),
+              inset -5px -5px 5px  rgba(255, 255, 255, 0.363),
+              inset 5px 5px 5px  rgba(0 ,0,0,0.1);
+  margin: 0 10% 10px 10%;
+}
+
 .value-totalConfirmed {
   font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
   font-size: 55px;
   font-weight: bold;
   color: red;
   margin: 0px;
+  padding:0px;
 }
 .value-total-DeathsCase {
   font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
@@ -148,9 +138,29 @@ hr {
   font-weight: bold;
   margin: 0px;
 }
-@media only screen and (max-width: 441px) {
+@media only screen and (min-width: 200px) and (max-width: 735px) {
   .hr-text {
-    font-size: 0.8em;
+    font-size: 1em;
+    font-weight: bold;
+    position: relative;
+    border: 0;
+    height: 1.5em;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  }
+  .title-quick-fact span {
+    font-family: "Lato", Arial, Helvetica;
+    font-size: 2.6em;
+    box-sizing: border-box;
+    width: auto;
+    line-height: 5px;
+    margin-left: 50px;
+}
+}
+ @media only screen and (min-width: 735px) and (max-width: 750px) {
+  .hr-text {
+    font-size: 1.2em;
     font-weight: bold;
     position: relative;
     border: 0;
@@ -160,14 +170,55 @@ hr {
     font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
   }
 }
-@media only screen and (max-width: 985px) {
+@media only screen and (min-width:360px) and (max-width: 750px) {
   .card-item-quickFact:nth-child(1),
   .card-item-quickFact:nth-child(3),
   .card-item-quickFact:nth-child(2) {
     margin: 0px;
-    padding: 0px 30px 0px 30px;
+    padding: 0px 25px 0px 25px;
+    padding-bottom: 15px;
+  };
+}
+@media only screen and (min-width: 749px) and (max-width: 985px) {
+  .card-item-quickFact:nth-child(1),
+  .card-item-quickFact:nth-child(3),
+  .card-item-quickFact:nth-child(2) {
+    margin: 0px;
+    padding: 0px 50px 0px 50px;
     padding-bottom: 15px;
   }
 }
-
-
+.card-border-title{
+  min-height: 50px;
+  max-height: 55px;
+  box-sizing: border-box;
+  align-items: center;
+  padding-top: 10px;
+  font-family: "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-weight: bold;
+  font-size: x-large;
+}
+.fade-2 {
+  border: 0;
+  margin: 0.5em auto;
+  max-width: 75%;
+  background-position: 50%;
+  box-sizing: border-box;
+  border-width: 0 0 1.5px;
+  color: skyblue;
+  border-image: linear-gradient(
+      90deg,
+      rgba(skyblue, 0),
+      rgba(skyblue, 1) 50%,
+      rgba(skyblue, 0) 100%
+    )
+    0 0 100%;
+  border-style: solid;
+}
+.heading-quick-fact{
+  margin: 0px;
+  padding: 0px;
+  font-family:  "Book Antiqua", Verdana, Serif, Tahoma, Arial;
+  font-weight: initial;
+  font-size: 18px;
+}

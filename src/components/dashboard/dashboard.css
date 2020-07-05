@@ -1,14 +1,6 @@
-@import '~antd/dist/antd.css';
+ @import '~antd/dist/antd.css';
 .background-dashboard{
     background-color: #f1f5f8;
 }
-.navbar-brand {
-    padding: 0px;
-  }
-ChartStats{
-    padding: 0px;
-    margin:  0px;
-}
-.stats{
-    padding: 0px;
-}
+
+  

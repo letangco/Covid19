@@ -3,6 +3,7 @@ import axios from "axios";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { VectorMap } from "react-jvectormap";
 import News from "./News";
+import './StyleMap.css';
 // API "https://api.covid19api.com/all"
 interface Istate {
   isLoading: true;
@@ -130,31 +131,31 @@ class MapGeoChart extends Component<{}, Istate> {
       // hiển thị ra Map khi hover
       label.html(
         '<img src="' +
-          getFlagImgSrc(code) +
-          '" width="120" >' +
-          "<br />" +
-          label.html() +
-          " (" +
-          chkValue(code) +
-          ")" +
-          '<hr style="height: 1px"/><p style="color: red">Total Confirmed:' +
-          Confirmed[code] +
-          "</p> " +
-          '<p style="color: yellow">Total Death:' +
-          Death[code] +
-          "</p>" +
-          '<p style="color: #66ff66">Total Recovered:' +
-          Recovered[code] +
-          "</p>" +
-          '<p style="color:#ff6600">Total New Confirmed:' +
-          newConfirmed[code] +
-          "</p>" +
-          '<p style="color: #ff5050">Total New Death:' +
-          newDeath[code] +
-          "</p>" +
-          '<p style="color:#3366ff">Total New Recovered:' +
-          newRecovered[code] +
-          "</p>"
+        getFlagImgSrc(code) +
+        '" width="120" >' +
+        "<br />" +
+        label.html() +
+        " (" +
+        chkValue(code) +
+        ")" +
+        '<hr style="height: 1px"/><p style="color: red">Total Confirmed:' +
+        Confirmed[code] +
+        "</p> " +
+        '<p style="color: yellow">Total Death:' +
+        Death[code] +
+        "</p>" +
+        '<p style="color: #66ff66">Total Recovered:' +
+        Recovered[code] +
+        "</p>" +
+        '<p style="color:#ff6600">Total New Confirmed:' +
+        newConfirmed[code] +
+        "</p>" +
+        '<p style="color: #ff5050">Total New Death:' +
+        newDeath[code] +
+        "</p>" +
+        '<p style="color:#3366ff">Total New Recovered:' +
+        newRecovered[code] +
+        "</p>"
       );
     }
     var TempConfirmed: any = this.state.dataConfirmed;
@@ -173,14 +174,14 @@ class MapGeoChart extends Component<{}, Istate> {
         return (
           <VectorMap
             map="world_mill"
-            backgroundColor="#0071A4"
+            backgroundColor="#7289da"
             useRef={"map"}
             containerStyle={{
               width: "100%",
               height: "100%",
             }}
             containerClassName="map"
-            // scale ={ ['#99ff33','#669900','#ffcc00','#cc6600']}
+            scale ={ ['#ffd337','#669900','#ffcc00','#cc6600']}
             hoverOpacity={0.8}
             regionStyle={{
               hover: {
@@ -193,12 +194,18 @@ class MapGeoChart extends Component<{}, Istate> {
                 "stroke-opacity": 1,
               },
             }}
+            
             series={{
               regions: [
                 {
+                  attribute: 'fill',
                   values: TempConfirmed,
-                  scale: ["#ffcc00", "#cc6600", "#ff3300", "#ff0000"],
+                  scale: ['#C8EEFF', '#0071A4'],
                   normalizeFunction: "polynomial",
+                  legend: {
+                    vertical: true,
+                    title: 'Total Confirmed',
+                  }
                 },
               ],
             }}
@@ -209,98 +216,25 @@ class MapGeoChart extends Component<{}, Istate> {
     }
     // const classes = useStyles();
     return (
+
       <div className="container-fluid">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            
+            <div className="row" style={{ height: 700 }}>
               <News />
             </div>
-            <div
-              className="col-xs-9 col-sm-9 col-md-9 col-lg-9"
-              style={{ height: 700 }}
-            >
-              {LoadMap(isLoading)}
-              {/* <VectorMap
-                                    map='world_mill'
-                                    backgroundColor="#0071A4"
-                                    
-                                    useRef ={"map"}
-                                    containerStyle={{
-                                        width: '100%',
-                                        height: '100%'
-                                    }}
-                                    containerClassName="map"
-                                    scale ={ ['#99ff33','#669900','#ffcc00','#cc6600']}
-                                    hoverOpacity= {0.8}
-                                    regionStyle = {
-                                        {
-                                            hover: {
-                                            "fill-opacity": 0.8,
-                                            cursor: 'pointer'
-                                            },
-                                            selected: {
-                                               stroke: '#000',
-                                               "stroke-width": 1,
-                                               "stroke-opacity": 1
-                                            }
-                                         }
-                                    }
-                                    series= {
-                                        {
-                                            regions: [{
-                                                values: TempConfirmed,
-                                                scale: ['#ffcc00','#cc6600','#ff3300', '#ff0000'],
-                                                normalizeFunction: 'polynomial'
-                                              }]
-                                        }
-                                      }
-                                      onRegionTipShow = {onRegionLabelShow}
-                                /> */}
-            </div>
+            
           </div>
-
-          {/* <div className="row">
-                        
-                        <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                            
-                        </div>
-                        
-                        <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                            <Chart 
-                                width={'100%'}
-                                height={'100%'}
-                                chartType="GeoChart"
-                                data={
-                                //     [
-                                //     ['Country', 'Popularity'],
-                                //     ['Germany', 200],
-                                //     ['United States', 300],
-                                //     ['Brazil', 400],
-                                //     ['Canada', 500],
-                                //     ['France', 600],
-                                //     ['RU', 700],
-                                // ]
-                                dataGeoMap
-                            }
-                            options={{
-                                
-                                colorAxis: { colors: ['#99ff66','#ccff33', '#ffcc00', '#ff9900','#cc3300'] },
-                                backgroundColor: '#32414e',
-                                datalessRegionColor: '#ff3300',
-                                defaultColor: '#f5f5f5',
-                              }}
-                                mapsApiKey="YOUR_KEY_HERE"
-                                rootProps={{ 'data-testid': '1' }}
-                            />
-                        </div>
-                        <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                            
-                        </div>
-                        
-                    </div>
-                     */}
-        </div>
+          <div
+            className="col-xs-12 col-sm-12 col-md-12 col-lg-9"
+          >
+            <div className="row" style={{ height: 710 }}>
+            {LoadMap(isLoading)}
+            </div>
+            
+          </div>
       </div>
+
     );
   }
 }

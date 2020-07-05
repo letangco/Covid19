@@ -127,7 +127,7 @@ class Stats extends Component<{}, IState> {
         title: 'Country',
         dataIndex: 'country',
         key: 'country',
-        width: 150,
+        width: 350,
         filters: [
           { text: 'VN', value: 'VietNam' },
           { text: 'B', value: 'A' },
@@ -141,7 +141,7 @@ class Stats extends Component<{}, IState> {
         title: 'Confirmed',
         dataIndex: 'confirmed',
         key: 'confirmed',
-        width: 100,
+        // width: 100,
         sorter: (a: any, b: any) => a.confirmed - b.confirmed,
         sortOrder: sortedInfo.columnKey === 'confirmed' && sortedInfo.order,
         ellipsis: true,
@@ -150,7 +150,7 @@ class Stats extends Component<{}, IState> {
         title: 'New Confirmed',
         dataIndex: 'newConfirmed',
         key: 'newConfirmed',
-        width: 110,
+        // width: 110,
         sorter: (a: any, b: any) => a.newConfirmed - b.newConfirmed,
         sortOrder: sortedInfo.columnKey === 'newConfirmed' && sortedInfo.order,
         ellipsis: true,
@@ -159,7 +159,7 @@ class Stats extends Component<{}, IState> {
         title: 'Death',
         dataIndex: 'death',
         key: 'death',
-        width: 100,
+        // width: 100,
         sorter: (a: any, b: any) => a.death - b.death,
         sortOrder: sortedInfo.columnKey === 'death' && sortedInfo.order,
         ellipsis: true
@@ -168,7 +168,7 @@ class Stats extends Component<{}, IState> {
         title: 'New Death',
         dataIndex: 'newDeath',
         key: 'newDeath',
-        width: 100,
+        // width: 100,
         sorter: (a: any, b: any) => a.newDeath - b.newDeath,
         sortOrder: sortedInfo.columnKey === 'newDeath' && sortedInfo.order,
         ellipsis: true,
@@ -177,7 +177,7 @@ class Stats extends Component<{}, IState> {
         title: 'Recovered',
         dataIndex: 'recovered',
         key: 'recovered',
-        width: 100,
+        // width: 100,
         sorter: (a: any, b: any) => a.recovered - b.recovered,
         sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
         ellipsis: true
@@ -186,7 +186,7 @@ class Stats extends Component<{}, IState> {
         title: 'Serious Cases',
         dataIndex: 'seriouscase',
         key: 'seriouscase',
-        width: 100,
+        // width: 100,
         sorter: (a: any, b: any) => a.seriouscase - b.seriouscase,
         sortOrder: sortedInfo.columnKey === 'seriouscase' && sortedInfo.order,
         ellipsis: true,
@@ -213,24 +213,8 @@ class Stats extends Component<{}, IState> {
       });
     }
     return (
-      <div>
+      <>
         <h4>World COVID-19 Stats</h4>
-
-        {/* <table className="table table-striped table-bordered table-sm" id="myTable">
-                          <thead>
-                              <tr>
-                                  <th className="th-sm">Country</th>
-                                  <th className="th-sm">Confirmed</th>
-                                  <th className="th-sm">Confirmed Today</th>
-                                  <th className="th-sm">Deaths</th>
-                                  <th className="th-sm">Deaths Today</th>
-                                  <th className="th-sm">Recovered</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              {this.renderTableData()}
-                          </tbody>
-                      </table> */}
         <Table
           className="tableStats"
           columns={columns1}
@@ -241,7 +225,7 @@ class Stats extends Component<{}, IState> {
           onChange={this.handleChange}
         />
 
-      </div>
+      </>
     );
   }
 }

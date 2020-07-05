@@ -5,7 +5,7 @@ class TableThongKe extends Component {
     render (){
         return (
             <>
-            <OptionState />
+                <OptionState />
             </>
         );
     }

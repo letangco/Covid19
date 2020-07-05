@@ -24,25 +24,20 @@ class Dashboard extends Component {
         return (
             <div className="container-fluid background-dashboard">
                 <QuickFact />
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <ChartStats />
-                            </div>
-                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <PieChartStats />
-                            </div>
-                            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <MapVietNam />
-                            </div>
-                        </div>
-                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8">
-                            <TableThongKe />
-                        </div>
-                    </div>
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                    <ChartStats />
                 </div>
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                    <PieChartStats />
+                </div>
+                {/* <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                    <MapVietNam />
+                </div>  */}
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                    <TableThongKe />
+                </div>
+
             </div>
         );
     }
