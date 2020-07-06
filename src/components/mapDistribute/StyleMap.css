@@ -1,8 +1,77 @@
-.jvectormap-tip{
-    background-color: khaki;
-    width: 180px;
+.jvectormap-tip {
+    position: absolute;
+    border: none;
+    border-radius: 6px;
+    /* background: rgba(230, 218, 198, 0.904); */
+    background-color: whitesmoke;
+    /* color: #DFDFEF; */
+    /* color: red; */
+    font-family: sans-serif, Verdana;
+    font-size: small;
+    padding: 10px;
+    width: 200px;
+    pointer-events: none;
+    font-weight: 600;
+    z-index: 2000;
+    text-align: center;
+}
+.jvectormap-tip p{
+    color: rgb(63, 8, 189);
+    font-size: larger;
+    padding: 0px;
+    margin: 0px;
 }
 .jvectormap-tip img{
     width: 120px;
     height: 80px;
+}
+
+.jvectormap-tip table{
+    text-align: left;
+    align-items: center;
+}
+.jvectormap-tip table tr td:nth-child(1){
+    margin-left: 7%;
+}
+.jvectormap-tip table tr td:nth-child(2){
+    padding-left: 10%;
+}
+.jvectormap-tip table tbody tr:nth-child(1) td{
+    color: red;
+}
+.jvectormap-tip table tbody tr:nth-child(3) td{
+    color: darkgreen;
+}
+.jvectormap-tip table tbody tr:nth-child(2) td{
+    color: #FF9D00;
+}
+.jvectormap-tip table tbody tr:nth-child(4) td{
+    color: #F65164;
+}
+.jvectormap-tip table tbody tr:nth-child(5) td{
+    color: #e6e600;
+}
+.jvectormap-tip table tbody tr:nth-child(6) td{
+    color:  #0066ff;
+}
+.jvectormap-legend-cnt-v{
+    width: 140px;
+    top: 60%;
+    left: 0;
+    z-index: 9999;
+    padding-left: 5px;
+    margin: 0px;
+}
+.jvectormap-legend {
+    background: whitesmoke;
+    color: black;
+    border-radius: 3px;
+}
+.jvectormap-legend-inner{
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+.jvectormap-legend-tick-text{
+    margin-left: 5px;
+    font-size: 12px;
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { VectorMap } from "react-jvectormap";
 import News from "./News";
+import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
 import './StyleMap.css';
 // API "https://api.covid19api.com/all"
 interface Istate {
@@ -98,19 +99,25 @@ class MapGeoChart extends Component<{}, Istate> {
   }
 
   render() {
-    let chkValue = (val1: any): any => {
-      var x;
-      if (typeof val1 === "undefined") {
-        x = 0;
-        // return 0;
-      } else {
-        x = val1;
-        // return val1;
+    // let chkValue = (val1: any): any => {
+    //   var x;
+    //   if (typeof val1 === "undefined") {
+    //     x = 0;
+    //     // return 0;
+    //   } else {
+    //     x = val1;
+    //     // return val1;
+    //   }
+    //   // console.log(x)
+    //   return x;
+    // };
+    function nThousand(x: any) {
+      if (x === undefined) {
+        return 0
       }
-      // console.log(x)
-      return x;
-    };
-
+      else
+        return x.toLocaleString();
+    }
     function getFlagImgSrc(code: any) {
       var code1: any = code.toLowerCase();
       return (
@@ -122,40 +129,43 @@ class MapGeoChart extends Component<{}, Istate> {
     function onRegionLabelShow(event: any, label: any, code: any) {
       // var cdata :any = {US: "35", NO: "15", "SE": "17", "GB": "20", "ES": "10"};
       // var cdata2 :any = {US: "40", NO: "35", "SE": "17", "GB": "20", "ES": "10"};
-      var Confirmed: any = TempConfirmed;
-      var Death: any = TempDeath;
-      var Recovered: any = TempRecovered;
-      var newConfirmed: any = TempNewConfirmed;
-      var newDeath: any = TempNewDeath;
-      var newRecovered: any = TemNewRecovered;
+      var Confirmed: any = nThousand(TempConfirmed[code]);
+      var Death: any = nThousand(TempDeath[code]);
+      var Recovered: any = nThousand(TempRecovered[code]);
+      var newConfirmed: any = nThousand(TempNewConfirmed[code]);
+      var newDeath: any = nThousand(TempNewDeath[code]);
+      var newRecovered: any = nThousand(TemNewRecovered[code]);
+      var nameCountry: any = label.html();
       // hiển thị ra Map khi hover
+
       label.html(
         '<img src="' +
         getFlagImgSrc(code) +
-        '" width="120" >' +
+        '" width="120" height="80" >' +
         "<br />" +
-        label.html() +
-        " (" +
-        chkValue(code) +
-        ")" +
-        '<hr style="height: 1px"/><p style="color: red">Total Confirmed:' +
-        Confirmed[code] +
-        "</p> " +
-        '<p style="color: yellow">Total Death:' +
-        Death[code] +
-        "</p>" +
-        '<p style="color: #66ff66">Total Recovered:' +
-        Recovered[code] +
-        "</p>" +
-        '<p style="color:#ff6600">Total New Confirmed:' +
-        newConfirmed[code] +
-        "</p>" +
-        '<p style="color: #ff5050">Total New Death:' +
-        newDeath[code] +
-        "</p>" +
-        '<p style="color:#3366ff">Total New Recovered:' +
-        newRecovered[code] +
-        "</p>"
+        '<p className="name-country">' + nameCountry + '</p>' +
+        // label.html() +
+        '<table><tbody><tr><td>Confirmed</td><td>' + Confirmed + '</td></tr><tr><td>Death</td><td>' + Death + '</td></tr><tr><td>Recovered</td><td>' + Recovered + '</td></tr></tr><tr><td>New Confirmed</td><td>+' + newConfirmed + '</td></tr><tr><td>New Death</td><td>+' + newDeath + '</td></tr><tr><td>New Recovered</td><td>+' + newRecovered + '</td></tr></tbody></table>'
+        // '<p style="color: red">Total Confirmed:' +
+        // Confirmed[code] +
+        // "</p> " +
+        // '<p style="color: yellow">Total Death:' +
+        // Death[code] +
+        // "</p>" +
+        // '<p style="color: #66ff66">Total Recovered:' +
+        // Recovered[code] +
+        // "</p>" +
+        // '<p style="color:#ff6600">Total New Confirmed:' +
+        // newConfirmed[code] +
+        // "</p>" +
+        // '<p style="color: #ff5050">Total New Death:' +
+        // newDeath[code] +
+        // "</p>" +
+        // '<p style="color:#3366ff">Total New Recovered:' +
+        // newRecovered[code] +
+        // "</p>"
+
+
       );
     }
     var TempConfirmed: any = this.state.dataConfirmed;
@@ -174,14 +184,14 @@ class MapGeoChart extends Component<{}, Istate> {
         return (
           <VectorMap
             map="world_mill"
-            backgroundColor="#7289da"
-            useRef={"map"}
+            backgroundColor="#dfdedf"
+            // backgroundColor = "#324851"
+            createRef='map'
             containerStyle={{
               width: "100%",
-              height: "100%",
+              height: "95%",
             }}
             containerClassName="map"
-            scale ={ ['#ffd337','#669900','#ffcc00','#cc6600']}
             hoverOpacity={0.8}
             regionStyle={{
               hover: {
@@ -194,13 +204,14 @@ class MapGeoChart extends Component<{}, Istate> {
                 "stroke-opacity": 1,
               },
             }}
-            
+
             series={{
               regions: [
                 {
                   attribute: 'fill',
                   values: TempConfirmed,
-                  scale: ['#C8EEFF', '#0071A4'],
+                  scale: ['#668cff', '#a366ff', '#8533ff', '#5200cc'],
+                  // scale: ['#3ddad7','#2a93d5', '#135589'],
                   normalizeFunction: "polynomial",
                   legend: {
                     vertical: true,
@@ -218,21 +229,33 @@ class MapGeoChart extends Component<{}, Istate> {
     return (
 
       <div className="container-fluid">
-          <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            
-            <div className="row" style={{ height: 700 }}>
-              <News />
-            </div>
-            
+        <ScrollUpButton
+          className="btn-scroll-top"
+          StopPosition={0}
+          ShowAtPosition={150}
+          EasingType='easeOutCubic'
+          AnimationDuration={1500}
+          ContainerClassName='ScrollUpButton__Container'
+          TransitionClassName='ScrollUpButton__Toggled'
+          style={{
+            backgroundColor: "#ececec", width: '40px',
+            height: '40px', borderRadius: "50%", color: 'blue'
+          }}
+          ToggledStyle={{}}
+        />
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-2">
+          <div className="row" >
+            <News />
           </div>
-          <div
-            className="col-xs-12 col-sm-12 col-md-12 col-lg-9"
-          >
-            <div className="row" style={{ height: 710 }}>
+
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-12 col-lg-10"
+        >
+          <div className="row" style={{ height: 710 }}>
             {LoadMap(isLoading)}
-            </div>
-            
           </div>
+        </div>
       </div>
 
     );

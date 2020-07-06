@@ -31,31 +31,20 @@ class SearchNews extends Component<IProps, IState> {
   render() {
       var keyword = this.state.keyword;
     return (
-      <div>
+      <>
         <TextField
-        className="searchNews"
-          id="outlined-basic"
+          className="searchNews"
+          id="standard-secondary"
           label="Search..."
           variant="outlined"
           size="small"
-          placeholder="Search"
           name="keyword"
           value={keyword}
           onChange={this.onChange}
           onKeyUp={this.onSearch}
-        />
-        {/* <Button
-        className="btnSearch"
-          type="button"
-          variant="contained"
           color="secondary"
-        //   href="#contained-buttons"
-          size="large"
-          // onClick={this.onSearch}
-        >
-          Search
-        </Button> */}
-      </div>
+        />
+      </>
     );
   }
 }

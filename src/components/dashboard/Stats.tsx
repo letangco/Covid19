@@ -3,9 +3,6 @@ import axios from 'axios';
 import { Table } from 'antd';
 import './Dashboard.css';
 //Thư viện table
-import 'antd/dist/antd.css';
-interface IProps {
-}
 interface IState {
   data: any[],
   filteredInfo: any,
@@ -127,11 +124,11 @@ class Stats extends Component<{}, IState> {
         title: 'Country',
         dataIndex: 'country',
         key: 'country',
-        width: 350,
-        filters: [
-          { text: 'VN', value: 'VietNam' },
-          { text: 'B', value: 'A' },
-        ],
+        // width: 350,
+        // filters: [
+        //   { text: 'VN', value: 'VietNam' },
+        //   { text: 'B', value: 'A' },
+        // ],
         // sorter: (a:any, b:any) => a.country.length - b.country.length,
         sortOrder: sortedInfo.columnKey === 'country' && sortedInfo.order,
         ellipsis: true,

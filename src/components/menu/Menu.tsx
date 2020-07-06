@@ -12,6 +12,7 @@ import AskandQuestion from "../Wiki/AskedAndQuestion/AskedandQuestion";
 import Direction from "../Direction/Direction";
 import PageYoutubeNews from '../YoutubeNews/PageYoutubeNews';
 import TimeUpdate from './TimeUpdates';
+import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
 import {
   BrowserRouter as Router,
   Route,
@@ -31,25 +32,39 @@ class Menu extends Component<{}, IStates>{
   }
   render() {
     var isOpen: any = this.state.isOpen;
-    function showMenuToggle() {
-      if (isOpen === true) {
-        return (
-          <div className="dropdown">
-            <ul>
-              <li><a href="#">News</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Guidelines</a></li>
-              <li><a href="#">Exchange</a></li>
-              <li><a href="#">Forum</a></li>
-            </ul>
-          </div>
-        );
-      }
-      return null;
-    }
+    // function showMenuToggle() {
+    //   if (isOpen === true) {
+    //     return (
+    //       <div className="dropdown">
+    //         <ul>
+    //           <li><a href="#">News</a></li>
+    //           <li><a href="#">About</a></li>
+    //           <li><a href="#">Guidelines</a></li>
+    //           <li><a href="#">Exchange</a></li>
+    //           <li><a href="#">Forum</a></li>
+    //         </ul>
+    //       </div>
+    //     );
+    //   }
+    //   return null;
+    // }
     return (
       <Router>
         <nav className="navbar-expand-sm bg-light navbar-light justify-content-between">
+        <ScrollUpButton
+                    className="btn-scroll-top"
+                    StopPosition={0}
+                    ShowAtPosition={150}
+                    EasingType='easeOutCubic'
+                    AnimationDuration={1500}
+                    ContainerClassName='ScrollUpButton__Container'
+                    TransitionClassName='ScrollUpButton__Toggled'
+                    style={{
+                        backgroundColor: "#ececec", width: '40px',
+                        height: '40px', borderRadius: "50%", color: 'blue'
+                    }}
+                    ToggledStyle={{}}
+                />
           <div className="navbar-header">
             <button
               type="button"
@@ -58,12 +73,48 @@ class Menu extends Component<{}, IStates>{
               data-target="#navbar4"
               onClick={() => { this.setState({ isOpen: true }) }}
             >
-              {/* <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span> */}
-              {showMenuToggle()}
-
+              {/* {showMenuToggle()} */}
+              {
+                (isOpen === true) ? (
+                  <div className="dropdown">
+                    <ul>
+                      <li>
+                        <NavLink exact to="/" className="my-link">
+                          <FontAwesomeIcon icon={faChartLine} size="1x" /> DASHBOARD
+                    </NavLink>
+                      </li>
+                      <li>
+                        <NavLink exact to="/map" className="my-link">
+                          <FontAwesomeIcon icon={faGlobeAmericas} size="1x" /> MAP
+                </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          exact
+                          to="/calculatorRate"
+                          className="my-link"
+                        >
+                          <FontAwesomeIcon icon={faVial} size="1x" /> CALCULATOR RATE
+                </NavLink>
+                      </li>
+                      <li><NavLink exact to="/direction" className="my-link">
+                        <FontAwesomeIcon icon={faRoute} size="1x" /> DIRECTION
+                    </NavLink></li>
+                      <li>
+                        <NavLink exact to="/wiki" className="my-link">
+                          <FontAwesomeIcon icon={faBookMedical} size="1x" /> WIKI COVID 19
+                    </NavLink>
+                      </li>
+                      <li>
+                        <NavLink exact to="/Source" className="my-link">
+                          {/* <i class="fa fa-font-awesome" aria-hidden="true"></i> */}
+                          <FontAwesomeIcon icon={faRocket} size='1x' />  SOURCE
+                    </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+                ) : null
+              }
             </button>
             <NavLink to="/" className="navbar-brand">
               <img src={Logo2} alt="DisputeBills" />
@@ -126,9 +177,9 @@ class Menu extends Component<{}, IStates>{
 
 
         </nav>
-
-
+        
         <Switch>
+          
           <Route path="/" exact component={Dashboard} />
           <Route path="/map" exact component={Map} />
           <Route path="/calculatorRate" exact component={CalculatorRate} />

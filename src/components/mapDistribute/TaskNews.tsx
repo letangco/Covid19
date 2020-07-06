@@ -38,7 +38,7 @@ class TaskNews extends Component<IProps, IState> {
             <TimelineDot variant="outlined" />
             <TimelineConnector />
           </TimelineSeparator >
-          <TimelineContent>{item.title}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
+          <TimelineContent>{item.title}<span><i className="fa fa-clock-o fa-1x clock" aria-hidden="true"></i></span></TimelineContent>
         </TimelineItem>
       );
     });
@@ -96,7 +96,7 @@ class TaskNews extends Component<IProps, IState> {
                         <TimelineDot variant="outlined" />
                         <TimelineConnector />
                       </TimelineSeparator >
-                      <TimelineContent>{JSON.stringify(item.title)}<span><i className="fa fa-clock-o fa-1x" aria-hidden="true"></i></span></TimelineContent>
+                      <TimelineContent>{JSON.stringify(item.title)}<span><i className="fa fa-clock-o fa-1x clock" aria-hidden="true"></i></span></TimelineContent>
                     </TimelineItem>;
                   }
                   else {
@@ -132,13 +132,6 @@ class TaskNews extends Component<IProps, IState> {
   render() {
     var keyword: any = this.props.sendKeyWord;
     var data: any = this.props.sendData;
-    // if (keyword)
-    // {
-    //   this.renderTimeLine(data);
-    // }
-    // else{
-    //   this.renderFilterItem(data, keyword);
-    // }
     return (
       <>
         {(keyword === "") ? this.renderTimeLine(data) : this.renderFilterTimeLine(data)}
