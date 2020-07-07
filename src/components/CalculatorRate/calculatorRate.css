@@ -1,9 +1,17 @@
+/* #4b5a81 */
 .list-group-item{
+
     width: 100% ;
+    
 }
 .btn-primary{
     width: 100%;
 }
-.itemNew{
-    color: black !important;
+/* .calculatorMain{
+  background-color: #445175;
+} */
+
+.calculatorMain .panel-form{
+  background-color: #3d486c;
 }
+

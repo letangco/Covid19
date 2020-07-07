@@ -41,15 +41,15 @@ class ResultFinal extends Component<IProps, IState> {
         break;
       }
       case "groupAge4": {
-        valueAge = ArrValueAge[4];
+        valueAge = ArrValueAge[3];
         break;
       }
       case "groupAge5": {
-        valueAge = ArrValueAge[5];
+        valueAge = ArrValueAge[4];
         break;
       }
       case "groupAge6": {
-        valueAge = ArrValueAge[6];
+        valueAge = ArrValueAge[5];
         break;
       }
     }
@@ -147,7 +147,7 @@ class ResultFinal extends Component<IProps, IState> {
           </div>
         );
       }
-      else if (ResultFinal >8.5) {
+      else if (ResultFinal >=8.5) {
         return (
           <div className="panel panel-danger">
             <div className="panel-heading">

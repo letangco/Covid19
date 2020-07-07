@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import "./calculatorRate.css";
+import "./Form.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLungsVirus,
+  faFlag,
+  faFlagCheckered
+} from "@fortawesome/free-solid-svg-icons";
 interface iProps {
   data: any;
   isSubmit: any;
@@ -74,37 +80,37 @@ class FormCalculatorRate extends Component<iProps, IState> {
   };
   onHandleClickCardiovascular = (event: any) => {
     this.setState({
-      Cardiovascular: event.target.name,
+      Cardiovascular: event.target.value,
     });
   };
   onHandleClickDiabetes = (event: any) => {
     this.setState({
-      Diabetes: event.target.name,
+      Diabetes: event.target.value,
     });
   };
   onHandleClickRespiratory = (event: any) => {
     this.setState({
-      Respiratory: event.target.name,
+      Respiratory: event.target.value,
     });
   };
   onHandleClickHypertension = (event: any) => {
     this.setState({
-      Hypertension: event.target.name,
+      Hypertension: event.target.value,
     });
   };
   onHandleClickCancer = (event: any) => {
     this.setState({
-      Cancer: event.target.name,
+      Cancer: event.target.value,
     });
   };
   onHandleClickStroke = (event: any) => {
     this.setState({
-      Stroke: event.target.name,
+      Stroke: event.target.value,
     });
   };
   onHandleClickHeart = (event: any) => {
     this.setState({
-      Heart: event.target.name,
+      Heart: event.target.value,
     });
   };
   // Bắt sự kiện khi Click thì gửi toàn bộ dữ liệu State về thằng cha calculatorRate
@@ -148,11 +154,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
         "100+",
       ];
       return (
-        <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2" key={index}>
+        <div className="col-xs-4 col-sm-4 col-md-3 col-lg-2" key={index}>
           <input
             className={
               this.state.groupAge === item
-                ? "list-group-item list-group-item-action itemNew active"
+                ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                 : "list-group-item list-group-item-action itemNew"
             }
             type="button"
@@ -172,7 +178,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
           <input
             className={
               this.state.groupSex === item
-                ? "list-group-item list-group-item-action itemNew active"
+                ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                 : "list-group-item list-group-item-action itemNew"
             }
             type="button"
@@ -188,18 +194,20 @@ class FormCalculatorRate extends Component<iProps, IState> {
       (item: any, index: any) => {
         var lblnameCardiovascular: any = ["Yes", "No"];
         return (
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={index}>
+          <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
             <input
               className={
                 this.state.Cardiovascular === item
-                  ? "list-group-item list-group-item-action itemNew active"
+                  ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                   : "list-group-item list-group-item-action itemNew"
               }
               type="button"
               value={lblnameCardiovascular[index]}
-              name={lblnameCardiovascular[index]}
+              name="group-Cardiovascular"
               onClick={this.onHandleClickCardiovascular}
+              id={lblnameCardiovascular[index]}
             />
+
           </div>
         );
       }
@@ -209,11 +217,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
       (item: any, index: any) => {
         var lblDiabetes: any = ["Yes", "No"];
         return (
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={index}>
+          <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
             <input
               className={
                 this.state.Diabetes === item
-                  ? "list-group-item list-group-item-action itemNew active"
+                  ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                   : "list-group-item list-group-item-action itemNew"
               }
               type="button"
@@ -230,11 +238,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
       (item: any, index: any) => {
         var lblRespiratory: any = ["Yes", "No"];
         return (
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={index}>
+          <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
             <input
               className={
                 this.state.Respiratory === item
-                  ? "list-group-item list-group-item-action itemNew active"
+                  ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                   : "list-group-item list-group-item-action itemNew"
               }
               type="button"
@@ -251,11 +259,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
       (item: any, index: any) => {
         var lblHypertension: any = ["Yes", "No"];
         return (
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={index}>
+          <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
             <input
               className={
                 this.state.Hypertension === item
-                  ? "list-group-item list-group-item-action itemNew active"
+                  ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                   : "list-group-item list-group-item-action itemNew"
               }
               type="button"
@@ -272,11 +280,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
       (item: any, index: any) => {
         var lblCancer: any = ["Yes", "No"];
         return (
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={index}>
+          <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
             <input
               className={
                 this.state.Cancer === item
-                  ? "list-group-item list-group-item-action itemNew active"
+                  ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                   : "list-group-item list-group-item-action itemNew"
               }
               type="button"
@@ -292,11 +300,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
     var elmStroke: any = this.state.optionYesNo.map((item: any, index: any) => {
       var lblStroke: any = ["Yes", "No"];
       return (
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={index}>
+        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
           <input
             className={
               this.state.Stroke === item
-                ? "list-group-item list-group-item-action itemNew active"
+                ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                 : "list-group-item list-group-item-action itemNew"
             }
             type="button"
@@ -311,11 +319,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
     var elmHeart: any = this.state.optionYesNo.map((item: any, index: any) => {
       var lblHeart: any = ["Yes", "No"];
       return (
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" key={index}>
+        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
           <input
             className={
               this.state.Heart === item
-                ? "list-group-item list-group-item-action itemNew active"
+                ? "list-group-item list-group-item-action itemNew active_Form_Cal"
                 : "list-group-item list-group-item-action itemNew"
             }
             type="button"
@@ -328,133 +336,136 @@ class FormCalculatorRate extends Component<iProps, IState> {
     });
     return (
       <div className="container">
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <form onSubmit={this.onHandleSubmit} className="form-horizontal">
-            <div className="form-group">
-              <legend>COVID-19 Prognostic Tool</legend>
+        <div className="row">
+          <form onSubmit={this.onHandleSubmit}>
+            <div className="page">
 
-              <span className="label label-danger">
-                Please answer all questions. The results will be computed once
-                all questions are answered.
-              </span>
-            </div>
-            <div className="form-group">
-              <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <div className="panel panel-primary">
-                    {/* {Group Age} */}
-                    <span className="label label-success">Group Age</span>
-                    <div className="panel-body">
-                      {/* Đổ component xử lý click cho GroupAge */}
+              <div className="title-form">
+                <p className="p-title">
+                  <FontAwesomeIcon icon={faLungsVirus} /> COVID-19 Prognostic Tool
+                  
+                </p>
+                <p className="p-note">
+                  <FontAwesomeIcon icon={faFlagCheckered}  size="2x"/> Please answer all questions. The results will be computed once all questions are answered.
+                </p>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Group Age?</p>
+                  </div>
+                  <div className="content-survey-group">
                       {elmGroupAge}
-                    </div>
-
-                    <span className="label label-warning">Sex?</span>
-                    <div className="panel-body">
-                      <div className="list-group" id="list-tab" role="tablist">
-                        {/* Group Sex */}
-                        {elmGroupSex}
-                      </div>
-                    </div>
-
-                    <div className="panel panel-warning">
-                      <div className="panel-heading">
-                        <h3 className="panel-title">Cardiovascular Disease?</h3>
-                      </div>
-                      <div className="panel-body">
-                        <div
-                          className="list-group"
-                          id="list-tab"
-                          role="tablist"
-                        >
-                          {/* Group Cardiovascular Disease*/}
-                          {elmGroupCardiovascular}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="panel panel-warning">
-                      <div className="panel-heading">
-                        <h3 className="panel-title">Diabetes?</h3>
-                      </div>
-                      <div className="panel-body">
-                        {/* {Group Diabetes} */}
-                        {elmGroupDiabetes}
-                      </div>
-                    </div>
-
-                    <div className="panel panel-warning">
-                      <div className="panel-heading">
-                        <h3 className="panel-title">
-                          Chronic Respiratory Disease?
-                        </h3>
-                      </div>
-                      <div className="panel-body">
-                        {/* Chronic Respiratory Disease? */}
-                        {elmGroupRespiratory}
-                      </div>
-                    </div>
-
-                    <div className="panel panel-warning">
-                      <div className="panel-heading">
-                        <h3 className="panel-title">Hypertension?</h3>
-                      </div>
-                      <div className="panel-body">
-                        {/* Hypertension */}
-                        {elmGroupHypertension}
-                      </div>
-                    </div>
-
-                    <div className="panel panel-warning">
-                      <div className="panel-heading">
-                        <h3 className="panel-title">Cancer?</h3>
-                      </div>
-                      <div className="panel-body">
-                        {/* Cancer */}
-                        {elmGroupCancer}
-                      </div>
-                    </div>
-
-                    <div className="panel panel-warning">
-                      <div className="panel-heading">
-                        <h3 className="panel-title">Prior Stroke?</h3>
-                      </div>
-                      <div className="panel-body">
-                        {/* Stroke */}
-                        {elmStroke}
-                      </div>
-                    </div>
-
-                    <div className="panel panel-warning">
-                      <div className="panel-heading">
-                        <h3 className="panel-title">Heart Disease?</h3>
-                      </div>
-                      <div className="panel-body">
-                        {/* Heart */}
-                        {elmHeart}
-                      </div>
-                    </div>
-
-                    <div className="row">
-                      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          onClick={this.onClick}
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-                    </div>
                   </div>
                 </div>
               </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Group Sex?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmGroupSex}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Cardiovascular Disease?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmGroupCardiovascular}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Diabetes?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmGroupDiabetes}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Chronic Respiratory Disease?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmGroupRespiratory}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Hypertension?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmGroupHypertension}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Cancer?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmGroupCancer}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Prior Stroke?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmStroke}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Heart Disease?</p>
+                  </div>
+                  <div className="content-survey-group">
+                      {elmHeart}
+                  </div>
+                </div>
+              </div>
+
+              <div className="box-btn-check">
+                <button
+                type="submit"
+                className="btn btn-primary btn-check-cal"
+                onClick={this.onClick}
+              >
+              Check
+                    </button>
+              </div>
             </div>
+
+
+            
+
           </form>
         </div>
+
       </div>
     );
   }
