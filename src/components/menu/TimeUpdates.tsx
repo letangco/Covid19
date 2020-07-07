@@ -27,7 +27,7 @@ class TimeUpdates extends Component <{},IState>{
       var timeUpdate:any = this.state.timeUpdate;
     return (
       <div className="updateAt">
-          <p>Updated at: <Moment format="h:mm:ss dddd YYYY/MM/DD">{timeUpdate}</Moment>
+          <p>Updated at: <Moment format="h:mm YYYY/MM/DD">{timeUpdate}</Moment> &nbsp;
           <img src={DotRed} alt="live" width="25px"/></p>
       </div>
     );

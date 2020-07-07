@@ -1,5 +1,6 @@
+/* @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');*/
 
-.active {
+  .active {
     background-color: snow !important;
     color: red !important;
     font-weight: bold;
@@ -18,16 +19,91 @@
     padding-bottom: 5px;
     border-bottom: 2px solid #ccd4d9;
 }
+#navbar4 ul li{
+    display: inline-block;
+    line-height: 100%;
+}
 
 .navbar-brand>img {
-    height: 120%;
+    height: 240%;
     width: auto;
-    margin: 0px 10px 0px 10px;
 }
-@media only screen and (max-width: 768px) {
-    .navbar-brand>img{
-        height: 103%;
+
+.navbar-toggle{
+    display: none;
+}
+.menu-responsive ul{
+    margin: 0px;
+    padding: 0px;
+}
+.menu-responsive ul li{
+  list-style: none;
+  line-height: 80px;
+  padding-left: 0px
+}
+.a.active,a:hover{
+    background: #1b9bff;
+    transition: .5s;
+  }
+.menu-responsive ul li a{
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 50px;
+    border-radius: 3px;
+    /* text-transform: uppercase; */
+    font-family: 'Poppins', sans-serif;
+    
+  }
+  .txt-updates{
+      padding-top: 20px;
+      padding-left: 40px;
+  }
+/* @media only screen and () */
+@media (min-width:765px) and (max-width: 1360px)
+{
+    .navbar-nav{
+        display: none;
+    }
+    .navbar-toggle {
+        position: absolute;
+        display: block;
+        float: right;
+        right: 50px;
+    }
+    .navbar-brand>img {
+        height: 190%;
         width: auto;
-        margin: 0px 10px 0px 10px;
+        margin-left: 40px;
+    }
+    .menu-responsive ul{
+        /* position: fixed; */
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        left: -100%;
+        text-align: center;
+        transition:  0.5s;
+        z-index: 9999;
+    }
+    
+}
+@media (max-width: 765px) {
+    .navbar-nav{
+        display: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .menu-responsive ul{
+        /* position: fixed; */
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        left: -100%;
+        text-align: center;
+        transition:  0.5s;
+        z-index: 9999;
     }
 }

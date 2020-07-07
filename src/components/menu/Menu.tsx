@@ -21,100 +21,60 @@ import {
 } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface IStates {
-  isOpen: boolean
+  isOpen: boolean;
 }
 class Menu extends Component<{}, IStates>{
   constructor(props: any) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
     }
+  }
+  changeIsOpen(x: any) {
+    if (x === false) {
+      this.setState({
+        isOpen: true,
+      })
+    }
+    else if (x === true) {
+      this.setState({
+        isOpen: false,
+      })
+    }
+  }
+  closeMenu(x:any)
+  {
+    this.setState({
+      isOpen: !x
+    })
   }
   render() {
     var isOpen: any = this.state.isOpen;
-    // function showMenuToggle() {
-    //   if (isOpen === true) {
-    //     return (
-    //       <div className="dropdown">
-    //         <ul>
-    //           <li><a href="#">News</a></li>
-    //           <li><a href="#">About</a></li>
-    //           <li><a href="#">Guidelines</a></li>
-    //           <li><a href="#">Exchange</a></li>
-    //           <li><a href="#">Forum</a></li>
-    //         </ul>
-    //       </div>
-    //     );
-    //   }
-    //   return null;
-    // }
     return (
       <Router>
         <nav className="navbar-expand-sm bg-light navbar-light justify-content-between">
-        <ScrollUpButton
-                    className="btn-scroll-top"
-                    StopPosition={0}
-                    ShowAtPosition={150}
-                    EasingType='easeOutCubic'
-                    AnimationDuration={1500}
-                    ContainerClassName='ScrollUpButton__Container'
-                    TransitionClassName='ScrollUpButton__Toggled'
-                    style={{
-                        backgroundColor: "#ececec", width: '40px',
-                        height: '40px', borderRadius: "50%", color: 'blue'
-                    }}
-                    ToggledStyle={{}}
-                />
+          <ScrollUpButton
+            className="btn-scroll-top"
+            StopPosition={0}
+            ShowAtPosition={150}
+            EasingType='easeOutCubic'
+            AnimationDuration={1500}
+            ContainerClassName='ScrollUpButton__Container'
+            TransitionClassName='ScrollUpButton__Toggled'
+            style={{
+              backgroundColor: "#ececec", width: '40px',
+              height: '40px', borderRadius: "50%", color: 'blue'
+            }}
+            ToggledStyle={{}}
+          />
           <div className="navbar-header">
             <button
               type="button"
-              className="navbar-toggle collapsed"
+              className={isOpen === false ? "navbar-toggle collapsed fa fa-bars fa-2x" : "navbar-toggle collapsed fa fa-times fa-2x"}
               data-toggle="collapse"
               data-target="#navbar4"
-              onClick={() => { this.setState({ isOpen: true }) }}
+              onClick={() => this.changeIsOpen(isOpen)}
             >
-              {/* {showMenuToggle()} */}
-              {
-                (isOpen === true) ? (
-                  <div className="dropdown">
-                    <ul>
-                      <li>
-                        <NavLink exact to="/" className="my-link">
-                          <FontAwesomeIcon icon={faChartLine} size="1x" /> DASHBOARD
-                    </NavLink>
-                      </li>
-                      <li>
-                        <NavLink exact to="/map" className="my-link">
-                          <FontAwesomeIcon icon={faGlobeAmericas} size="1x" /> MAP
-                </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          exact
-                          to="/calculatorRate"
-                          className="my-link"
-                        >
-                          <FontAwesomeIcon icon={faVial} size="1x" /> CALCULATOR RATE
-                </NavLink>
-                      </li>
-                      <li><NavLink exact to="/direction" className="my-link">
-                        <FontAwesomeIcon icon={faRoute} size="1x" /> DIRECTION
-                    </NavLink></li>
-                      <li>
-                        <NavLink exact to="/wiki" className="my-link">
-                          <FontAwesomeIcon icon={faBookMedical} size="1x" /> WIKI COVID 19
-                    </NavLink>
-                      </li>
-                      <li>
-                        <NavLink exact to="/Source" className="my-link">
-                          {/* <i class="fa fa-font-awesome" aria-hidden="true"></i> */}
-                          <FontAwesomeIcon icon={faRocket} size='1x' />  SOURCE
-                    </NavLink>
-                      </li>
-                    </ul>
-                  </div>
-                ) : null
-              }
             </button>
             <NavLink to="/" className="navbar-brand">
               <img src={Logo2} alt="DisputeBills" />
@@ -159,27 +119,57 @@ class Menu extends Component<{}, IStates>{
               </li>
               <li className="active">
                 <NavLink exact to="/Source" className="my-link">
-                  {/* <i class="fa fa-font-awesome" aria-hidden="true"></i> */}
                   <FontAwesomeIcon icon={faRocket} size='2x' />  SOURCE
                     </NavLink>
               </li>
-              <ul className="navbar-nav ml-auto">
-                <li className="flex">
-                  <div>
-                    <TimeUpdate />
-                  </div>
-                </li>
-              </ul>
+                  <li className="txt-updates"><TimeUpdate /></li>
             </ul>
 
           </div>
-
-
-
+          {
+            (isOpen === true) ? (
+              <div className="menu-responsive">
+                <ul>
+                  <li>
+                    <NavLink exact to="/" className="my-link" onClick={() => this.closeMenu(isOpen)}>
+                      <FontAwesomeIcon icon={faChartLine} size="1x" /> DASHBOARD
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="/map" className="my-link" onClick={() => this.closeMenu(isOpen)}>
+                      <FontAwesomeIcon icon={faGlobeAmericas} size="1x" /> MAP
+                </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      exact
+                      to="/calculatorRate"
+                      className="my-link"
+                      onClick={() => this.closeMenu(isOpen)}
+                    >
+                      <FontAwesomeIcon icon={faVial} size="1x" /> CALCULATOR RATE
+                </NavLink>
+                  </li>
+                  <li><NavLink exact to="/direction" className="my-link" onClick={() => this.closeMenu(isOpen)}>
+                    <FontAwesomeIcon icon={faRoute} size="1x" /> DIRECTION
+                    </NavLink></li>
+                  <li>
+                    <NavLink exact to="/wiki" className="my-link" onClick={() => this.closeMenu(isOpen)}>
+                      <FontAwesomeIcon icon={faBookMedical} size="1x" /> WIKI COVID 19
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="/Source" className="my-link" onClick={() => this.closeMenu(isOpen)}>
+                      {/* <i class="fa fa-font-awesome" aria-hidden="true"></i> */}
+                      <FontAwesomeIcon icon={faRocket} size='1x' />  SOURCE
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            ) : <></>
+          }
         </nav>
-        
         <Switch>
-          
           <Route path="/" exact component={Dashboard} />
           <Route path="/map" exact component={Map} />
           <Route path="/calculatorRate" exact component={CalculatorRate} />

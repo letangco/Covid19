@@ -94,7 +94,7 @@ TextField {
   color: red !important;
 }
 .task-News {
-  max-height: 545px;
+  height: 545px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -141,11 +141,21 @@ TextField {
 ::-webkit-scrollbar-thumb:hover {
   background: #483ac5;
 }
-@media only screen and (min-width: 200px) and (max-width: 1236px) {
+@media only screen and (min-width: 200px) and (max-width: 1200px) {
     .content-search-news {
-        margin: 5px 30px;
+        margin: 5px 45px;
       };
     .title-search-news {
         font-size: 2rem;
       }
+      .task-News{
+        display: block;
+        z-index: 100000;
+      }
+  }
+  @media only screen and (min-width: 1200px)
+  {
+    .content-search-news {
+      margin: 5px 10px;
+    };
   }
