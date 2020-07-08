@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Table } from 'antd';
 import './Dashboard.css';
 //Thư viện table
+import 'antd/dist/antd.css';
+interface IProps {
+}
 interface IState {
   data: any[],
   filteredInfo: any,
@@ -47,38 +50,6 @@ class Stats extends Component<{}, IState> {
     })
   }
 
-  //  Country(obj: unknown) {
-  //     return obj;
-  //   }
-  // componentDidMount(){
-  //     let Arr = [];
-
-  //     axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
-  //     .then(res =>{
-  //         var country = [],confirmed = [], death = [], recovered = [];
-  //         Arr = (Object.entries(res.data.countryitems[0]));
-  //         for (let i =0 ; i<Arr.length;i++)
-  //         {
-  //             let temArr = Arr[i];
-
-  //             // Thêm any trước khai báo một object để lấy tên trong json ***QUAN TRỌNG
-  //             let newtemArr: any = temArr[1];
-
-  //             // console.log(newtemArr.title);
-  //             // console.log(newtemArr.total_cases)
-  //             country.push(newtemArr.title);
-  //             confirmed.push(newtemArr.total_cases);
-  //             death.push(newtemArr.total_deaths);
-  //             recovered.push(newtemArr.total_recovered);
-  //             this.setState({
-  //                 country: country,
-  //                 confirmed: confirmed,
-  //                 death: death,
-  //                 recovered: recovered
-  //             });
-  //         }
-  //     });
-  // }
   componentDidMount() {
     let Arr = [];
     var data: any = [];
@@ -98,21 +69,6 @@ class Stats extends Component<{}, IState> {
         })
       });
   }
-  // renderTableData() {
-  //     return this.state.data.map((item, index) => {
-  //     //    const { title, total_cases, total_deaths, total_recovered} = item //destructuring ES6
-  //        return (
-  //           <tr key={index}>
-  //             <td>{item.title}</td>
-  //             <td>{item.total_cases}</td>
-  //             <td>{item.total_new_cases_today}</td>
-  //             <td>{item.total_deaths}</td>
-  //             <td>{item.total_new_deaths_today}</td>
-  //             <td>{item.total_recovered}</td>
-  //           </tr>
-  //        )
-  //     })
-  //  }
 
   render() {
     let { sortedInfo } = this.state;
@@ -124,11 +80,11 @@ class Stats extends Component<{}, IState> {
         title: 'Country',
         dataIndex: 'country',
         key: 'country',
-        // width: 350,
-        // filters: [
-        //   { text: 'VN', value: 'VietNam' },
-        //   { text: 'B', value: 'A' },
-        // ],
+        width: 200,
+        filters: [
+          { text: 'VN', value: 'VietNam' },
+          { text: 'B', value: 'A' },
+        ],
         // sorter: (a:any, b:any) => a.country.length - b.country.length,
         sortOrder: sortedInfo.columnKey === 'country' && sortedInfo.order,
         ellipsis: true,
@@ -138,7 +94,6 @@ class Stats extends Component<{}, IState> {
         title: 'Confirmed',
         dataIndex: 'confirmed',
         key: 'confirmed',
-        // width: 100,
         sorter: (a: any, b: any) => a.confirmed - b.confirmed,
         sortOrder: sortedInfo.columnKey === 'confirmed' && sortedInfo.order,
         ellipsis: true,
@@ -147,7 +102,6 @@ class Stats extends Component<{}, IState> {
         title: 'New Confirmed',
         dataIndex: 'newConfirmed',
         key: 'newConfirmed',
-        // width: 110,
         sorter: (a: any, b: any) => a.newConfirmed - b.newConfirmed,
         sortOrder: sortedInfo.columnKey === 'newConfirmed' && sortedInfo.order,
         ellipsis: true,
@@ -156,7 +110,6 @@ class Stats extends Component<{}, IState> {
         title: 'Death',
         dataIndex: 'death',
         key: 'death',
-        // width: 100,
         sorter: (a: any, b: any) => a.death - b.death,
         sortOrder: sortedInfo.columnKey === 'death' && sortedInfo.order,
         ellipsis: true
@@ -165,7 +118,6 @@ class Stats extends Component<{}, IState> {
         title: 'New Death',
         dataIndex: 'newDeath',
         key: 'newDeath',
-        // width: 100,
         sorter: (a: any, b: any) => a.newDeath - b.newDeath,
         sortOrder: sortedInfo.columnKey === 'newDeath' && sortedInfo.order,
         ellipsis: true,
@@ -174,7 +126,6 @@ class Stats extends Component<{}, IState> {
         title: 'Recovered',
         dataIndex: 'recovered',
         key: 'recovered',
-        // width: 100,
         sorter: (a: any, b: any) => a.recovered - b.recovered,
         sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
         ellipsis: true
@@ -183,7 +134,6 @@ class Stats extends Component<{}, IState> {
         title: 'Serious Cases',
         dataIndex: 'seriouscase',
         key: 'seriouscase',
-        // width: 100,
         sorter: (a: any, b: any) => a.seriouscase - b.seriouscase,
         sortOrder: sortedInfo.columnKey === 'seriouscase' && sortedInfo.order,
         ellipsis: true,
@@ -210,19 +160,11 @@ class Stats extends Component<{}, IState> {
       });
     }
     return (
-      <>
+      <div>
         <h4>World COVID-19 Stats</h4>
-        <Table
-          className="tableStats"
-          columns={columns1}
-          dataSource={data2}
-          loading={this.state.loading}
-          // pagination={{ pageSize: 50 }}
-          // y-scroll={{ y: 500 }}
-          onChange={this.handleChange}
-        />
+        <Table className="tableStats" columns={columns1} loading={this.state.loading} dataSource={data2} onChange={this.handleChange} />
 
-      </>
+      </div>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import './style/video.css';
+// import '../style/video.css';
 
-const VideoItem = (video:any , handleVideoSelect :any) => {
+const VideoItem = (video :any, handleVideoSelect:any) => {
     return (
         <div onClick={ () => handleVideoSelect(video)} className=' video-item item'>
             <img className='ui image' src={video.snippet.thumbnails.medium.url} alt={video.snippet.description}/>

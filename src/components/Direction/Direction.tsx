@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-map-react';
+// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-map-react';
 import './DirectionStyle.css';
 
 interface Iprops{

@@ -14,7 +14,7 @@ const VideoDetail = ( video :any) => {
     </div>;
   }
 
-  const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
+  const videoSrc:any = `https://www.youtube.com/embed/${video.id.videoId}`;
 //   console.log(typeof video);
   return (
     <div>
