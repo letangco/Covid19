@@ -10,6 +10,12 @@ import ResultCancer from './ResultsComponent/ResultCancer';
 import ResultStroke from './ResultsComponent/ResultStroke';
 import ResultHeart from './ResultsComponent/ResultHeart';
 import ResultFinal from './ResultsComponent/ResultFinal';
+import Collapsible from 'react-collapsible';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartLine
+} from "@fortawesome/free-solid-svg-icons";
+import SizeContext from "antd/lib/config-provider/SizeContext";
 interface iState {
   data: any;
 }
@@ -40,21 +46,23 @@ class Results extends Component<iProps, iState> {
     // var Stroke: string = data[7];
     // var Heart: string = data[8];
     return (
-      <div>
-        <div className="container">
-          {/* {RenderGroupAgeUS()} */}
+      <div className="container">
+        <div className="row page-result-survey">
+          <p className="title-result">
+            <FontAwesomeIcon icon={faChartLine} /> Result Covid-19 Calculator
+          </p>
           <ResultFinal sendDataResult={this.state.data} />
-          <ResultAge sendAge={this.state.data[0]} />
-          {/* {RenderSex()} */}
-          <ResultSex sendSex={this.state.data[1]}/>
-          <ResultCardiovascular sendCardiovascular={this.state.data[2]} />
-          <ResultDiabetes sendDiabetes = {this.state.data[3] }/>
-          <ResultRespiratory sendRespiratory={this.state.data[4]}/>
-          <Hypertension sendHypertension ={this.state.data[5]}/>
-          <ResultCancer sendCancer={this.state.data[6]}/>
-          <ResultStroke sendStroke ={this.state.data[7]}/>
-          <ResultHeart sendHeart={this.state.data[8]}/>
-          
+          <Collapsible trigger="Read more..." triggerStyle={{color:"white"}}easing = "ease-in"  triggerClassName="txt-read-more" transitionTime={800}>
+            <ResultAge sendAge={this.state.data[0]} />
+            <ResultSex sendSex={this.state.data[1]} />
+            <ResultCardiovascular sendCardiovascular={this.state.data[2]} />
+            <ResultDiabetes sendDiabetes={this.state.data[3]} />
+            <ResultRespiratory sendRespiratory={this.state.data[4]} />
+            <Hypertension sendHypertension={this.state.data[5]} />
+            <ResultCancer sendCancer={this.state.data[6]} />
+            <ResultStroke sendStroke={this.state.data[7]} />
+            <ResultHeart sendHeart={this.state.data[8]} />
+          </Collapsible>
         </div>
       </div>
     );

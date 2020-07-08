@@ -49,6 +49,8 @@
     padding-left: 20px;
     font-size: large;
     padding-top: 0px;
+    text-align: left;
+    margin-top: 25px;
 }
 .content-survey-group div{
     margin-top: 8px;
@@ -56,11 +58,26 @@
 }
 .box-btn-check{
     width: 96%;
-    height: 80px;
     margin-bottom: 50px;
     display: inline-flex;
 }
 .box-btn-check button{
     margin-top: 20px;
     border-radius: 15px;
+}
+@media only screen and (max-width: 765px)
+{
+  .page{
+    margin: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+  }
+  .list-group-item{
+      font-size: 12px !important;
+      padding: 5px 8px;
+}
+    .p-note{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

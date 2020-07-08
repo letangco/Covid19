@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './ResultFinal.css';
 interface IProps {
   sendDataResult: any;
 }
@@ -99,76 +100,49 @@ class ResultFinal extends Component<IProps, IState> {
       console.log(ResultFinal);
       ResultFinal = Math.round(ResultFinal * 1000) / 1000;
       console.log(ResultFinal);
-      if (ResultFinal >= 0 && ResultFinal < 6) {
+      if (ResultFinal >= 0 && ResultFinal < 7) {
         return (
-          <div className="panel panel-success">
-            <div className="panel-heading">
-              <h1 className="panel-title">FINAL RESULT</h1>
-            </div>
-            <div className="panel-body">
-              <div className="panel panel-success">
-                <div className="panel-heading">
-                  <h1 className="panel-title">You should be fine</h1>
-                  <p>
-                    You have an estimated {ResultFinal}% chance of dying from
+          <div className="panel-notice-result-fine">
+                  <p className="notice-result-fine">You should be fine</p>
+                  <p className="notice-percent-fine">
+                    You have an estimated <strong>{ResultFinal}%</strong> chance of <strong>dying</strong> from
                     covid-19 if infected
                   </p>
-                  <p>
+                  <p className="notice-protect-fine">
                     Please note this is just an estimation, and not an absolute
                     assessment of the effects covid-19 might have on you.
                   </p>
-                </div>
               </div>
-            </div>
-          </div>
         );
       }
-      else if (ResultFinal >= 6 && ResultFinal < 8.5) {
+      else if (ResultFinal >= 7 && ResultFinal < 8.5) {
         return (
-          <div className="panel panel-warning">
-            <div className="panel-heading">
-              <h1 className="panel-title">FINAL RESULT</h1>
-            </div>
-            <div className="panel-body">
-              <div className="panel panel-warning">
-                <div className="panel-heading">
-                  <h1 className="panel-title">Take extra precautions</h1>
-                  <p>
-                    You have an estimated {ResultFinal}% chance of dying from
+          <div className="panel-notice-result-warning">
+                  <p className="notice-result-warning">Take extra precautions</p>
+                  <p className="notice-percent-warning">
+                    You have an estimated <strong>{ResultFinal}%</strong> chance of <strong>dying</strong> from
                     covid-19 if infected
                   </p>
-                  <p>
+                  <p className="notice-protect-warning">
                     Please note this is just an estimation, and not an absolute
                     assessment of the effects covid-19 might have on you.
                   </p>
-                </div>
               </div>
-            </div>
-          </div>
         );
       }
       else if (ResultFinal >=8.5) {
         return (
-          <div className="panel panel-danger">
-            <div className="panel-heading">
-              <h1 className="panel-title">FINAL RESULT</h1>
-            </div>
-            <div className="panel-body">
-              <div className="panel panel-danger">
-                <div className="panel-heading">
-                  <h1 className="panel-title">You are at risk</h1>
-                  <p>
-                    You have an estimated {ResultFinal}% chance of dying from
+              <div className="panel-notice-result-danger">
+                  <p className="notice-result-danger">You are at risk</p>
+                  <p className="notice-percent-danger">
+                    You have an estimated <strong>{ResultFinal}%</strong> chance of <strong>dying</strong> from
                     covid-19 if infected
                   </p>
-                  <p>
+                  <p className="notice-protect-danger">
                     Please note this is just an estimation, and not an absolute
                     assessment of the effects covid-19 might have on you.
                   </p>
-                </div>
               </div>
-            </div>
-          </div>
         );
       }
       return <div></div>;

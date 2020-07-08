@@ -3,8 +3,16 @@ import "./Form.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLungsVirus,
-  faFlag,
-  faFlagCheckered
+  faFlagCheckered,
+  faVenusMars,
+  faHeartbeat,
+  faRestroom,
+  faToilet,
+  faLungs,
+  faStethoscope,
+  faAllergies,
+  faHeartBroken,
+  faWheelchair
 } from "@fortawesome/free-solid-svg-icons";
 interface iProps {
   data: any;
@@ -154,7 +162,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
         "100+",
       ];
       return (
-        <div className="col-xs-4 col-sm-4 col-md-3 col-lg-2" key={index}>
+        <div className="col-xs-4 col-sm-4 col-md-4 col-lg-2" key={index}>
           <input
             className={
               this.state.groupAge === item
@@ -364,7 +372,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Group Sex?</p>
+                    <p><FontAwesomeIcon icon={faRestroom} size="2x"/> Group Sex?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmGroupSex}
@@ -375,7 +383,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Cardiovascular Disease?</p>
+                    <p><FontAwesomeIcon icon={faHeartbeat} size="2x"/> Cardiovascular Disease?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmGroupCardiovascular}
@@ -386,7 +394,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Diabetes?</p>
+                    <p><FontAwesomeIcon icon={faToilet} size="2x"/> Diabetes?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmGroupDiabetes}
@@ -397,7 +405,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Chronic Respiratory Disease?</p>
+                    <p><FontAwesomeIcon icon={faLungs} size="2x"/> Chronic Respiratory Disease?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmGroupRespiratory}
@@ -408,7 +416,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Hypertension?</p>
+                    <p><FontAwesomeIcon icon={faStethoscope} size="2x"/> Hypertension?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmGroupHypertension}
@@ -419,7 +427,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Cancer?</p>
+                    <p><FontAwesomeIcon icon={faAllergies} size="2x"/> Cancer?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmGroupCancer}
@@ -430,7 +438,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Prior Stroke?</p>
+                    <p><FontAwesomeIcon icon={faWheelchair}size="2x" /> Prior Stroke?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmStroke}
@@ -441,7 +449,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p>Heart Disease?</p>
+                    <p><FontAwesomeIcon icon={faHeartBroken} size="2x"/> Heart Disease?</p>
                   </div>
                   <div className="content-survey-group">
                       {elmHeart}
