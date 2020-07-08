@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import NumberFormat from 'react-number-format';
 import { Table } from 'antd';
-import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
 import {fetchAfricaData,SummaryStats,fetchAfricaSummaryData} from '../../api/dashboard/index';
@@ -109,7 +108,7 @@ class Europe extends Component <{}, IState> {
           title: 'Country',
           dataIndex: 'country',
           key: 'country',
-          width: 150,
+          width: 0,
           filters: [
             { text: 'VN', value: 'VietNam' },
             { text: 'B', value: 'A' },
@@ -123,7 +122,7 @@ class Europe extends Component <{}, IState> {
           title: 'Confirmed',
           dataIndex: 'confirmed',
           key: 'confirmed',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.confirmed -b.confirmed,
           sortOrder: sortedInfo.columnKey==='confirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -132,7 +131,7 @@ class Europe extends Component <{}, IState> {
           title: 'New Confirmed',
           dataIndex: 'newConfirmed',
           key: 'newConfirmed',
-          width: 100,
+          width: 120,
           sorter:(a :any,b :any) => a.newConfirmed -b.newConfirmed,
           sortOrder: sortedInfo.columnKey==='newConfirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -141,7 +140,7 @@ class Europe extends Component <{}, IState> {
           title: 'Death',
           dataIndex: 'death',
           key: 'death',
-          width: 100,
+          // width: 100,
           sorter: (a:any, b:any) => a.death - b.death,
           sortOrder: sortedInfo.columnKey === 'death' && sortedInfo.order,
           ellipsis: true
@@ -150,7 +149,7 @@ class Europe extends Component <{}, IState> {
           title: 'New Death',
           dataIndex: 'newDeath',
           key: 'newDeath',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.newDeath -b.newDeath,
           sortOrder: sortedInfo.columnKey==='newDeath'&&sortedInfo.order,
           ellipsis: true,
@@ -159,7 +158,7 @@ class Europe extends Component <{}, IState> {
             title: 'Recovered',
             dataIndex: 'recovered',
             key: 'recovered',
-            width: 100,
+            // width: 100,
             sorter: (a:any, b:any) => a.recovered - b.recovered,
             sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
             ellipsis: true
@@ -168,7 +167,7 @@ class Europe extends Component <{}, IState> {
             title: 'New Recovered',
             dataIndex: 'newRecovered',
             key: 'newRecovered',
-            width: 100,
+            // width: 100,
             sorter:(a :any,b :any) => a.newRecovered -b.newRecovered,
             sortOrder: sortedInfo.columnKey==='newRecovered'&&sortedInfo.order,
             ellipsis: true,
@@ -208,15 +207,11 @@ class Europe extends Component <{}, IState> {
             });
         }
     return (
-                    <div className="panel panel-warning">
-                          <div className="panel-heading">
-                                <h4>Africa COVID-19 Stats</h4>
-                          </div>
-                          <div className="panel-body divtableStats">
-                                <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 100 }} scroll={{ y: 1000 }} onChange={this.handleChange} />
-                          </div>
-                          
-                    </div>
+      <div>
+      <h4>Africa COVID-19 Stats</h4>
+      <Table className="tableStats" columns={columns1} dataSource={data2} onChange={this.handleChange} />
+
+    </div>
         
     );
   }

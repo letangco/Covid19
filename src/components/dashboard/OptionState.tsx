@@ -21,8 +21,6 @@ class OptionState extends Component {
     render() {
         return (
             <Router>
-
-
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                         
@@ -135,23 +133,16 @@ class OptionState extends Component {
                             </div>
                         </NavLink>
                         </div>
-                        
                     </div>
-
-
-
                     <Switch>
                         <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                             <Route exact path="/" component={Stats} />
-
-
                             <Route path="/Asia" exact component={Asia} />
                             <Route exact path="/Europe" component={Europe} />
                             <Route path="/Africa" exact component={Africa} />
                             <Route exact path="/Oceania" component={Oceania} />
                             <Route path="/NorthAmerica" exact component={NorthAmerica} />
                             <Route path="/SouthAmerica" exact component={SouthAmerica} />
-
                             <Route exact path="/USA" component={USA} />
                             <Route path="/Canada" exact component={Canada} />
                             <Route exact path="/China" component={China} />

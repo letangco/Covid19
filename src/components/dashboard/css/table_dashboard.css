@@ -1,1 +1,38 @@
 @import '~antd/dist/antd.css';
+
+.tableStats{
+
+    overflow-x: scroll !important;
+}
+
+.ant-table-thead .ant-table-cell:nth-child(2){
+    color: red;
+}
+
+.ant-table-tbody .ant-table-cell:nth-child(2){
+     color: red;
+}
+.ant-table-tbody .ant-table-cell:nth-child(3){
+    color: rgb(194, 42, 37);
+}
+.ant-table-tbody .ant-table-cell:nth-child(4){
+    color: orange;
+}
+.ant-table-tbody .ant-table-cell:nth-child(5){
+   color: rgb(201, 149, 52);
+}
+.ant-table-tbody .ant-table-cell:nth-child(6){
+    color: green;
+}
+.ant-table-tbody .ant-table-cell:nth-child(7){
+   color: rgb(55, 201, 116);
+}
+.ant-table colgroup{
+
+    justify-items: left !important;
+}
+/* .ant-table colgroup col{
+    width: 180px !important;
+    justify-content: left !important;
+    justify-items: left !important;
+} */
