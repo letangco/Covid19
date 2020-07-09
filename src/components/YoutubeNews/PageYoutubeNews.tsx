@@ -3,23 +3,13 @@ import SearchBar from './Searchbar';
 import youtube from '../../api/YoutubeNews/youtube';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetails';
-
-interface IState{
-    videos:any,
-    selectedVideo: any
-}
-class PageYoutubeNews extends React.Component <any, IState> {
-    constructor(props:any)
-    {
-        super(props);
-        this.state={
-            videos: [],
-            selectedVideo: null
-        }
+class PageYoutubeNews extends React.Component {
+    state = {
+        videos: [],
+        selectedVideo: null
     }
-  
-    handleSubmit = async (termFromSearchBar:any) => {
-        let response:any = await youtube.get('/search', {
+    handleSubmit = async (termFromSearchBar: any) => {
+        let response: any = await youtube.get('/search', {
             params: {
                 part: 'snippet',
                 maxResults: 1,
@@ -28,20 +18,19 @@ class PageYoutubeNews extends React.Component <any, IState> {
             }
         })
         this.setState({
-            videos: response.data.items
+            videos: response.data.items,
         })
-        // console.log("this is resp",response);
     };
-    handleVideoSelect = (video:any) => {
-        this.setState({selectedVideo: video})
+    handleVideoSelect = (video: any) => {
+        this.setState({ selectedVideo: video })
     }
     render() {
-        console.log(this.state.videos)
         return (
-            <div className='ui container' style={{marginTop: '1em'}}>
-                <SearchBar handleFormSubmit={this.handleSubmit}/>
+            <div className='ui container' style={{ marginTop: '1em' }}>
+                <SearchBar handleFormSubmit={this.handleSubmit} />
                 <div className='ui grid'>
-                    <div className="eleven wide column">
+                    <div className="ui row">
+                        <div className="eleven wide column">
                             <VideoDetail video={this.state.selectedVideo}/>
                         </div>
                         <div className="five wide column">
@@ -49,7 +38,7 @@ class PageYoutubeNews extends React.Component <any, IState> {
                         </div>
                     </div>
                 </div>
-        
+            </div>
         )
     }
 }

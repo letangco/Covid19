@@ -42,8 +42,7 @@ class Menu extends Component<{}, IStates>{
       })
     }
   }
-  closeMenu(x:any)
-  {
+  closeMenu(x: any) {
     this.setState({
       isOpen: !x
     })
@@ -122,7 +121,7 @@ class Menu extends Component<{}, IStates>{
                   <FontAwesomeIcon icon={faRocket} size='2x' />  SOURCE
                     </NavLink>
               </li>
-                  <li className="txt-updates"><TimeUpdate /></li>
+              <li className="txt-updates"><TimeUpdate /></li>
             </ul>
 
           </div>
@@ -156,6 +155,11 @@ class Menu extends Component<{}, IStates>{
                   <li>
                     <NavLink exact to="/wiki" className="my-link" onClick={() => this.closeMenu(isOpen)}>
                       <FontAwesomeIcon icon={faBookMedical} size="1x" /> WIKI COVID 19
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact to="/youtubeNews" className="my-link" onClick={() => this.closeMenu(isOpen)}>
+                      <FontAwesomeIcon icon={faVideo} size='1x' />  NEWS
                     </NavLink>
                   </li>
                   <li>
