@@ -108,7 +108,7 @@ class Oceania extends Component <{}, IState> {
           title: 'Country',
           dataIndex: 'country',
           key: 'country',
-          width: 150,
+          width: 10,
           filters: [
             { text: 'VN', value: 'VietNam' },
             { text: 'B', value: 'A' },
@@ -122,7 +122,7 @@ class Oceania extends Component <{}, IState> {
           title: 'Confirmed',
           dataIndex: 'confirmed',
           key: 'confirmed',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.confirmed -b.confirmed,
           sortOrder: sortedInfo.columnKey==='confirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -131,7 +131,7 @@ class Oceania extends Component <{}, IState> {
           title: 'New Confirmed',
           dataIndex: 'newConfirmed',
           key: 'newConfirmed',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.newConfirmed -b.newConfirmed,
           sortOrder: sortedInfo.columnKey==='newConfirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -140,7 +140,7 @@ class Oceania extends Component <{}, IState> {
           title: 'Death',
           dataIndex: 'death',
           key: 'death',
-          width: 100,
+          // width: 100,
           sorter: (a:any, b:any) => a.death - b.death,
           sortOrder: sortedInfo.columnKey === 'death' && sortedInfo.order,
           ellipsis: true
@@ -149,7 +149,7 @@ class Oceania extends Component <{}, IState> {
           title: 'New Death',
           dataIndex: 'newDeath',
           key: 'newDeath',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.newDeath -b.newDeath,
           sortOrder: sortedInfo.columnKey==='newDeath'&&sortedInfo.order,
           ellipsis: true,
@@ -158,7 +158,7 @@ class Oceania extends Component <{}, IState> {
             title: 'Recovered',
             dataIndex: 'recovered',
             key: 'recovered',
-            width: 100,
+            // width: 100,
             sorter: (a:any, b:any) => a.recovered - b.recovered,
             sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
             ellipsis: true
@@ -167,7 +167,7 @@ class Oceania extends Component <{}, IState> {
             title: 'New Recovered',
             dataIndex: 'newRecovered',
             key: 'newRecovered',
-            width: 100,
+            // width: 100,
             sorter:(a :any,b :any) => a.newRecovered -b.newRecovered,
             sortOrder: sortedInfo.columnKey==='newRecovered'&&sortedInfo.order,
             ellipsis: true,
@@ -212,7 +212,7 @@ class Oceania extends Component <{}, IState> {
                                 <h4>Oceania COVID-19 Stats</h4>
                           </div>
                           <div className="panel-body divtableStats">
-                                <Table className="tableStats" columns={columns1}  dataSource={data2} pagination={{ pageSize: 100 }} scroll={{ y: 1000 }} onChange={this.handleChange} />
+                                <Table className="tableStats" columns={columns1}  dataSource={data2} tableLayout="auto" size="large" onChange={this.handleChange} />
                           </div>
                           
                     </div>

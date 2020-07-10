@@ -108,7 +108,7 @@ class Europe extends Component <{}, IState> {
           title: 'Country',
           dataIndex: 'country',
           key: 'country',
-          width: 0,
+          width: 10,
           filters: [
             { text: 'VN', value: 'VietNam' },
             { text: 'B', value: 'A' },
@@ -209,7 +209,7 @@ class Europe extends Component <{}, IState> {
     return (
       <div>
       <h4>Africa COVID-19 Stats</h4>
-      <Table className="tableStats" columns={columns1} dataSource={data2} onChange={this.handleChange} />
+      <Table className="tableStats" columns={columns1} dataSource={data2} tableLayout="auto" size="large" onChange={this.handleChange} />
 
     </div>
         

@@ -71,20 +71,16 @@ class Italy extends Component <{}, IState> {
       // Dạng [{...},...]
       const columns1 = [
         {
-         
-          
-            title: 'Name State',
+          title: 'Name State',
           dataIndex: 'country',
           key: 'country',
-          width: 120,
-          
-          
+          width: 10,
         },
         {
           title: 'Confirmed',
           dataIndex: 'confirmed',
           key: 'confirmed',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.confirmed -b.confirmed,
           sortOrder: sortedInfo.columnKey==='confirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -93,7 +89,7 @@ class Italy extends Component <{}, IState> {
           title: 'New Confirmed',
           dataIndex: 'newConfirmed',
           key: 'newConfirmed',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.newConfirmed -b.newConfirmed,
           sortOrder: sortedInfo.columnKey==='newConfirmed'&&sortedInfo.order,
           ellipsis: true,
@@ -102,7 +98,7 @@ class Italy extends Component <{}, IState> {
           title: 'Death',
           dataIndex: 'death',
           key: 'death',
-          width: 100,
+          // width: 100,
           sorter: (a:any, b:any) => a.death - b.death,
           sortOrder: sortedInfo.columnKey === 'death' && sortedInfo.order,
           ellipsis: true
@@ -111,7 +107,7 @@ class Italy extends Component <{}, IState> {
           title: 'New Death',
           dataIndex: 'newDeath',
           key: 'newDeath',
-          width: 100,
+          // width: 100,
           sorter:(a :any,b :any) => a.newDeath -b.newDeath,
           sortOrder: sortedInfo.columnKey==='newDeath'&&sortedInfo.order,
           ellipsis: true,
@@ -120,7 +116,7 @@ class Italy extends Component <{}, IState> {
             title: 'Recovered',
             dataIndex: 'recovered',
             key: 'recovered',
-            width: 100,
+            // width: 100,
             sorter: (a:any, b:any) => a.recovered - b.recovered,
             sortOrder: sortedInfo.columnKey === 'recovered' && sortedInfo.order,
             ellipsis: true
@@ -129,7 +125,7 @@ class Italy extends Component <{}, IState> {
             title: 'Last Updated',
             dataIndex: 'updated',
             key: 'updated',
-            width: 100,
+            // width: 100,
             sorter:(a :any,b :any) => a.updated -b.updated,
             sortOrder: sortedInfo.columnKey==='updated'&&sortedInfo.order,
             ellipsis: true,
@@ -173,7 +169,7 @@ class Italy extends Component <{}, IState> {
                           <div className="panel-body divtableStats">
                                
                                 <Table className="tableStats" columns={columns1}  dataSource={data2} 
-                                pagination={{pageSize:20}} scroll={{ y: 450 }}
+                                tableLayout="auto" size="large"
                                  onChange={this.handleChange}
                                  />
                           </div>

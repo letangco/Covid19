@@ -8,6 +8,20 @@ class PageYoutubeNews extends React.Component {
         videos: [],
         selectedVideo: null
     }
+    async componentDidMount()
+    {
+        let  response: any = await youtube.get('/search', {
+            params: {
+                part: 'snippet',
+                maxResults: 1,
+                key: 'AIzaSyBqqdiP7gxBFVf69_gmlJKlKv2RtBTCV1A',
+                q: "covid"
+            }
+        })
+        this.setState({
+            videos: response.data.items,
+        })
+    }
     handleSubmit = async (termFromSearchBar: any) => {
         let response: any = await youtube.get('/search', {
             params: {
