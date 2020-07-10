@@ -24,7 +24,7 @@ class VideoDetail extends React.Component <Iprops,any>{
   return (
     <div>
       <div className="ui embed">
-        <iframe src={videoSrc} allowFullScreen title="Video player" />
+        <iframe src={videoSrc} allowFullScreen title="Video player" width="100%" height="450px"/>
       </div>
       <div className="ui segment">
         <h4 className="ui header">{video.snippet.title}</h4>

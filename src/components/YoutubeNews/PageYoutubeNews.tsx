@@ -27,13 +27,19 @@ class PageYoutubeNews extends React.Component {
     render() {
         return (
             <div className='ui container' style={{ marginTop: '1em' }}>
-                <SearchBar handleFormSubmit={this.handleSubmit} />
+                
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <SearchBar handleFormSubmit={this.handleSubmit} />
+                </div>
+                
                 <div className='ui grid'>
                     <div className="ui row">
-                        <div className="eleven wide column">
+                        
+                        <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                             <VideoDetail video={this.state.selectedVideo}/>
                         </div>
-                        <div className="five wide column">
+                        
+                        <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
                         </div>
                     </div>
