@@ -14,7 +14,8 @@ interface IState {
   data: any[],
   filteredInfo: any,
   sortedInfo: any,
-  loading: any
+  loading: any,
+  SoDong:any
 }
 
 class Stats extends Component<{}, IState> {
@@ -24,7 +25,8 @@ class Stats extends Component<{}, IState> {
       data: [],
       filteredInfo: null,
       sortedInfo: null,
-      loading: true
+      loading: true,
+      SoDong:0
     }
   }
   handleChange = (pagination: any, filter: any, sort: any) => {
@@ -91,6 +93,7 @@ class Stats extends Component<{}, IState> {
     }
     return temp;
   }
+  
   render() {
     let { sortedInfo } = this.state;
     sortedInfo = sortedInfo || {};
@@ -129,21 +132,13 @@ class Stats extends Component<{}, IState> {
         sorter: (a: any, b: any) =>this.DeleteCommas(a.newConfirmed) - (this.DeleteCommas(b.newConfirmed)),
         sortOrder: sortedInfo.columnKey === 'newConfirmed' && sortedInfo.order,
         ellipsis: true,
-        render: (value:any, index:any)=>{
-          index = -1;
-          if(value.newConfirmed !=="0" ||value.newConfirmed !==0|| value.newConfirmed !==undefined)
+        render: (value:any, index:any, key:any)=>{
+          if(this.DeleteCommas(index.confirmed)!==0)
           {
-            index = parseInt(index)+1;
             return <div>              
-              <FontAwesomeIcon icon={faArrowUp}/> {value} ({(parseFloat(value)/this.DeleteCommas(data2[index].confirmed)).toFixed(2)}%)
+              <FontAwesomeIcon icon={faArrowUp}/> {value} ({((parseFloat(value)/this.DeleteCommas(data2[index.key].confirmed))*100).toFixed(3)}%)
             </div>;
             
-          }
-          else
-          {
-            return <div>
-                {value}
-            </div>;
           }
         }
       },
@@ -165,6 +160,15 @@ class Stats extends Component<{}, IState> {
         sorter: (a: any, b: any) =>this.DeleteCommas(a.newDeath.toString()) - (this.DeleteCommas(b.newDeath.toString())),
         sortOrder: sortedInfo.columnKey === 'newDeath' && sortedInfo.order,
         ellipsis: true,
+        render: (value:any, index:any, key:any)=>{
+          if(this.DeleteCommas(index.newDeath)!==0)
+          {
+            return <div>              
+              <FontAwesomeIcon icon={faArrowUp}/> {value} ({((parseFloat(value)/this.DeleteCommas(data2[index.key].death))*100).toFixed(3)}%)
+            </div>;
+            
+          }
+        }
       },
       {
         title: 'Recovered',

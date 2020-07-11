@@ -4,6 +4,8 @@ import './Dashboard.css';
 //Thư viện table
 import 'antd/dist/antd.css';
 import {fetchAsiaData,SummaryStats,fetchAsiaSummaryData} from '../../api/dashboard/index';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 interface IProps{
 }
 interface IState{
@@ -97,7 +99,22 @@ class Asia extends Component <{}, IState> {
         }
         return dataAsia;
     }
-    
+    numberWithCommas(x:any) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    DeleteCommas(x:any) {
+      var temp:any =0;
+      var index:any =0;
+      for (var i:any = x.toString().length-1; i>=0; i--)
+      {
+        if(x[i]!==',')
+        {
+          temp= temp + parseInt(x[i])*Math.pow(10,index);
+          index++;       
+        }
+      }
+      return temp;
+    }
   render(){
     let {sortedInfo} = this.state;
     // TatCaQuocgia
@@ -135,6 +152,22 @@ class Asia extends Component <{}, IState> {
           sorter:(a :any,b :any) => a.newConfirmed -b.newConfirmed,
           sortOrder: sortedInfo.columnKey==='newConfirmed'&&sortedInfo.order,
           ellipsis: true,
+          render: (value:any, index:any, key:any)=>{
+            console.log(index)
+            if(data2[index.key])
+            {
+              return <div>       
+              <FontAwesomeIcon icon={faArrowUp}/> {value} ({parseFloat(value)/parseFloat(data2[index.key].confirmed)*100}%)
+              {/* <FontAwesomeIcon icon={faArrowUp}/> {value} ({((parseFloat(value)/this.DeleteCommas(data2[index.key].confirmed))*100).toFixed(3)}%) */}
+            </div>;
+            }
+            else{
+              return <div>       
+              <FontAwesomeIcon icon={faArrowUp}/> {value}
+              
+            </div>;
+            }
+          }
         },
         {
           title: 'Death',
@@ -176,9 +209,9 @@ class Asia extends Component <{}, IState> {
       var newColumns =[];
       newColumns= this.DataFilter();
     //   var dataAsia:any = this.DataFilter();
-        const data2 = [];
+        const data2:any = [];
         data2.push(
-          {key: 0,
+          {
           country: <p className="label label-danger">TOTAL</p>,
           confirmed: this.state.dataTotal.cases,
           newConfirmed: this.state.dataTotal.todayCases,
