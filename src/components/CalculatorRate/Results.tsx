@@ -19,6 +19,7 @@ import {
 import SizeContext from "antd/lib/config-provider/SizeContext";
 interface iState {
   data: any;
+  valueResult:any;
 }
 interface iProps {
   dataResult: any;
@@ -31,6 +32,12 @@ class Results extends Component<iProps, iState> {
   // Sau khi Render thì cập nhật lại State từ props nhận được
   componentWillReceiveProps() {
     this.setState({ data: this.props.dataResult });
+  }
+  sendValueResultCountry(valueResult:any){
+    // console.log(valueResult)
+    this.setState({
+      valueResult:valueResult
+    })
   }
   render() {
     var SourceCountry:any = [
@@ -1151,7 +1158,6 @@ class Results extends Component<iProps, iState> {
         "TotalDeaths": 18
       }
      ];
-     console.log(SourceCountry)
     // console.log(this.state.data)
     // var data: any[] = this.props.dataResult;
     // var data: any[] = this.state.data;
@@ -1171,7 +1177,7 @@ class Results extends Component<iProps, iState> {
           <p className="title-result">
             <FontAwesomeIcon icon={faChartLine} /> Result Covid-19 Calculator
           </p>
-          <ResultFinal sendDataResult={this.state.data} />
+          <ResultFinal sendDataResult={this.state.data} sendSourceCountry={SourceCountry} sendCountry={this.state.data[9]}/>
           <Collapsible trigger="Read more..." triggerStyle={{color:"white"}}easing = "ease-in"  triggerClassName="txt-read-more" transitionTime={800}>
             <ResultCountry sendCountry={this.state.data[9]} sendSourceCountry={SourceCountry}/>
             <ResultAge sendAge={this.state.data[0]} />

@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLungsVirus,
   faFlagCheckered,
-  faVenusMars,
   faHeartbeat,
   faRestroom,
   faToilet,
@@ -14,6 +13,7 @@ import {
   faHeartBroken,
   faWheelchair
 } from "@fortawesome/free-solid-svg-icons";
+
 interface iProps {
   data: any;
   isSubmit: any;
@@ -34,6 +34,7 @@ interface IState {
   data: any;
   isSubmit: any;
   CountryOption: any;
+  // Flag: any;
 }
 class FormCalculatorRate extends Component<iProps, IState> {
   constructor(props: iProps) {
@@ -60,7 +61,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
       optionYesNo: ["Yes", "No"],
       data: [],
       isSubmit: false,
-      CountryOption: null,
+      CountryOption: "AF",
+      // Flag: 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/af.svg'
     };
   }
   onHandleSubmit = (event: any) => {
@@ -157,12 +159,12 @@ class FormCalculatorRate extends Component<iProps, IState> {
   };
   handleChange = (event: any) => {
     // console.log(event.target.value)
-    this.setState({CountryOption:event.target.value})
+    this.setState({ CountryOption: event.target.value })
   }
   render() {
     var CountryOption: any = this.state.CountryOption;
     // Du lieu Country lable-value
-    const Countries =[
+    const Countries = [
       {
         "label": "Afghanistan",
         "value": "AF"
@@ -907,7 +909,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
         "label": "Zimbabwe",
         "value": "ZW"
       }
-     ];
+    ];
     var elmGroupAge: any = this.state.nameAge.map((item: any, index: any) => {
       var name: any = "groupAge";
       var lblTenGroup = [
@@ -1099,6 +1101,9 @@ class FormCalculatorRate extends Component<iProps, IState> {
         </div>
       );
     });
+    // function renderFlag = (flag:any) => {
+    //   return 'https://vncdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+flag+'.svg';
+    // }
     return (
       <div className="container">
         <div className="row">
@@ -1124,123 +1129,140 @@ class FormCalculatorRate extends Component<iProps, IState> {
                     <select onChange={this.handleChange} value={CountryOption}>
                       {Countries.map(item => (
                         <option key={item.value} value={item.value}>
-                          {item.label}
+                          {/* <img src={this.state.Flag} alt="Flag"/> */}
+                            {item.label}
                         </option>
                       ))}
                     </select>
+                    {/* <details>
+                      <summary>
+                        {Countries.map(item => (
+                          <>
+                            <input id={item.value} type='radio' className='rad' name='rad' value={item.value}></input>
+                            <label className='opt' htmlFor={item.value}>
+                              {item.label}
+                              <i className='em em-us'></i> 
+                              United States
+                            </label>
+                          </>
+                        ))}
+                          
+
+                      </summary>
+                    </details> */}
+                  </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p>Group Age?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmGroupAge}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p>Group Age?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmGroupAge}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faRestroom} size="2x" /> Group Sex?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmGroupSex}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faRestroom} size="2x" /> Group Sex?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmGroupSex}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faHeartbeat} size="2x" /> Cardiovascular Disease?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmGroupCardiovascular}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faHeartbeat} size="2x" /> Cardiovascular Disease?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmGroupCardiovascular}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faToilet} size="2x" /> Diabetes?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmGroupDiabetes}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faToilet} size="2x" /> Diabetes?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmGroupDiabetes}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faLungs} size="2x" /> Chronic Respiratory Disease?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmGroupRespiratory}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faLungs} size="2x" /> Chronic Respiratory Disease?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmGroupRespiratory}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faStethoscope} size="2x" /> Hypertension?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmGroupHypertension}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faStethoscope} size="2x" /> Hypertension?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmGroupHypertension}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faAllergies} size="2x" /> Cancer?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmGroupCancer}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faAllergies} size="2x" /> Cancer?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmGroupCancer}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faWheelchair} size="2x" /> Prior Stroke?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmStroke}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faWheelchair} size="2x" /> Prior Stroke?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmStroke}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faHeartBroken} size="2x" /> Heart Disease?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmHeart}
+                <div className="col-12 group-survey">
+                  <div>
+                    <div className="lbl-tile-group">
+                      <p><FontAwesomeIcon icon={faHeartBroken} size="2x" /> Heart Disease?</p>
+                    </div>
+                    <div className="content-survey-group">
+                      {elmHeart}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="box-btn-check">
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-check-cal"
-                  onClick={this.onClick}
-                >
-                  Check
+                <div className="box-btn-check">
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-check-cal"
+                    onClick={this.onClick}
+                  >
+                    Check
                     </button>
+                </div>
               </div>
-            </div>
 
 
 
@@ -1248,7 +1270,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
           </form>
         </div>
 
-      </div>
+        </div>
     );
   }
 }

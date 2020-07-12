@@ -1,13 +1,29 @@
 import React, { Component } from "react";
+import Approximately from '../../image/Approximately.png';
 interface IProps {
     sendCountry: any;
     sendSourceCountry: any;
 }
-interface IState { }
+interface IState {
+    confirmedCountry:any;
+    deathCountry:any;
+    resultFinalCountry:any;
+}
 class ResultCountry extends Component<IProps, IState> {
+    constructor(props:IProps){
+        super(props);
+        this.state={
+            resultFinalCountry:2.89,
+            deathCountry:994,
+            confirmedCountry:34366
+        }
+    }
     render() {
         var Country: any = this.props.sendCountry;
+        console.log(Country)
         var SourceCountry: any = this.props.sendSourceCountry;
+        var valueResultFinalCountry:any=this.state.resultFinalCountry;
+        // console.log(valueResultFinalCountry)
         function RenderResultCountry() {
             for (var i: any = 0; i < SourceCountry.length; i++) {
                 if (SourceCountry[i].CountryCode === Country) {
@@ -18,16 +34,11 @@ class ResultCountry extends Component<IProps, IState> {
                         <div className="panel panel-warning mg-20">
                             <div className="panel-heading pd-25">
                                 <h3 className="panel-title">
-                                    Country Specific Fatality Rate (US Data)
+                                Sources: covid-19-coronavirus-infographic-datapack, our world in data, cov19
                       </h3>
-                                <p>
-                                    We are collecting and analyzing the data from all US
-                                    States. In the meantime, below we show the data provided
-                                    by New York City Health as of May 13, 2020.
-                      </p>
                                 <p className="valueResult">Total Confirmed: {SourceCountry[i].TotalConfirmed}</p>
                                 <p className="valueResult">Total Deaths: {SourceCountry[i].TotalDeaths}</p>
-                                <p className="valueResult">Result: {(parseFloat(SourceCountry[i].TotalDeaths)/parseFloat(SourceCountry[i].TotalConfirmed)).toFixed(3)}</p>
+                                <p className="valueResult">Result: {(SourceCountry[i].TotalDeaths!==0)?(parseFloat(SourceCountry[i].TotalDeaths)/parseFloat(SourceCountry[i].TotalConfirmed)*100).toFixed(4): (<><img src ={Approximately} width="20px"/>0</>)}%</p>
                             </div>
                         </div>
                     </div>
