@@ -23,6 +23,7 @@ class calculatorRate extends Component<{}, IState> {
     this.setState({ isShow: value })
   }
   render() {
+    // console.log(this.state.data)
     return (
       <div className="calculatorMain">
           <div className="panel-form">

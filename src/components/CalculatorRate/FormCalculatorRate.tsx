@@ -33,6 +33,7 @@ interface IState {
   optionYesNo: any;
   data: any;
   isSubmit: any;
+  CountryOption: any;
 }
 class FormCalculatorRate extends Component<iProps, IState> {
   constructor(props: iProps) {
@@ -59,6 +60,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
       optionYesNo: ["Yes", "No"],
       data: [],
       isSubmit: false,
+      CountryOption: null,
     };
   }
   onHandleSubmit = (event: any) => {
@@ -134,7 +136,9 @@ class FormCalculatorRate extends Component<iProps, IState> {
       Cancer,
       Stroke,
       Heart,
+      CountryOption
     } = this.state;
+
     var data = [];
     data.push(
       groupAge,
@@ -145,12 +149,765 @@ class FormCalculatorRate extends Component<iProps, IState> {
       Hypertension,
       Cancer,
       Stroke,
-      Heart
+      Heart,
+      CountryOption
     );
-    console.log(data);
+    // console.log(data);
     this.props.data(data);
   };
+  handleChange = (event: any) => {
+    // console.log(event.target.value)
+    this.setState({CountryOption:event.target.value})
+  }
   render() {
+    var CountryOption: any = this.state.CountryOption;
+    // Du lieu Country lable-value
+    const Countries =[
+      {
+        "label": "Afghanistan",
+        "value": "AF"
+      },
+      {
+        "label": "Albania",
+        "value": "AL"
+      },
+      {
+        "label": "Algeria",
+        "value": "DZ"
+      },
+      {
+        "label": "Andorra",
+        "value": "AD"
+      },
+      {
+        "label": "Angola",
+        "value": "AO"
+      },
+      {
+        "label": "Antigua and Barbuda",
+        "value": "AG"
+      },
+      {
+        "label": "Argentina",
+        "value": "AR"
+      },
+      {
+        "label": "Armenia",
+        "value": "AM"
+      },
+      {
+        "label": "Australia",
+        "value": "AU"
+      },
+      {
+        "label": "Austria",
+        "value": "AT"
+      },
+      {
+        "label": "Azerbaijan",
+        "value": "AZ"
+      },
+      {
+        "label": "Bahamas",
+        "value": "BS"
+      },
+      {
+        "label": "Bahrain",
+        "value": "BH"
+      },
+      {
+        "label": "Bangladesh",
+        "value": "BD"
+      },
+      {
+        "label": "Barbados",
+        "value": "BB"
+      },
+      {
+        "label": "Belarus",
+        "value": "BY"
+      },
+      {
+        "label": "Belgium",
+        "value": "BE"
+      },
+      {
+        "label": "Belize",
+        "value": "BZ"
+      },
+      {
+        "label": "Benin",
+        "value": "BJ"
+      },
+      {
+        "label": "Bhutan",
+        "value": "BT"
+      },
+      {
+        "label": "Bolivia",
+        "value": "BO"
+      },
+      {
+        "label": "Bosnia and Herzegovina",
+        "value": "BA"
+      },
+      {
+        "label": "Botswana",
+        "value": "BW"
+      },
+      {
+        "label": "Brazil",
+        "value": "BR"
+      },
+      {
+        "label": "Brunei Darussalam",
+        "value": "BN"
+      },
+      {
+        "label": "Bulgaria",
+        "value": "BG"
+      },
+      {
+        "label": "Burkina Faso",
+        "value": "BF"
+      },
+      {
+        "label": "Burundi",
+        "value": "BI"
+      },
+      {
+        "label": "Cambodia",
+        "value": "KH"
+      },
+      {
+        "label": "Cameroon",
+        "value": "CM"
+      },
+      {
+        "label": "Canada",
+        "value": "CA"
+      },
+      {
+        "label": "Cape Verde",
+        "value": "CV"
+      },
+      {
+        "label": "Central African Republic",
+        "value": "CF"
+      },
+      {
+        "label": "Chad",
+        "value": "TD"
+      },
+      {
+        "label": "Chile",
+        "value": "CL"
+      },
+      {
+        "label": "China",
+        "value": "CN"
+      },
+      {
+        "label": "Colombia",
+        "value": "CO"
+      },
+      {
+        "label": "Comoros",
+        "value": "KM"
+      },
+      {
+        "label": "Congo (Brazzaville)",
+        "value": "CG"
+      },
+      {
+        "label": "Congo (Kinshasa)",
+        "value": "CD"
+      },
+      {
+        "label": "Costa Rica",
+        "value": "CR"
+      },
+      {
+        "label": "Croatia",
+        "value": "HR"
+      },
+      {
+        "label": "Cuba",
+        "value": "CU"
+      },
+      {
+        "label": "Cyprus",
+        "value": "CY"
+      },
+      {
+        "label": "Czech Republic",
+        "value": "CZ"
+      },
+      {
+        "label": "Côte d'Ivoire",
+        "value": "CI"
+      },
+      {
+        "label": "Denmark",
+        "value": "DK"
+      },
+      {
+        "label": "Djibouti",
+        "value": "DJ"
+      },
+      {
+        "label": "Dominica",
+        "value": "DM"
+      },
+      {
+        "label": "Dominican Republic",
+        "value": "DO"
+      },
+      {
+        "label": "Ecuador",
+        "value": "EC"
+      },
+      {
+        "label": "Egypt",
+        "value": "EG"
+      },
+      {
+        "label": "El Salvador",
+        "value": "SV"
+      },
+      {
+        "label": "Equatorial Guinea",
+        "value": "GQ"
+      },
+      {
+        "label": "Eritrea",
+        "value": "ER"
+      },
+      {
+        "label": "Estonia",
+        "value": "EE"
+      },
+      {
+        "label": "Ethiopia",
+        "value": "ET"
+      },
+      {
+        "label": "Fiji",
+        "value": "FJ"
+      },
+      {
+        "label": "Finland",
+        "value": "FI"
+      },
+      {
+        "label": "France",
+        "value": "FR"
+      },
+      {
+        "label": "Gabon",
+        "value": "GA"
+      },
+      {
+        "label": "Gambia",
+        "value": "GM"
+      },
+      {
+        "label": "Georgia",
+        "value": "GE"
+      },
+      {
+        "label": "Germany",
+        "value": "DE"
+      },
+      {
+        "label": "Ghana",
+        "value": "GH"
+      },
+      {
+        "label": "Greece",
+        "value": "GR"
+      },
+      {
+        "label": "Grenada",
+        "value": "GD"
+      },
+      {
+        "label": "Guatemala",
+        "value": "GT"
+      },
+      {
+        "label": "Guinea",
+        "value": "GN"
+      },
+      {
+        "label": "Guinea-Bissau",
+        "value": "GW"
+      },
+      {
+        "label": "Guyana",
+        "value": "GY"
+      },
+      {
+        "label": "Haiti",
+        "value": "HT"
+      },
+      {
+        "label": "Holy See (Vatican City State)",
+        "value": "VA"
+      },
+      {
+        "label": "Honduras",
+        "value": "HN"
+      },
+      {
+        "label": "Hungary",
+        "value": "HU"
+      },
+      {
+        "label": "Iceland",
+        "value": "IS"
+      },
+      {
+        "label": "India",
+        "value": "IN"
+      },
+      {
+        "label": "Indonesia",
+        "value": "ID"
+      },
+      {
+        "label": "Iran, Islamic Republic of",
+        "value": "IR"
+      },
+      {
+        "label": "Iraq",
+        "value": "IQ"
+      },
+      {
+        "label": "Ireland",
+        "value": "IE"
+      },
+      {
+        "label": "Israel",
+        "value": "IL"
+      },
+      {
+        "label": "Italy",
+        "value": "IT"
+      },
+      {
+        "label": "Jamaica",
+        "value": "JM"
+      },
+      {
+        "label": "Japan",
+        "value": "JP"
+      },
+      {
+        "label": "Jordan",
+        "value": "JO"
+      },
+      {
+        "label": "Kazakhstan",
+        "value": "KZ"
+      },
+      {
+        "label": "Kenya",
+        "value": "KE"
+      },
+      {
+        "label": "Korea (South)",
+        "value": "KR"
+      },
+      {
+        "label": "Kuwait",
+        "value": "KW"
+      },
+      {
+        "label": "Kyrgyzstan",
+        "value": "KG"
+      },
+      {
+        "label": "Lao PDR",
+        "value": "LA"
+      },
+      {
+        "label": "Latvia",
+        "value": "LV"
+      },
+      {
+        "label": "Lebanon",
+        "value": "LB"
+      },
+      {
+        "label": "Lesotho",
+        "value": "LS"
+      },
+      {
+        "label": "Liberia",
+        "value": "LR"
+      },
+      {
+        "label": "Libya",
+        "value": "LY"
+      },
+      {
+        "label": "Liechtenstein",
+        "value": "LI"
+      },
+      {
+        "label": "Lithuania",
+        "value": "LT"
+      },
+      {
+        "label": "Luxembourg",
+        "value": "LU"
+      },
+      {
+        "label": "Macedonia, Republic of",
+        "value": "MK"
+      },
+      {
+        "label": "Madagascar",
+        "value": "MG"
+      },
+      {
+        "label": "Malawi",
+        "value": "MW"
+      },
+      {
+        "label": "Malaysia",
+        "value": "MY"
+      },
+      {
+        "label": "Maldives",
+        "value": "MV"
+      },
+      {
+        "label": "Mali",
+        "value": "ML"
+      },
+      {
+        "label": "Malta",
+        "value": "MT"
+      },
+      {
+        "label": "Mauritania",
+        "value": "MR"
+      },
+      {
+        "label": "Mauritius",
+        "value": "MU"
+      },
+      {
+        "label": "Mexico",
+        "value": "MX"
+      },
+      {
+        "label": "Moldova",
+        "value": "MD"
+      },
+      {
+        "label": "Monaco",
+        "value": "MC"
+      },
+      {
+        "label": "Mongolia",
+        "value": "MN"
+      },
+      {
+        "label": "Montenegro",
+        "value": "ME"
+      },
+      {
+        "label": "Morocco",
+        "value": "MA"
+      },
+      {
+        "label": "Mozambique",
+        "value": "MZ"
+      },
+      {
+        "label": "Myanmar",
+        "value": "MM"
+      },
+      {
+        "label": "Namibia",
+        "value": "NA"
+      },
+      {
+        "label": "Nepal",
+        "value": "NP"
+      },
+      {
+        "label": "Netherlands",
+        "value": "NL"
+      },
+      {
+        "label": "New Zealand",
+        "value": "NZ"
+      },
+      {
+        "label": "Nicaragua",
+        "value": "NI"
+      },
+      {
+        "label": "Niger",
+        "value": "NE"
+      },
+      {
+        "label": "Nigeria",
+        "value": "NG"
+      },
+      {
+        "label": "Norway",
+        "value": "NO"
+      },
+      {
+        "label": "Oman",
+        "value": "OM"
+      },
+      {
+        "label": "Pakistan",
+        "value": "PK"
+      },
+      {
+        "label": "Palestinian Territory",
+        "value": "PS"
+      },
+      {
+        "label": "Panama",
+        "value": "PA"
+      },
+      {
+        "label": "Papua New Guinea",
+        "value": "PG"
+      },
+      {
+        "label": "Paraguay",
+        "value": "PY"
+      },
+      {
+        "label": "Peru",
+        "value": "PE"
+      },
+      {
+        "label": "Philippines",
+        "value": "PH"
+      },
+      {
+        "label": "Poland",
+        "value": "PL"
+      },
+      {
+        "label": "Portugal",
+        "value": "PT"
+      },
+      {
+        "label": "Qatar",
+        "value": "QA"
+      },
+      {
+        "label": "Republic of Kosovo",
+        "value": "XK"
+      },
+      {
+        "label": "Romania",
+        "value": "RO"
+      },
+      {
+        "label": "Russian Federation",
+        "value": "RU"
+      },
+      {
+        "label": "Rwanda",
+        "value": "RW"
+      },
+      {
+        "label": "Saint Kitts and Nevis",
+        "value": "KN"
+      },
+      {
+        "label": "Saint Lucia",
+        "value": "LC"
+      },
+      {
+        "label": "Saint Vincent and Grenadines",
+        "value": "VC"
+      },
+      {
+        "label": "San Marino",
+        "value": "SM"
+      },
+      {
+        "label": "Sao Tome and Principe",
+        "value": "ST"
+      },
+      {
+        "label": "Saudi Arabia",
+        "value": "SA"
+      },
+      {
+        "label": "Senegal",
+        "value": "SN"
+      },
+      {
+        "label": "Serbia",
+        "value": "RS"
+      },
+      {
+        "label": "Seychelles",
+        "value": "SC"
+      },
+      {
+        "label": "Sierra Leone",
+        "value": "SL"
+      },
+      {
+        "label": "Singapore",
+        "value": "SG"
+      },
+      {
+        "label": "Slovakia",
+        "value": "SK"
+      },
+      {
+        "label": "Slovenia",
+        "value": "SI"
+      },
+      {
+        "label": "Somalia",
+        "value": "SO"
+      },
+      {
+        "label": "South Africa",
+        "value": "ZA"
+      },
+      {
+        "label": "South Sudan",
+        "value": "SS"
+      },
+      {
+        "label": "Spain",
+        "value": "ES"
+      },
+      {
+        "label": "Sri Lanka",
+        "value": "LK"
+      },
+      {
+        "label": "Sudan",
+        "value": "SD"
+      },
+      {
+        "label": "Suriname",
+        "value": "SR"
+      },
+      {
+        "label": "Swaziland",
+        "value": "SZ"
+      },
+      {
+        "label": "Sweden",
+        "value": "SE"
+      },
+      {
+        "label": "Switzerland",
+        "value": "CH"
+      },
+      {
+        "label": "Syrian Arab Republic (Syria)",
+        "value": "SY"
+      },
+      {
+        "label": "Taiwan, Republic of China",
+        "value": "TW"
+      },
+      {
+        "label": "Tajikistan",
+        "value": "TJ"
+      },
+      {
+        "label": "Tanzania, United Republic of",
+        "value": "TZ"
+      },
+      {
+        "label": "Thailand",
+        "value": "TH"
+      },
+      {
+        "label": "Timor-Leste",
+        "value": "TL"
+      },
+      {
+        "label": "Togo",
+        "value": "TG"
+      },
+      {
+        "label": "Trinidad and Tobago",
+        "value": "TT"
+      },
+      {
+        "label": "Tunisia",
+        "value": "TN"
+      },
+      {
+        "label": "Turkey",
+        "value": "TR"
+      },
+      {
+        "label": "Uganda",
+        "value": "UG"
+      },
+      {
+        "label": "Ukraine",
+        "value": "UA"
+      },
+      {
+        "label": "United Arab Emirates",
+        "value": "AE"
+      },
+      {
+        "label": "United Kingdom",
+        "value": "GB"
+      },
+      {
+        "label": "United States of America",
+        "value": "US"
+      },
+      {
+        "label": "Uruguay",
+        "value": "UY"
+      },
+      {
+        "label": "Uzbekistan",
+        "value": "UZ"
+      },
+      {
+        "label": "Venezuela (Bolivarian Republic)",
+        "value": "VE"
+      },
+      {
+        "label": "Viet Nam",
+        "value": "VN"
+      },
+      {
+        "label": "Western Sahara",
+        "value": "EH"
+      },
+      {
+        "label": "Yemen",
+        "value": "YE"
+      },
+      {
+        "label": "Zambia",
+        "value": "ZM"
+      },
+      {
+        "label": "Zimbabwe",
+        "value": "ZW"
+      }
+     ];
     var elmGroupAge: any = this.state.nameAge.map((item: any, index: any) => {
       var name: any = "groupAge";
       var lblTenGroup = [
@@ -351,11 +1108,28 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="title-form">
                 <p className="p-title">
                   <FontAwesomeIcon icon={faLungsVirus} /> COVID-19 Prognostic Tool
-                  
+
                 </p>
                 <p className="p-note">
-                  <FontAwesomeIcon icon={faFlagCheckered}  size="2x"/> Please answer all questions. The results will be computed once all questions are answered.
+                  <FontAwesomeIcon icon={faFlagCheckered} size="2x" /> Please answer all questions. The results will be computed once all questions are answered.
                 </p>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Where are you from?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    <select onChange={this.handleChange} value={CountryOption}>
+                      {Countries.map(item => (
+                        <option key={item.value} value={item.value}>
+                          {item.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
               </div>
 
               <div className="col-12 group-survey">
@@ -364,7 +1138,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
                     <p>Group Age?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmGroupAge}
+                    {elmGroupAge}
                   </div>
                 </div>
               </div>
@@ -372,10 +1146,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faRestroom} size="2x"/> Group Sex?</p>
+                    <p><FontAwesomeIcon icon={faRestroom} size="2x" /> Group Sex?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmGroupSex}
+                    {elmGroupSex}
                   </div>
                 </div>
               </div>
@@ -383,10 +1157,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faHeartbeat} size="2x"/> Cardiovascular Disease?</p>
+                    <p><FontAwesomeIcon icon={faHeartbeat} size="2x" /> Cardiovascular Disease?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmGroupCardiovascular}
+                    {elmGroupCardiovascular}
                   </div>
                 </div>
               </div>
@@ -394,10 +1168,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faToilet} size="2x"/> Diabetes?</p>
+                    <p><FontAwesomeIcon icon={faToilet} size="2x" /> Diabetes?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmGroupDiabetes}
+                    {elmGroupDiabetes}
                   </div>
                 </div>
               </div>
@@ -405,10 +1179,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faLungs} size="2x"/> Chronic Respiratory Disease?</p>
+                    <p><FontAwesomeIcon icon={faLungs} size="2x" /> Chronic Respiratory Disease?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmGroupRespiratory}
+                    {elmGroupRespiratory}
                   </div>
                 </div>
               </div>
@@ -416,10 +1190,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faStethoscope} size="2x"/> Hypertension?</p>
+                    <p><FontAwesomeIcon icon={faStethoscope} size="2x" /> Hypertension?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmGroupHypertension}
+                    {elmGroupHypertension}
                   </div>
                 </div>
               </div>
@@ -427,10 +1201,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faAllergies} size="2x"/> Cancer?</p>
+                    <p><FontAwesomeIcon icon={faAllergies} size="2x" /> Cancer?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmGroupCancer}
+                    {elmGroupCancer}
                   </div>
                 </div>
               </div>
@@ -438,10 +1212,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faWheelchair}size="2x" /> Prior Stroke?</p>
+                    <p><FontAwesomeIcon icon={faWheelchair} size="2x" /> Prior Stroke?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmStroke}
+                    {elmStroke}
                   </div>
                 </div>
               </div>
@@ -449,27 +1223,27 @@ class FormCalculatorRate extends Component<iProps, IState> {
               <div className="col-12 group-survey">
                 <div>
                   <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faHeartBroken} size="2x"/> Heart Disease?</p>
+                    <p><FontAwesomeIcon icon={faHeartBroken} size="2x" /> Heart Disease?</p>
                   </div>
                   <div className="content-survey-group">
-                      {elmHeart}
+                    {elmHeart}
                   </div>
                 </div>
               </div>
 
               <div className="box-btn-check">
                 <button
-                type="submit"
-                className="btn btn-primary btn-check-cal"
-                onClick={this.onClick}
-              >
-              Check
+                  type="submit"
+                  className="btn btn-primary btn-check-cal"
+                  onClick={this.onClick}
+                >
+                  Check
                     </button>
               </div>
             </div>
 
 
-            
+
 
           </form>
         </div>

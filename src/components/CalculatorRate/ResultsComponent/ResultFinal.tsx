@@ -5,6 +5,7 @@ interface IProps {
 }
 interface IState {}
 class ResultFinal extends Component<IProps, IState> {
+  
   render() {
     var data: any[] = this.props.sendDataResult;
     var groupAge: string = data[0];
@@ -17,6 +18,7 @@ class ResultFinal extends Component<IProps, IState> {
     var Cancer: string = data[6];
     var Stroke: string = data[7];
     var Heart: string = data[8];
+    // var selectCountry:any = data[9];
     var valueAge: any,
       valueSex: any,
       valueCardiovascular: any,
