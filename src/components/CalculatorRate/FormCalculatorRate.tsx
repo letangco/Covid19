@@ -1101,9 +1101,10 @@ class FormCalculatorRate extends Component<iProps, IState> {
         </div>
       );
     });
-    // function renderFlag = (flag:any) => {
-    //   return 'https://vncdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+flag+'.svg';
-    // }
+    function renderFlag (flag:any){
+      var temp :any = flag.toLocaleLowerCase()
+      return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+temp+'.svg';
+    }
     return (
       <div className="container">
         <div className="row">
@@ -1126,30 +1127,29 @@ class FormCalculatorRate extends Component<iProps, IState> {
                     <p>Where are you from?</p>
                   </div>
                   <div className="content-survey-group">
-                    <select onChange={this.handleChange} value={CountryOption}>
+                    {/* <select onChange={this.handleChange} value={CountryOption}>
                       {Countries.map(item => (
                         <option key={item.value} value={item.value}>
-                          {/* <img src={this.state.Flag} alt="Flag"/> */}
+                          <img src={this.state.Flag} alt="Flag"/>
                             {item.label}
                         </option>
                       ))}
-                    </select>
-                    {/* <details>
+                    </select> */}
+                    <details>
                       <summary>
                         {Countries.map(item => (
                           <>
-                            <input id={item.value} type='radio' className='rad' name='rad' value={item.value}></input>
+                            <input id={item.value} type='radio' onChange={this.handleChange} className='rad' name='rad' value={item.value}></input>
                             <label className='opt' htmlFor={item.value}>
-                              {item.label}
+                              <img src={renderFlag(item.value)} alt="Flag" width="30px"/> {item.label}
                               <i className='em em-us'></i> 
-                              United States
                             </label>
                           </>
                         ))}
                           
 
                       </summary>
-                    </details> */}
+                    </details>
                   </div>
                   </div>
                 </div>
