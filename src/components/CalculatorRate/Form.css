@@ -1,5 +1,6 @@
 .page{
     background: #4b5a81;
+    /* background-color: #1B2435; */
     margin-top: 50px;
     border-radius: 20px;
     text-align: center;
@@ -82,4 +83,47 @@
     }
 }
 
+/* CSS SlectBox Choose Country */
+.SelectBoxCountry{
+    width: 75%;
+    height: 100%;
+}
+#demo-simple-select-label{
+    color: chartreuse;
+    font-size: 17px;
+    padding-left: 10px;
 
+}
+
+.MuiInputBase-input{
+    font-weight: 600 !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    word-spacing: 2px;
+    color: #557ef1 !important; 
+    font-size: 20px !important;
+    padding-left: 5px !important;
+}
+.select-choose-country{
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid aquamarine !important;
+    font-size: 15px !important;
+    padding-top: 10px !important;
+
+}
+.select-choose-country:hover {
+    color: rgb(55, 58, 236);
+    font-weight: bold;
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+    background-color: aquamarine !important;
+    font-size: 18px !important;
+  }
+  @media only screen and (max-width: 900px) and (min-width:200px)
+  {
+    .MuiInputBase-input{
+        font-weight: 550 !important;
+        word-spacing: 0px !important;
+        font-size: 15px !important;
+        padding-left: 5px !important;
+    }
+  }

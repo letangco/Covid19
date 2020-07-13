@@ -1136,7 +1136,7 @@ class FormCalculatorRate extends Component<iProps, IState> {
                         </option>
                       ))}
                     </select> */}
-                    <FormControl className="classes.formControl">
+                    <FormControl className="SelectBoxCountry col-12">
                       <>
                         <InputLabel id="demo-simple-select-label">Choose your country...</InputLabel>
                         
@@ -1147,8 +1147,8 @@ class FormCalculatorRate extends Component<iProps, IState> {
                           onChange={this.handleChange}
                         >
                           {Countries.map((item, index) => (
-                            <MenuItem value={item.value} key={index}>
-                              <img src={renderFlag(item.value)} alt="Flag" width="30px" /> {item.label}
+                            <MenuItem value={item.value} key={index} className="select-choose-country">
+                              <img src={renderFlag(item.value)} alt="Flag" width="55px" height="40px"/>&nbsp; {item.label}
                             </MenuItem>
                           ))}
 
