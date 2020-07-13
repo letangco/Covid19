@@ -13,6 +13,7 @@ import {
   faHeartBroken,
   faWheelchair
 } from "@fortawesome/free-solid-svg-icons";
+import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
 interface iProps {
   data: any;
@@ -1101,9 +1102,9 @@ class FormCalculatorRate extends Component<iProps, IState> {
         </div>
       );
     });
-    function renderFlag (flag:any){
-      var temp :any = flag.toLocaleLowerCase()
-      return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/'+temp+'.svg';
+    function renderFlag(flag: any) {
+      var temp: any = flag.toLocaleLowerCase()
+      return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/' + temp + '.svg';
     }
     return (
       <div className="container">
@@ -1135,142 +1136,141 @@ class FormCalculatorRate extends Component<iProps, IState> {
                         </option>
                       ))}
                     </select> */}
-                    <details>
-                      <summary>
-                        {Countries.map(item => (
-                          <>
-                            <input id={item.value} type='radio' onChange={this.handleChange} className='rad' name='rad' value={item.value}></input>
-                            <label className='opt' htmlFor={item.value}>
-                              <img src={renderFlag(item.value)} alt="Flag" width="30px"/> {item.label}
-                              <i className='em em-us'></i> 
-                            </label>
-                          </>
-                        ))}
-                          
+                    <FormControl className="classes.formControl">
+                      <>
+                        <InputLabel id="demo-simple-select-label">Choose your country...</InputLabel>
+                        
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={this.state.CountryOption}
+                          onChange={this.handleChange}
+                        >
+                          {Countries.map((item, index) => (
+                            <MenuItem value={item.value} key={index}>
+                              <img src={renderFlag(item.value)} alt="Flag" width="30px" /> {item.label}
+                            </MenuItem>
+                          ))}
 
-                      </summary>
-                    </details>
+                        </Select>
+                      </>
+                    </FormControl>
                   </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p>Group Age?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmGroupAge}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faRestroom} size="2x" /> Group Sex?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmGroupSex}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faHeartbeat} size="2x" /> Cardiovascular Disease?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmGroupCardiovascular}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faToilet} size="2x" /> Diabetes?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmGroupDiabetes}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faLungs} size="2x" /> Chronic Respiratory Disease?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmGroupRespiratory}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faStethoscope} size="2x" /> Hypertension?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmGroupHypertension}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faAllergies} size="2x" /> Cancer?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmGroupCancer}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faWheelchair} size="2x" /> Prior Stroke?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmStroke}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-12 group-survey">
-                  <div>
-                    <div className="lbl-tile-group">
-                      <p><FontAwesomeIcon icon={faHeartBroken} size="2x" /> Heart Disease?</p>
-                    </div>
-                    <div className="content-survey-group">
-                      {elmHeart}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="box-btn-check">
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-check-cal"
-                    onClick={this.onClick}
-                  >
-                    Check
-                    </button>
                 </div>
               </div>
 
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p>Group Age?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmGroupAge}
+                  </div>
+                </div>
+              </div>
 
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faRestroom} size="2x" /> Group Sex?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmGroupSex}
+                  </div>
+                </div>
+              </div>
 
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faHeartbeat} size="2x" /> Cardiovascular Disease?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmGroupCardiovascular}
+                  </div>
+                </div>
+              </div>
 
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faToilet} size="2x" /> Diabetes?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmGroupDiabetes}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faLungs} size="2x" /> Chronic Respiratory Disease?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmGroupRespiratory}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faStethoscope} size="2x" /> Hypertension?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmGroupHypertension}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faAllergies} size="2x" /> Cancer?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmGroupCancer}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faWheelchair} size="2x" /> Prior Stroke?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmStroke}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 group-survey">
+                <div>
+                  <div className="lbl-tile-group">
+                    <p><FontAwesomeIcon icon={faHeartBroken} size="2x" /> Heart Disease?</p>
+                  </div>
+                  <div className="content-survey-group">
+                    {elmHeart}
+                  </div>
+                </div>
+              </div>
+
+              <div className="box-btn-check">
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-check-cal"
+                  onClick={this.onClick}
+                >
+                  Check
+                    </button>
+              </div>
+            </div>
           </form>
         </div>
-
-        </div>
+      </div>
     );
   }
 }
