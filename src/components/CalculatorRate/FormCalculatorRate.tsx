@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Select from 'react-select';
 import "./Form.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,10 +11,9 @@ import {
   faLungs,
   faStethoscope,
   faAllergies,
-  faHeartBroken,
-  faWheelchair
 } from "@fortawesome/free-solid-svg-icons";
-import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
+import { url } from "inspector";
+// import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
 interface iProps {
   data: any;
@@ -29,8 +29,6 @@ interface IState {
   Respiratory: any;
   Hypertension: any;
   Cancer: any;
-  Stroke: any;
-  Heart: any;
   optionYesNo: any;
   data: any;
   isSubmit: any;
@@ -48,8 +46,6 @@ class FormCalculatorRate extends Component<iProps, IState> {
       Respiratory: "Yes",
       Hypertension: "Yes",
       Cancer: "Yes",
-      Stroke: "Yes",
-      Heart: "Yes",
       nameAge: [
         "groupAge1",
         "groupAge2",
@@ -116,16 +112,6 @@ class FormCalculatorRate extends Component<iProps, IState> {
       Cancer: event.target.value,
     });
   };
-  onHandleClickStroke = (event: any) => {
-    this.setState({
-      Stroke: event.target.value,
-    });
-  };
-  onHandleClickHeart = (event: any) => {
-    this.setState({
-      Heart: event.target.value,
-    });
-  };
   // Bắt sự kiện khi Click thì gửi toàn bộ dữ liệu State về thằng cha calculatorRate
   onClick = () => {
     this.setState({ isSubmit: true });
@@ -137,8 +123,6 @@ class FormCalculatorRate extends Component<iProps, IState> {
       Respiratory,
       Hypertension,
       Cancer,
-      Stroke,
-      Heart,
       CountryOption
     } = this.state;
 
@@ -151,23 +135,28 @@ class FormCalculatorRate extends Component<iProps, IState> {
       Respiratory,
       Hypertension,
       Cancer,
-      Stroke,
-      Heart,
       CountryOption
     );
     // console.log(data);
     this.props.data(data);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   };
   handleChange = (event: any) => {
     // console.log(event.target.value)
-    this.setState({ CountryOption: event.target.value })
+    // this.setState({ CountryOption: event.target.value })
+    console.log(event.value);
+    this.setState({CountryOption:event.value})
   }
+  
   render() {
-    var CountryOption: any = this.state.CountryOption;
+    function renderFlagImage(flag: any) {
+      var temp: any ='https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/' + flag.toLocaleLowerCase() + '.svg';
+      return <img src={temp} alt="Flag" width="50px"/>
+    }
     // Du lieu Country lable-value
     const Countries = [
       {
-        "label": "Afghanistan",
+        "label": 'Afghanistan',
         "value": "AF"
       },
       {
@@ -1064,52 +1053,11 @@ class FormCalculatorRate extends Component<iProps, IState> {
         );
       }
     );
-
-    var elmStroke: any = this.state.optionYesNo.map((item: any, index: any) => {
-      var lblStroke: any = ["Yes", "No"];
-      return (
-        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
-          <input
-            className={
-              this.state.Stroke === item
-                ? "list-group-item list-group-item-action itemNew active_Form_Cal"
-                : "list-group-item list-group-item-action itemNew"
-            }
-            type="button"
-            value={lblStroke[index]}
-            name={lblStroke[index]}
-            onClick={this.onHandleClickStroke}
-          />
-        </div>
-      );
-    });
-
-    var elmHeart: any = this.state.optionYesNo.map((item: any, index: any) => {
-      var lblHeart: any = ["Yes", "No"];
-      return (
-        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6" key={index}>
-          <input
-            className={
-              this.state.Heart === item
-                ? "list-group-item list-group-item-action itemNew active_Form_Cal"
-                : "list-group-item list-group-item-action itemNew"
-            }
-            type="button"
-            value={lblHeart[index]}
-            name={lblHeart[index]}
-            onClick={this.onHandleClickHeart}
-          />
-        </div>
-      );
-    });
-    function renderFlag(flag: any) {
-      var temp: any = flag.toLocaleLowerCase()
-      return 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/' + temp + '.svg';
-    }
+    
     return (
       <div className="container">
         <div className="row">
-          <form onSubmit={this.onHandleSubmit}>
+          <form onSubmit={this.onHandleSubmit}> 
             <div className="page">
 
               <div className="title-form">
@@ -1128,15 +1076,15 @@ class FormCalculatorRate extends Component<iProps, IState> {
                     <p>Where are you from?</p>
                   </div>
                   <div className="content-survey-group">
-                    {/* <select onChange={this.handleChange} value={CountryOption}>
+                    {/* <select onChange={this.handleChange} value={this.state.CountryOption}>
                       {Countries.map(item => (
                         <option key={item.value} value={item.value}>
-                          <img src={this.state.Flag} alt="Flag"/>
+                            {renderFlagImage(item.value)}
                             {item.label}
                         </option>
                       ))}
                     </select> */}
-                    <FormControl className="SelectBoxCountry col-12">
+                    {/* <FormControl className="SelectBoxCountry col-12">
                       <>
                         <InputLabel id="demo-simple-select-label">Choose your country...</InputLabel>
                         
@@ -1154,7 +1102,15 @@ class FormCalculatorRate extends Component<iProps, IState> {
 
                         </Select>
                       </>
-                    </FormControl>
+                    </FormControl> */}
+                   
+                  <Select
+                    defaultValue={Countries[0]}
+                    options={Countries}
+                    onChange={this.handleChange}
+                  />
+
+
                   </div>
                 </div>
               </div>
@@ -1232,28 +1188,6 @@ class FormCalculatorRate extends Component<iProps, IState> {
                   </div>
                   <div className="content-survey-group">
                     {elmGroupCancer}
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faWheelchair} size="2x" /> Prior Stroke?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmStroke}
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 group-survey">
-                <div>
-                  <div className="lbl-tile-group">
-                    <p><FontAwesomeIcon icon={faHeartBroken} size="2x" /> Heart Disease?</p>
-                  </div>
-                  <div className="content-survey-group">
-                    {elmHeart}
                   </div>
                 </div>
               </div>

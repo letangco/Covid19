@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import understandingCovid19 from "./understandingCovid19/understandingCovid19";
 import AskandQuestion from "./AskedAndQuestion/AskedandQuestion";
 import ContentWiki from './Content/ContentWiki';
-import Game from './Game/Game';
+// import Game from './Game/Game';
 import {TinyButton  as ScrollUpButton} from "react-scroll-up-button";
 import {
   BrowserRouter as Router,
@@ -45,7 +45,7 @@ class Wiki extends Component {
 
           {/* <Game /> */}
         </Switch>
-        <Game />
+        {/* <Game /> */}
       </Router>
     );
   }

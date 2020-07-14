@@ -18,8 +18,6 @@ class ResultFinal extends Component<IProps, IState> {
     var Respiratory: string = data[4];
     var Hypertension: string = data[5];
     var Cancer: string = data[6];
-    var Stroke: string = data[7];
-    var Heart: string = data[8];
     var SourceCountry: any = this.props.sendSourceCountry;
     var SelectCountry: any = this.props.sendCountry;
 
@@ -30,8 +28,6 @@ class ResultFinal extends Component<IProps, IState> {
       valueRespiratory: any,
       valueCancer: any,
       valueHypertension: any,
-      valueStroke: any,
-      valueHeart: any,
       ResultCondition:any = 0,
       ResultFinal: any = 0;
     function calculatorResultCountry() {
@@ -104,19 +100,13 @@ class ResultFinal extends Component<IProps, IState> {
       : (valueHypertension = 0);
     // If Cancer
     Cancer === "Yes" ? (valueCancer = 0.076) : (valueCancer = 0);
-    // If Stroke
-    Stroke === "Yes" ? (valueStroke = 0.125) : (valueStroke = 0);
-    // If Heart
-    Heart === "Yes" ? (valueHeart = 0.122) : (valueHeart = 0);
     ResultCondition = (valueAge +
       valueSex +
       valueCardiovascular +
       valueDiabetes +
       valueRespiratory +
       valueHypertension +
-      valueCancer +
-      valueStroke +
-      valueHeart).toFixed(2);
+      valueCancer).toFixed(2);
       console.log(ResultCondition)
     ResultFinal =
       (ResultCondition*ResultCountry).toFixed(2);

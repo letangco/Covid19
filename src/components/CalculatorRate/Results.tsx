@@ -7,11 +7,11 @@ import ResultDiabetes from './ResultsComponent/ResultDiabetes';
 import ResultRespiratory from './ResultsComponent/ResultRespiratory';
 import Hypertension from './ResultsComponent/ResultHypertension';
 import ResultCancer from './ResultsComponent/ResultCancer';
-import ResultStroke from './ResultsComponent/ResultStroke';
-import ResultHeart from './ResultsComponent/ResultHeart';
 import ResultFinal from './ResultsComponent/ResultFinal';
 import Collapsible from 'react-collapsible';
 import ResultCountry from './ResultsComponent/ResultCountry';
+import ResultConditionRadar  from './ResultsComponent/ResultConditionRadar';
+import ResultConditionPie from './ResultsComponent/ResultConditionPie';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartLine
@@ -1170,25 +1170,33 @@ class Results extends Component<iProps, iState> {
     // var Hypertension: string = data[5];
     // var Cancer: string = data[6];
     // var Stroke: string = data[7];
-    // var Heart: string = data[8];
     return (
       <div className="container">
         <div className="row page-result-survey">
           <p className="title-result">
             <FontAwesomeIcon icon={faChartLine} /> Result Covid-19 Calculator
           </p>
-          <ResultFinal sendDataResult={this.state.data} sendSourceCountry={SourceCountry} sendCountry={this.state.data[9]}/>
+          <ResultFinal sendDataResult={this.state.data} sendSourceCountry={SourceCountry} sendCountry={this.state.data[7]}/>
           <Collapsible trigger="Read more..." triggerStyle={{color:"white"}}easing = "ease-in"  triggerClassName="txt-read-more" transitionTime={800}>
-            <ResultCountry sendCountry={this.state.data[9]} sendSourceCountry={SourceCountry}/>
-            <ResultAge sendAge={this.state.data[0]} />
+            <ResultCountry sendCountry={this.state.data[7]} sendSourceCountry={SourceCountry}/>
+            <ResultAge sendAge={this.state.data[0]}/>
             <ResultSex sendSex={this.state.data[1]} />
             <ResultCardiovascular sendCardiovascular={this.state.data[2]} />
             <ResultDiabetes sendDiabetes={this.state.data[3]} />
             <ResultRespiratory sendRespiratory={this.state.data[4]} />
             <Hypertension sendHypertension={this.state.data[5]} />
             <ResultCancer sendCancer={this.state.data[6]} />
-            <ResultStroke sendStroke={this.state.data[7]} />
-            <ResultHeart sendHeart={this.state.data[8]} />
+            
+            <div className="row">
+              
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <ResultConditionRadar sendDataCondition={this.state.data} />
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <ResultConditionPie sendDataCondition={this.state.data} />
+              </div>
+            </div>
+            
           </Collapsible>
         </div>
       </div>

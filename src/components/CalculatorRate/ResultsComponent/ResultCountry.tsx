@@ -22,7 +22,6 @@ class ResultCountry extends Component<IProps, IState> {
         var Country: any = this.props.sendCountry;
         console.log(Country)
         var SourceCountry: any = this.props.sendSourceCountry;
-        var valueResultFinalCountry:any=this.state.resultFinalCountry;
         // console.log(valueResultFinalCountry)
         function RenderResultCountry() {
             for (var i: any = 0; i < SourceCountry.length; i++) {

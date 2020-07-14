@@ -6,11 +6,12 @@ interface IProps {
 interface IState { }
 class ResultAge extends Component<IProps, IState> {
   render() {
-    var valueAge: any = [0.06, 3.9, 22.4, 24.9, 48.7, 0.04];
+    var valueAge: any = [0.06, 3.9, 22.4, 24.9, 48.7, 75];
     var groupAge: any = this.props.sendAge;
     function RenderGroupAgeUS() {
       switch (groupAge) {
         case "groupAge1": {
+          
           return (
             <div className="panel panel-info">
               <div className="panel-heading">
@@ -122,6 +123,7 @@ class ResultAge extends Component<IProps, IState> {
         }
         case "groupAge6": {
           return (
+            
             <div className="panel panel-info">
               <div className="panel-heading">
                 <h3 className="panel-title">GROUP AGE</h3>
